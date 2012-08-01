@@ -1,0 +1,7 @@
+RewriteEngine on
+RewriteBase /
+
+RewriteRule ^apply/verify$ apply/verify.php [NC,L]
+RewriteRule ^apply/finish$ apply/finish.php [NC,L]
+
+RewriteRule ^roster/character/(\w+)$ roster/character.php?name=$1 [NC,L]

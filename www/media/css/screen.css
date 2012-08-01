@@ -1,0 +1,539 @@
+/***************************************
+ * Name: realms.screen.css
+ * Media: screens
+ * Project: Ashkandari
+ * Author: Ben Argo
+ * Copyright: Premade (EU) Ltd. & Blizzard Entertainment Inc.
+ * Version: 4.0
+ * Updated: 13 December 2011
+ *
+ * Swatch Colours:
+ * Text ===> #B39265
+ * Links ==> #FFA400
+ * Hovers => rgba(230, 130, 100, 0.1)
+ * 
+ * Table of Contents:
+ * 1. Imports
+ * 2. Inline Styles
+ *    2.1. Typography
+ *    2.2. Links
+ *    2.3. Images
+ *    2.4. Tables
+ *    2.5. Lists
+ *    2.6. Forms
+ *    2.7. Tooltips
+ *    2.8. Common classes
+ * 3. Layout
+ *     3.1. Header
+ *     3.2. Primary navigation
+ *     3.3. Article
+ *     3.4. Footer
+ * 4. Media Queries
+ *     4.1. Screens
+ *     4.2. Tablets (e.g. iPad)
+ *     4.3. Mobiles (e.g. iPhone)
+ ***************************************/
+
+/* 1. Imports */
+@charset "UTF-8";
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+/* 2. Inline Styles */
+/* 2.1. Typography */
+body {
+	background: #B39265 url('../images/theme/body.png') top center repeat-y scroll;
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	font-size: 12px;
+	color: #B39265;
+}
+
+p {
+	line-height: 1.8em;
+	margin: 10px 0;
+}
+
+h1, h2 {
+	font-family: Times, 'Times New Roman', serif;
+	color: #008467;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2.4em;
+}
+
+h3 {
+	font-size: 2.0em;
+	font-weight: bold;
+}
+
+h4 {
+	font-size: 1.8em;
+	font-weight: bold;
+}
+
+/* Class Colours */
+
+.warrior {
+	color: #C69B6D;
+}
+
+.paladin {
+	color: #F48CBA;
+}
+
+.hunter {
+	color: #AAD372;
+}
+
+.rogue {
+	color: #FFF468;
+}
+
+.priest {
+	color: #F0EBE0;
+}
+
+.dk {
+	color: #C41E3B;
+}
+
+.shaman {
+	color: #2359FF;
+}
+
+.mage {
+	color: #68CCEF;
+}
+
+.warlock {
+	color: #9382C9;
+}
+
+.druid {
+	color: #FF7C0A;
+}
+
+a.warrior{
+	border-bottom-color: #C69B6D;
+}
+
+a.paladin {
+	border-bottom-color: #F48CBA;
+}
+
+a.hunter {
+	border-bottom-color: #AAD372;
+}
+
+a.rogue {
+	border-bottom-color: #FFF468;
+}
+
+a.priest {
+	border-bottom-color: #F0EBE0;	
+}
+
+a.dk {
+	border-bottom-color: #C41E3B;
+}
+
+a.shaman {
+	border-bottom-color: #2359FF;
+}
+
+a.mage {
+	border-bottom-color: #68CCEF;
+}
+
+a.warlock {
+	border-bottom-color: #9382C9;
+}
+
+a.druid {
+	border-bottom-color: #FF7C0A;
+}
+
+/* 2.2. Links */
+a {
+	color: #FFA400;
+	text-decoration: none;
+}
+
+article a {
+	border-bottom: dotted 1px #FFA400;
+}
+
+article a:hover {
+	border-bottom-style: solid;
+}
+
+article a[href^="http://"]:after {
+	content: url('../images/theme/external-link-yellow.png')
+}
+
+a.noborder {
+	border: none;
+}
+
+/* 2.3. Images */
+article img {
+	display: inline-block;
+	padding: 5px;
+	
+	background-color: rgba(230, 130, 100, 0.1);
+
+	border: solid 0px transparent;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+article a > img:hover {
+	background-color: rgba(230, 130, 100, 0.2);
+}
+
+/* 2.4. Tables */
+table {
+	margin: 0 0 15px;
+	width: 884px;
+}
+
+table th, table td {
+	padding: 5px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+table th {
+	font-size: 1.2em;
+	padding: 10px 5px;
+}
+
+table tr {
+	border-bottom: solid 1px #231207;
+}
+
+table tr:nth-child(2n+1) {
+	background-color: rgba(43, 21, 7, 0.5);
+}
+
+table tbody tr:hover {
+	background-color: rgba(230, 130, 100, 0.1);
+}
+
+table.tablesorter th.sortable {
+	cursor: pointer;
+}
+
+/* 2.5. Lists */
+ul, ol {
+	margin-left: 10px;
+}
+
+li {
+	line-height: 1.8em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ol > li {
+	list-style: decimal;
+}
+
+/* 2.6. Forms */
+
+label {
+	display: block;
+	width: 100%;
+}
+
+label.required p:after {
+	content: " ★";
+	color: #FFA400;
+}
+
+label.error {
+	margin: 10px 0;
+	font-size: 0.9em;
+	color: #ff3333;
+}
+
+input.error, textarea.error {
+	background: #ffdddd;
+	border-radius: 1px;
+	-moz-box-shadow: 0px 0px 5px red;
+	-webkit-box-shadow: 0px 0px 5px red;
+	box-shadow: 0px 0px 5px red; 
+}
+
+select, input, textarea, button { font: 1.5em Helvetica, Arial, Verdana, sans-serif; }
+
+textarea {
+	line-height: 1.4em;
+}
+ 
+input[type="text"], input[type="email"], input[type="tel"], input.ui-comboxbox-input, textarea {
+	display: block;
+	border: 1px solid #b1b4a9;
+	padding: 6px;
+	width: 866px;
+}
+
+select[size], textarea, input[type="radio"] { vertical-align: middle; }
+ 
+input[type="checkbox"] { vertical-align: middle; }
+ 
+label, input[type=button], input[type=submit], button { cursor: pointer; }
+
+input[type=button], input[type=submit] {
+	display: block;
+	margin: 10px auto;
+	padding: none;
+	width: 294px;
+	height: 32px;
+	line-height: 32px;
+	color: #FFA400;
+	text-align: center;
+	
+	border: none;
+	
+	background: transparent url('../images/theme/form-buttons.png') top left;
+}
+
+input[type=button]:hover, input[type=submit]:hover {
+	background-position: bottom left;
+}
+
+/* 2.7. Tooltips */
+.tooltip {
+	color: #FFA400;
+	cursor: help;
+}
+
+.tooltip > .tt-inner {
+	display: none;
+	position: absolute;
+	bottom: 1.8em; left: 0px;
+	padding: 5px;
+	
+	width: 200px;
+	height: 100px;
+	overflow: scroll;
+	
+	border: solid 0px transparent;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+	background: rgba(230, 130, 100, 0.6);
+	
+	color: #eeeeee;
+}
+
+.tooltip > .tt-inner {
+	display: block;
+}
+
+/* 2.8. Common classes */
+.bold {
+	font-weight: bold;
+}
+
+.italics {
+	font-style: italic;
+}
+
+.text.center {
+	text-align: center;
+}
+
+.text.right {
+	text-align: right;
+}
+
+.float {
+	padding: 10px;
+	background: rgba(230, 130, 100, 0.1);
+	border: solid 0px transparent;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+.float.left {
+	float: left;
+	margin: 0px 5px 5px 0px;
+}
+
+.float.right {
+	float: right;
+	margin: 0px 0px 5px 5px;
+}
+
+.clear, .clear.both {
+	clear: both;
+}
+
+.clear.left {
+	clear: left;
+}
+
+.clear.right {
+	clear: right;
+}
+
+.clear.none {
+	clear: none;
+}
+
+.jsshow {
+	display: block;
+}
+
+.nojs .jsshow {
+	display: none;
+}
+
+.jshide {
+	display: none;
+}
+
+.nojs-show {
+	display: none;
+}
+
+.nojs .nojs-show {
+	display: block;
+}
+
+.nojs .nojs-hide {
+	display: none;
+}
+
+/* 3. Layout */
+#wrapper-top {
+	background: url('../images/theme/wrapper-top.jpg') 50% top no-repeat;
+}
+
+#wrapper-bottom {
+	background: url('../images/theme/wrapper-bottom.jpg') 50% bottom no-repeat;
+	min-height: 1647px;
+}
+
+#wrapper {
+	width: 1006px;
+	margin: 0 auto;
+	padding-bottom: 300px;
+}
+
+/* 3.1. Header */
+header {
+	padding-top: 65px;
+}
+
+a#wowlogo {
+	display: block;
+	width: 240px; /* 340px */
+	height: 17px; /* 145px */
+	margin: 0 auto;
+	padding: 128px 50px 0;
+	
+	line-height: 17px;
+	font-family: 'Times', 'Times New Roman', serif;
+	font-size: 1.3em;
+	font-weight: bold;
+	text-align: center;
+	text-transform: uppercase;
+	color: #000000;
+}
+
+/* 3.2. Primary Navigation */
+nav#primary {
+	width: 900px;
+	height: 60px;
+	margin: 0 auto;
+}
+
+#primary ul {
+	margin: 0;
+}
+
+#primary li, #primary li > a {
+	display: inline-block;
+	width: 150px;
+	height: 60px;
+	
+	border-bottom: none;
+
+	font-weight: bold;
+	line-height: 60px;	
+	text-align: center;
+	text-transform: uppercase;
+	
+	text-shadow: 0px 0px 10px #37201a;
+	filter: dropshadow(color=#ea8469, offx=0, offy=0)
+}
+
+#primary li > a:hover {
+	background-color: rgba(230, 130, 100, 0.1);
+}
+
+/* 3.3. Article */
+#content-wrapper {
+	padding-top: 150px;
+}
+
+article {
+	width: 884px;
+	margin: 0 auto;
+	padding: 30px 0;
+}
+
+ul#breadcrumbs {
+	width: 884px;
+	height: 30px;
+}
+
+#breadcrumbs li {
+	display: inline-block;
+	height: 30px;
+	
+	line-height: 15px;
+
+}
+
+#breadcrumbs li:before {
+	content: "» ";
+}
+
+#breadcrumbs li:first-of-type::before {
+	content: none;
+}
+
+/* 3.4. Footer */
+#footer-wrapper {
+	padding: 20px 0;
+	background: #010A0F;
+}
+
+footer {
+	width: 1006px;
+	margin: 0 auto;
+	color: #433A2E;
+}
+
+footer a {
+	color: #70523D;
+	border-bottom: none;
+}
+
+footer a:hover {
+	text-decoration: underline;
+}

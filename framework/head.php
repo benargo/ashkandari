@@ -1,0 +1,114 @@
+<?php /* head.php */
+
+/* This file both prints out the start of the template, at the bottom of this document,
+ * and runs a number of pre-flight checks to ensure everything is in order. */
+
+// Check if there is an account session
+if( isset($_SESSION['account']) ) {
+	
+	// If there is one, then we can set $account to the id number of that session
+	$account = new account($_SESSION['account']);
+	
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+		<!-- Meta Information -->
+		<meta charset="UTF-8" />
+		<meta name="robots" content="all" />
+		<meta name="author" content="Ashkandari" />
+		
+		<!-- Search Engine Meta -->
+		<meta name="keywords" content="Ashkandari, Tarren Mill, Warcraft, Mists, Pandaria" />
+		<meta name="description" content="World of Warcraft guild Ashkandari (formerly Insert Coin) on Tarren Mill" />
+		
+		<!-- Page Title -->
+		<title><?php if($page_title) { echo "$page_title - "; } ?>Ashkandari - Tarren Mill</title>
+		
+		<!-- Shortcut Icons -->
+		<link type="image/x-icon" rel="shortcut icon" href="/media/images/favicon.ico" />
+		<link rel="apple-touch-icon" href="/media/images/iphone-icon.png" />
+		
+		<!-- Core Stylesheets -->
+		<link type="text/css" rel="stylesheet" media="screen" href="/media/css/screen.css" />
+		<link type="text/css" rel="stylesheet" media="print" href="/media/css/print.css" />
+		
+		<!-- Additional Material (if any) -->
+		<?php
+			// Additional Stylesheet Handler
+			// This chunk of code here decides whether we need any additional stylesheets
+			switch( $_SERVER['SCRIPT_NAME'] ) {
+				
+				case '/apply/index.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/apply.css" />';
+					break;
+					
+				case '/apply/verify.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/apply.css" />';
+					break;
+				
+			}
+			
+			// Script handler
+			// This chunk of code here decides whether we need to add any JavaScript into this template.
+			switch( $_SERVER['SCRIPT_NAME'] ) {
+				
+				case '/apply/index.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/apply.js"></script>';
+					break;
+					
+				case '/apply/verify.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/apply.js"></script>';
+					break;
+					
+				case '/roster/index.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
+					break;
+					
+				
+				
+			}
+		?>
+	</head>
+	<body>
+		<div id="wrapper-bottom">
+			<div id="wrapper-top">
+				<div id="wrapper">
+					<header>
+						<a href="/" title="Home" id="wowlogo"></a>
+						<!-- Primary Navigation -->
+						<nav id="primary">
+							<ul><?php
+							echo '<li><a href="/" title="Home">Home</a></li>';
+							echo '<li><a href="/news/" title="News">News</a></li>';
+							echo '<li><a href="/roster/" title="Guild Roster">Guild Roster</a></li>';
+							echo '<li><a href="/forums/" title="Forums">Forums</a></li>';
+							echo '<li><a href="/rules/" title="Rules">Rules</a></li>';
+							if ( isset($account) ) {
+									
+								// If the logged in person is an officer
+								if( $account->isOfficer() ) {
+									echo '<li><a href="/officers/" title="Officer only section">Officers</a></li>';
+								} else {
+									echo '<li><a href="/profile/" title="My profile and characters">My Profile</a></li>';
+								}
+															
+							} else {
+								echo '<li><a href="/apply/" title="Apply now to join Ashkandari">Apply</a></li>'; 	
+							}
+							?></ul>
+						</nav>
+						<!-- /Primary Navigation -->
+					</header>
+					<div id="content-wrapper">
+						<article>
