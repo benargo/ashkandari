@@ -2,6 +2,7 @@
 
 /* 
  * This is the default page for the guild roster. 
+ * It lists the default filter options and then displays a list of all the characters in the guild.
  * If the user is logged in then it will offer a "claim" button which users can use to claim a character
  * as their own through the Battle.net authentication procedure.
  */
@@ -14,18 +15,27 @@ if( isset($_SERVER['HTTPS']) ) {
 // Require the framework
 require_once('../../framework/config.php');
 
+$race_slug = $_GET['slug'];
+$race = getRaceBySlug($race_slug);
+
 /* Set the page title */
-$page_title = "Guild Roster";
+$page_title = $race->name ." - Guild Roster";
 
 /* Require the head of the page */
 require(PATH.'framework/head.php');
 
-?><h1>Guild Roster</h1><?php
+?><ul id="breadcrumbs">
+		<li><a href="/">Home</a></li>
+		<li><a href="/roster/">Guild Roster</a></li>
+		<li><?php echo $race->name; ?></li>
+	</ul>
+
+<h1>Guild Roster</h1><?php
 
 /* Set up the database */
 $db = db();
 
-if( $roster = $db->query("SELECT `id` FROM `characters` ORDER BY `rank`, `name`") ) {
+if( $roster = $db->query("SELECT `id` FROM `characters` WHERE `race` = ". $race->id ." ORDER BY `rank`, `name`") ) {
 
 	/* If it's dropped into here it means that we've succesfully received the guild roster from Battle.net */
 	
@@ -63,18 +73,8 @@ if( $roster = $db->query("SELECT `id` FROM `characters` ORDER BY `rank`, `name`"
 				<td><?php echo $character->level; ?></td>
 				<td class="<?php echo $rank->id; ?>"><a href="/roster/rank/<?php echo $rank->slug; ?>" title="Click to view all the <?php echo $rank->long_name; ?>s"><?php echo $rank->long_name; ?></a></td>
 				<td><?php echo $character->achievements; ?></td>
-				<?php if( isset($account) ) {
-					
-					if($character->isClaimed()) {
-						
-						?><td>Claimed</td><?php
-						
-					} else {
-						
-						?><td><a href="/account/characters/claim/<?php echo $character->id; ?>" title="Claim this character">Claim</a></td><?php
-						
-					}
-					
+				<?php if( isset($account) && empty($character->account_id) ) {
+					?><td><a href="/roster/character/claim/<?php echo $character->id; ?>/claim" title="Claim this character">Claim</a></td><?php
 				} ?>
 			</tr>
 <?php	} ?>
@@ -140,8 +140,7 @@ if( $roster = $db->query("SELECT `id` FROM `characters` ORDER BY `rank`, `name`"
 } else {
 	
 	/* If it's dropped into here it means we weren't able to get the guild roster from Battle.net */
-	?><p class="error">Unable to fetch guild roster</p>
-	<p>Sorry, we've been unable to fetch the guild roster and as a result cannot show you this information. The error has been logged for future investigation. Please try again shortly.</p><?php
+	echo "ERROR 101!";
 	
 }
 

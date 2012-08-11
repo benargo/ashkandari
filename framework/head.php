@@ -8,6 +8,7 @@ if( isset($_SESSION['account']) ) {
 	
 	// If there is one, then we can set $account to the id number of that session
 	$account = new account($_SESSION['account']);
+	$primary_character = $account->getPrimaryCharacter();
 	
 }
 
@@ -51,6 +52,18 @@ if( isset($_SESSION['account']) ) {
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/apply.css" />';
 					break;
+					
+				case '/account/register/index.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
+					break;
+					
+				case '/account/register/verify.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
+					break;
+					
+				case '/account/index.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/account.css" />';
 				
 			}
 			
@@ -75,15 +88,40 @@ if( isset($_SESSION['account']) ) {
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
-				
+				case '/account/register/index.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
+					break;
+					
+				case '/account/register/verify.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
+					break;
+					
+				case '/account/index.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/account.js"></script>';
 				
 			}
 		?>
 	</head>
 	<body>
-		<div id="wrapper-bottom">
-			<div id="wrapper-top">
+		<div id="wrapper-top">
+			<div id="wrapper-bottom">
 				<div id="wrapper">
+					<div id="service">
+						<p class="service-cell"><?php
+							if( isset($account) ) {
+								?>Welcome <?php echo $primary_character->name; ?>. <a href="/account/logout?ref=<?php echo $_SERVER['REQUEST_URI']; ?>">Log out</a><?php	
+							} else {
+								?><a href="/account/login?ref=<?php echo $_SERVER['REQUEST_URI']; ?>">Log in</a> or <a href="/account/register/">Create an Account</a><?php
+							}
+						?></p>
+					</div>
 					<header>
 						<a href="/" title="Home" id="wowlogo"></a>
 						<!-- Primary Navigation -->
@@ -96,15 +134,12 @@ if( isset($_SESSION['account']) ) {
 							echo '<li><a href="/rules/" title="Rules">Rules</a></li>';
 							if ( isset($account) ) {
 									
-								// If the logged in person is an officer
-								if( $account->isOfficer() ) {
-									echo '<li><a href="/officers/" title="Officer only section">Officers</a></li>';
-								} else {
-									echo '<li><a href="/profile/" title="My profile and characters">My Profile</a></li>';
-								}
+								echo '<li><a href="/account/" title="My profile, account settings and characters">My Account</a></li>';
 															
 							} else {
-								echo '<li><a href="/apply/" title="Apply now to join Ashkandari">Apply</a></li>'; 	
+							
+								echo '<li><a href="/apply/" title="Apply now to join Ashkandari">Apply</a></li>';
+								
 							}
 							?></ul>
 						</nav>

@@ -15,7 +15,7 @@ $page_title = "Guild Application";
 require(PATH.'framework/head.php');
 
 /* First, we need to open up a database connection */
-$db = config::db();
+$db = db();
 
 /* Secondly, we need to get the values from the form */
 $character = $_POST['character'];

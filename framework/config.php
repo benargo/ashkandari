@@ -12,16 +12,13 @@
  * 1. Pre-flight checks
  * 2. Constants
  * 3. Database integration
- * 4. Configuration class
+ * 4. Configuration functions
  * 5. Account class
  ***************************************************/
 
-// 1. Pre-flight checks
-
+/* 1. Pre-flight checks */
 // Start by turning sessions on
 session_start();
-
-error_reporting(E_ALL);
 
 // Determine the protocol (HTTP or HTTPS)
 if( empty($_SERVER["HTTPS"]) ) {
@@ -30,293 +27,330 @@ if( empty($_SERVER["HTTPS"]) ) {
 	$protocol = "https";
 }
 
-// 2. Constants
-define("PATH", "/home/ashkandari/");
-define("BASE_URL", $protocol."://ashkandari.com");
+/* 2. Constants */
+define("PATH", "/home/ashkandari/"); // Base path for this server
+define("BASE_URL", $protocol."://ashkandari.com"); // The URL this web application runs off
 
-// 3. Database integration
-// This is in a seperate file for security reasons :P
+/* 3. Database integration
+ * For this we need to include the database connection details.
+ * This is in a seperate file for security reasons :P */
 require_once(PATH."db/mysqli_connection.php");
 
-// 4. Configuration class
-class config {
+// Declare the database function
+function db() {
 	
-	/* This class needs to handle a number of things, namely:
-	 * Setting up the database
-	 * Getting all the races, classes & realms
-	 * Getting specific races, classes & realms
-	 * Getting all of the available item slots out of the database for further use
-	 */
-	
-    /* Construction function
-	 * This class is never likely to be instantiated, as it consists purely of static variables
-	 * As a result, the constructor simply calls the destructor as a security measure 
-	 * NB: We do not need a __destruct function as the basic PHP one will do fine */
-	public function __construct() {
-		$this->__destruct();
-	}
-	
-    /* Create a new instance of our database
+	/* Create a new instance of our database
 	 * NB: This function returns an OBJECT */
-	public static function db() {
 
-		// First, get the variables from the included file
-		global $db_details;
+	// First, get the variables from the included file
+	global $db_details;
 
-		// Create the new MySQLi object
-		$db = new mysqli($db_details["host"], $db_details["user"], $db_details["password"], $db_details["name"]);
+	// Create the new MySQLi object
+	$db = new mysqli($db_details["host"], $db_details["user"], $db_details["password"], $db_details["name"]);
 
-		// And return it for our use.
-		return $db;
+	// And return it for our use.
+	return $db;
 		
-	}
-	
-    /* Get all the realms from the database
-	 * NB: This function returns an ARRAY */
-	public static function getAllRealms() {
+}
+
+/* 4. Configuration functions */
+function getAllRealms() {
+
+	/* Get all the realms from the database
+	 * This function returns a RESULT SET */
 		
-		// Set up a new instance of the database
-		$db = self::db();
+	// Set up a new instance of the database
+		$db = db();
 		
-		// Run the query to select all realms
-		if( $result = $db->query("SELECT * FROM `conf_realms` ORDER BY `name`") ) {
+	// Run the query to select all realms
+	$result = $db->query("SELECT * FROM `realms` ORDER BY `name`");
 								
-			// Close database connection
-			$db->close();
+	// Close database connection
+	$db->close();
 			
-			// And return the result set
-			return $result;
+	// And return the result set
+	return $result;
 		
-		}
-		
-	}
-	
-    /* Get a specific realm, identified by its index (`id`)
-	 * NB: This function returns an OBJECT */
-	public static function getRealm($realm_id = 201) {
-		
-		// Set up a new instance of the database
-		$db = self::db();
-		
-		// Run the query to select the realm
-		if( $result = $db->query("SELECT * FROM `conf_realms` WHERE `id` = $realm_id LIMIT 0, 1") ) {
-			
-			// Fetch an array of the row
-			$realm = $result->fetch_object();
-			
-			// Free result set
-			$result->close();
-			
-		}
-		
-		// Close database connection
-		$db->close();
-		
-		// And return the array
-		return $realm;
+}
 
-	}
+function getRealm($realm_id = 201) {
+
+	/* Get a specific realm, identified by its index (`id`)
+	 * The default realm is 201 - which is the ID for "Tarren Mill"
+	 * This function returns an OBJECT */
+
+	// Set up a new instance of the database
+	$db = db();
+		
+	// Run the query to select the realm
+	$result = $db->query("SELECT * FROM `realms` WHERE `id` = $realm_id LIMIT 0, 1");
+			
+	// Fetch an array of the row
+	$realm = $result->fetch_object();
+			
+	// Free result set
+	$result->close();
+
+	// Close database connection
+	$db->close();
+		
+	// And return the array
+	return $realm;
+
+}
 	
-    /* Get all the classes from the database
-	 * NB: This function returns an RESULT SET */
-	public static function getAllClasses() {
+function getAllClasses() {
 		
-		// Set up a new instance of the database
-		$db = self::db();
+	/* Get all the classes from the database
+	 * This function returns a RESULT SET */
+	 
+	// Set up a new instance of the database
+	$db = db();
 		
-		// Run the query to select the classes
-		if( $result = $db->query("SELECT * FROM `conf_classes` ORDER BY `name`") ) {
+	// Run the query to select the classes
+	$result = $db->query("SELECT * FROM `classes` ORDER BY `name`");
 			
-			// Close database connection
-			$db->close();
+	// Close database connection
+	$db->close();
 		
-			// And return the object
-			return $result;
-			
-		} else {
-			
-			// Close database connection
-			$db->close();
-			
-			// And return false
-			return false;
-		}
+	// And return the object
+	return $result;
 		
-	} // getAllClasses()
+}
 	
+function getClass($class_id) {
+
     /* Get a specific class, identified by its index (`id`)
-	 * NB: This function returns an OBJECT */
-	public static function getClass($class_id) {
+	 * This function returns an OBJECT */
 		
-		// Set up a new instance of the database
-		$db = self::db();
+	// Set up a new instance of the database
+	$db = db();
 		
-		// Run the query to select the class
-		if( $result = $db->query("SELECT * FROM `conf_classes` WHERE `id` = $class_id LIMIT 0, 1") ) {
+	// Run the query to select the class
+	$result = $db->query("SELECT * FROM `classes` WHERE `id` = $class_id LIMIT 0, 1");
 			
-			// Fetch an array of the row
-			$class = $result->fetch_object();
+	// Fetch an object of the row
+	$class = $result->fetch_object();
 			
-			// Free result set
-			$result->close();
-			
-		}
+	// Free result set
+	$result->close();
 		
-		// Close database connection
-		$db->close();
+	// Close database connection
+	$db->close();
 		
-		// And return the object
-		return $class;
+	// And return the object
+	return $class;
 		
-	} // getClass()
+}
 	
-    /* Get all the races from the database
-	 * NB: This function returns an OBJECT */
-	public static function getAllRaces() {
+function getClassBySlug($class_slug) {
 		
-		// Set up a new instance of the database
-		$db = self::db();
+	/* Get a specific class, identified by its unique slug (`slug`)
+	 * This function returns an OBJECT */
+	
+	// Set up a new instance of the database
+	$db = db();
 		
-		// Run the query to select the races
-		if( $result = $db->query("SELECT * FROM `conf_races` ORDER BY `faction`, `name`") ) {
+	// Run the query to select the class
+	$result = $db->query("SELECT * FROM `classes` WHERE `slug` = '$class_slug' LIMIT 0, 1");
 			
-			// Close database connection
-			$db->close();
+	// Fetch an object of the row
+	$class = $result->fetch_object();
+			
+	// Free result set
+	$result->close();
 		
-			// And return the object
-			return $result;
-			
-		} else {
-			
-			// Close database connection
-			$db->close();
-			
-			// And return false
-			return false;
-		}
+	// Close database connection
+	$db->close();
 		
+	// And return the object
+	return $class;
+		
+}
+	
+function getAllRaces() {
+		
+	/* Get all the races from the database
+	 * This function returns a RESULT SET */	
+	
+	// Set up a new instance of the database
+	$db = db();
+		
+	// Run the query to select the races
+	$result = $db->query("SELECT * FROM `races` ORDER BY `faction`, `name`");
+			
+	// Close database connection
+	$db->close();
+		
+	// And return the object
+	return $result;
 
-		
-	} // getAllRaces()
+}
 	
-    /* Get all the races of a specific faction from the database
-     * NB: This function returns a result set */
-	public static function getRacesByFaction($faction = "horde") {
+function getRacesByFaction($faction = "horde") {
 		
-		// Set up a new instance of the database
-		$db = self::db();
-		
-		// Run the query to select the races
-		if( $result = $db->query("SELECT * FROM `conf_races` WHERE `faction` = '$faction' ORDER BY `name`") ) {
-			
-			// Close database connection
-			$db->close();
-		
-			// And return the object
-			return $result;
-			
-		} else {
-			
-			// Close database connection
-			$db->close();
-			
-			// And return false
-			return false;
-		}
-		
-	} // getRacesByFaction
+	/* Get all the races of a specific faction from the database
+	 * The default faction is Horde (as Ashkandari is a Horde guild)
+     * This function returns a RESULT SET */
 	
+	// Set up a new instance of the database
+	$db = db();
+		
+	// Run the query to select the races
+	$result = $db->query("SELECT * FROM `races` WHERE `faction` = '$faction' ORDER BY `name`");
+			
+	// Close database connection
+	$db->close();
+		
+	// And return the object
+	return $result;
+
+}
+	
+function getRace($race_id) {
+
 	/* Get a specific race from the database by its index (`id`)
-	 * NB: This function returns an OBJECT */
-	public static function getRace($race_id) {
+	 * This function returns an OBJECT */
 		
-		// Set up a new instance of the database
-		$db = self::db();
+	// Set up a new instance of the database
+	$db = db();
 		
-		// Run the query to select the race
-		if( $result = $db->query("SELECT * FROM `conf_races` WHERE `id` = $race_id LIMIT 0, 1") ) {
+	// Run the query to select the race
+	$result = $db->query("SELECT * FROM `races` WHERE `id` = $race_id LIMIT 0, 1");
 			
-			// Fetch an object of the above query
-			$race = $result->fetch_object();
+	// Fetch an object of the above query
+	$race = $result->fetch_object();
 			
-			// Free result set
-			$result->close();
-			
-		}
+	// Free result set
+	$result->close();
 		
-		// Close database connection
-		$db->close();
+	// Close database connection
+	$db->close();
 		
-		// And return the object
-		return $race;
+	// And return the object
+	return $race;
 		
-	}
+}
 	
-	public static function getAllRanks() {
-		
-		/* This function gets all the available ranks from the database
-		 * NB: This function returns a RESULT SET */
-		
-		/* Set up a new instance of the database */ 
-		$db = self::db();
-		
-		/* Query the database */
-		if( $result = $db->query("SELECT * FROM `guild_ranks` ORDER BY `id`") ) {
-			
-			/* Close the database connection */
-			$db->close();
-			
-			/* Return the result set */
-			return $result;
-			
-		} else {
-			
-			/* Close the database connection */
-			$db->close();
-			
-			/* Return out false */
-			return false;
-			
-		}
-		
-	}
-	
-	public static function getRandomItemSlot($not = "offHand") {
-	
-		/* This function checks the database for two random item slots, based on the criteria required
-		 * and returns the result set */
-		
-		// First, include the database
-		$db = self::db();
-		
-		if( $result = $db->query("SELECT * FROM `conf_item_slots` WHERE `used_for_verification` = 1 AND `id` <> '$not' ORDER BY RAND() LIMIT 0, 1") ) {
-		
-			// The fact that it's dropped into here is a good sign, it means that we got 2 items back
-			
-			// Create an object from the result set
-			$obj = $result->fetch_object();
-			
-			// Free the result set
-			$result->close();
-			
-			// Close the database connection
-			$db->close();
-			
-			// Return the object
-			return $obj;
-		
-		} else {
-		
-			$db->close();
-			die('<p class="error">Sorry, but there was a problem with the validation service. Please <a href="/apply/">go back</a> and try again.</p>');
-		
-		}
-	
-	} 
-	
-} // class config
+function getRaceBySlug($race_slug) {
 
-// 5. Account class
+	/* Gets a specific race from the database by its unique slug (`slug`)
+	 * This function returns an OBJECT */
+		
+	// Set up a new instance of the database
+	$db = db();
+		
+	// Run the query to select the race
+	$result = $db->query("SELECT * FROM `races` WHERE `slug` = '$race_slug' LIMIT 0, 1");
+			
+	// Fetch an object of the above query
+	$race = $result->fetch_object();
+			
+	// Free result set
+	$result->close();
+		
+	// Close database connection
+	$db->close();
+		
+	// And return the object
+	return $race;
+
+}
+	
+function getAllRanks() {
+		
+	/* This function gets all the available ranks from the database
+	 * This function returns a RESULT SET */
+		
+	// Set up a new instance of the database
+	$db = db();
+
+	// Query the database
+	$result = $db->query("SELECT * FROM `guild_ranks` ORDER BY `id`");
+
+	// Close the database connection
+			$db->close();
+			
+	// Return the result set 
+	return $result;
+
+}
+
+function getRankBySlug($rank_slug) {
+	
+	/* This function gets a specific rank based on its unique slug (`slug`)
+	 * This function returns an OBJECT */
+		
+	// Set up a new instance of the database
+	$db = db();
+		
+	// Run the query to select the race
+	$result = $db->query("SELECT * FROM `guild_ranks` WHERE `slug` = '$rank_slug' LIMIT 0, 1");
+			
+	// Fetch an object of the above query
+	$rank = $result->fetch_object();
+			
+	// Free result set
+	$result->close();
+		
+	// Close database connection
+	$db->close();
+		
+	// And return the object
+	return $rank;
+		
+}
+	
+function getItemSlot($slot_id) {
+		
+	/* This function checks the database for a specific item slot, based on the criteria required
+     * This function returns an OBJECT */
+		
+	// Include the database
+	$db = db();
+		
+	// Query the database to get the slot
+	$result = $db->query("SELECT * FROM `item_slots` WHERE `id` = $slot_id LIMIT 0, 1");
+			
+	// Create an object from the result set
+	$obj = $result->fetch_object();
+			
+	// Free the result set
+	$result->close();
+			
+	// Close the database connection
+	$db->close();
+			
+	// Return the object
+	return $obj;
+		
+}
+	
+function getRandomItemSlot($not = "offHand") {
+	
+	/* This function checks the database for a random item slots, based on the criteria required
+	 * This function returns an OBJECT */
+		
+	// Include the database
+	$db = db();
+		
+	$result = $db->query("SELECT * FROM `item_slots` WHERE `used_for_verification` = 1 AND `id` <> '$not' ORDER BY RAND() LIMIT 0, 1");
+			
+	// Create an object from the result set
+	$obj = $result->fetch_object();
+			
+	// Free the result set
+	$result->close();
+			
+	// Close the database connection
+	$db->close();
+			
+	// Return the object
+	return $obj;
+	
+} 
+
+/* 5. Account class */
 class account {
 	
 	/* This class is the basis for the entire operation
@@ -325,68 +359,54 @@ class account {
 	 * Authenticating Users
 	 * Managing access levels and permissions
 	 * Linking up to characters
-	 * And tracing content
-	 */
+	 * And tracing content */
 	
 	/* Variables
 	 * This class has a wide number of variables attached to it
 	 * and are laid out below */
-	protected $id;
-	protected $email;
+	public $id;
+	public $email;
 	private $password;
-	protected $security_question;
-	protected $security_answer;
-	private $activiation_code;
+	public $activiation_code;
 	private $active;
 	private $suspended;
-	protected $forum_signature;
-	protected $forum_moderator;
-	protected $officer;
-	protected $administrator;
-	protected $primary_character;
+	private $forum_signature;
+	private $forum_moderator;
+	public $primary_character;
 	
-	/* Construction function
-	 * This function will set most of the variables above based on a user lookup 
-	 * It is most likely to be called during an authentication */
-	public function __construct($account_id) {
+	/* Construction */
+	public function __construct($account_id, $email = false) {
+	
+		/* This function will set most of the variables above based on a user lookup 
+	 	 * It is most likely to be called during an authentication */
 		
 		// First, set up a new instance of the database
-		$db = config::db();
-
-		// Query the database to see if we can find this particular user
-		if( $result = $db->query("SELECT * FROM `acc_accounts` WHERE `id` = $account_id LIMIT 0, 1") ) {
+		$db = db();
+		
+		if($email == true) {
 			
-			// Fetch an object based on the result
-			$account = $result->fetch_object();
-			
-			// Free result set
-			$result->close();
-			
-		} else { // It obviously didn't go so well :<
-			
-			// Call the destruction function to close down this instance of the class
-			$this->__destruct();
-			
-			// Close the database connection
-			$db->close();
-			
-			// Return as false
-			return false;
+			// Override the account ID
+			$account_id = $this->getAccountIdFromEmail($account_id);
 			
 		}
+
+		// Query the database to see if we can find this particular user
+		$result = $db->query("SELECT * FROM `accounts` WHERE `id` = $account_id LIMIT 0, 1");
+			
+		// Fetch an object based on the result
+		$account = $result->fetch_object();
+			
+		// Free result set
+		$result->close();
 		
 		// Now we can start setting the variables
 		$this->id = $account->id;
 		$this->email = $account->email;
 		$this->password = $account->password;
-		$this->security_question = $account->security_question;
-		$this->security_answer = $account->security_answer;
 		$this->activation_code = $account->activation_code;
 		$this->active = $account->active;
 		$this->forum_signature = $account->forum_signature;
 		$this->forum_moderator = $account->forum_moderator;
-		$this->officer = $account->officer;
-		$this->administrator = $account->administrator;
 		$this->primary_character = $account->primary_character;
 		
 		// Close the database connection
@@ -397,53 +417,40 @@ class account {
 		
 	}
 	
-	/* Lookup account by email address function
-	 * This PRIVATE function allows us to look up an account ID for further use within the class purely by supplying an email address.
-	 * It does not return anything else about the account */
-	protected function getAccountIdFromEmail($email) {
+	/* Lookup account by email address */
+	private function getAccountIdFromEmail($email) {
+	
+		/* This PRIVATE function allows us to look up an account ID for further use within the class purely by supplying an email address.
+	 	 * It does not return anything else about the account */
 		
-		// First, set up a new instance of the database
-		$db = config::db();
+		// Set up a new instance of the database
+		$db = db();
 		
 		// Query the database to see if we can find the account
-		if( $result = $db->query("SELECT `id` FROM `acc_accounts` WHERE `email` = '$email' LIMIT 0, 1") ) {
+		$result = $db->query("SELECT `id` FROM `accounts` WHERE `email` = '$email' LIMIT 0, 1");
 			
-			// If we're in here, then it means we've found a proper account and we can return the value
+		// Create an object of the result
+		$obj = $result->fetch_object();
 			
-			// Create an object of the result
-			$obj = $result->fetch_object();
-			
-			// Free result set
-			$result->close();
-			
-		} else {
-			
-			// Oh dear, seems that we cannot find the account with the credentials given to us.
-			
-			// Close the database connection here
-			$db->close();
-			
-			// For security reasons we cannot tell them whether its a problem with their username or password
-			// so we just have to throw it back to them saying that it was the wrong error.
-			return false;
-			
-		}
-		
+		// Free result set
+		$result->close();
+
 		// Close the database connection
 		$db->close();
 		
 		// Return the account ID
 		return $obj->id;
 		
-	} // getAccountIdFromEmail()
+	}
 	
-	/* Authentication function
-	 * This STATIC function will authenticate users against the database and return one of three strings
-	 * which can be switched through to determine the following action */
+	/* Authentication */
 	public static function authenticate($email, $raw_password) {
 		
+		/* This STATIC function will authenticate users against the database and return one of three strings
+	 	 * which can be switched through to determine the following action */
+		
 		// First, set up a new instance of the database
-		$db = config::db();
+		$db = db();
 		
 		// Next, lookup the account ID from the email address given
 		$id = self::getAccountIdFromEmail($email);
@@ -452,14 +459,13 @@ class account {
 		$password = md5($raw_password);
 		
 		// Query the database to find a user with the specified email address and password
-		// Remember the email address is a unique index, but not the primary key.
-		if( $result = $db->query("SELECT `id`, `active`, `suspended` FROM `acc_accounts` WHERE `id` = $id AND `password` = '$password' LIMIT 0, 1") ) {
+		$result = $db->query("SELECT `id`, `active`, `suspended` FROM `accounts` WHERE `id` = $id AND `password` = '$password' LIMIT 0, 1");
 			
-			// If it's dropped into here it means that we can find an account with the correct credentials
-			// However, we now need to check if it's been properly activated and it's not suspended
-			
-			// First though, set the result to an instance of an OBJECT
-			$account = $result->fetch_object();
+		// If it's dropped into here it means that we can find an account with the correct credentials
+		// However, we now need to check if it's been properly activated and it's not suspended
+		
+		// First though, set the result to an instance of an OBJECT
+		if($account = @$result->fetch_object()) {
 			
 			// Free result set
 			$result->close();
@@ -480,39 +486,38 @@ class account {
     			// Oh dear, the account has been suspended.
     			return 'suspended';
     			
-			} else {
+			} elseif( $account->active == 0 ) {
     			
     			// Well, this must mean the account is inactive
     			return 'inactive';
     			
 			}
 			
-		} else {
-
-			// Oh dear, seems that we cannot find the account with the credentials given to us.
-
-			// Close the database connection here
-			$db->close();
-
-			// For security reasons we cannot tell them whether its a problem with their username or password
-			// so we just have to throw it back to them saying that it was the wrong error.
-			return 'fail';
-
-		}
+		} 
 		
-	} // authenticate();
-
-	/* Activate account function
-	 * This STATIC function takes in an activation code and account ID as provided and successfully activates the account.
-	 * If the password field is also NULL, as a result of a password reset or this is the first time someone is activating
-	 * their account after applying to the guild, then it will also prompt them to enter a new password. */
-	public static function activate($id, $code) {
+		// Oh dear, seems that we cannot find the account with the credentials given to us.
+	
+		// Close the database connection here
+		$db->close();
+	
+		// For security reasons we cannot tell them whether its a problem with their username or password
+		// so we just have to throw it back to them saying that it was the wrong error.
+		return 'fail';
 		
-		// First, set up a new instance of the database
-		$db = config::db();
+	}
+
+	/* Activate account */
+	public function activate($code) {
+	
+		/* This function takes in an activation code and account ID as provided and successfully activates the account.
+	 	 * If the password field is also NULL, as a result of a password reset or this is the first time someone is activating
+	 	 * their account after applying to the guild, then it will also prompt them to enter a new password. */
+		
+		// Set up a new instance of the database
+		$db = db();
 		
 		// Query the database to find a match between the two supplied items
-		if( $result = $db->query("SELECT `id`, `password`, `activation_code`, `active` FROM `acc_accounts` WHERE `id` = $id AND `activation_code` = '$code' LIMIT 0, 1") ) {
+		if( $result = $db->query("SELECT * FROM `accounts` WHERE `id` = ". $this->id ." AND `activation_code` = '$code' LIMIT 0, 1") ) {
 			
 			// If we've dropped into here it means that we've successfully found an account and the activation code matches.
 			
@@ -522,28 +527,34 @@ class account {
 			// Free the result set
 			$result->close();
 			
-			// Now we need to check if they have a NULL password
-			if( is_null($obj->password) ) {
-			
-    			// Close the database connection
-    			$db->close();
-				
-				// If it's dropped into this section then it means we need to ask them to set a new password
-				return 'new_password_required';
-				
-			}
-			
 			// Create a new activation code to use next time
 			$new_code = md5(time());
 			
 			// Set the account to active and update the activation code
-			$db->query("UPDATE `acc_accounts` SET `activation_code` = '$new_code', `active` = 1 WHERE `id` = $id LIMIT 0, 1");
-			
-			// Close the database connection
-			$db->close();
-			
-			// Return out of this function
-			return 'success';
+			if( $db->query("UPDATE `accounts` SET `activation_code` = '$new_code', `active` = 1 WHERE `id` = ". $this->id) ) {
+				
+				// Now we need to check if they have a NULL password
+				if( empty($obj->password) ) {
+				
+	    			// Close the database connection
+	    			$db->close();
+					
+					// If it's dropped into this section then it means we need to ask them to set a new password
+					return "new_password_required";
+					
+				}
+				
+				// Close the database connection
+				$db->close();
+				
+				// Return out of this function
+				return "success";	
+				
+			} else {
+				
+				die($db->error);
+				
+			}
 			
 		} else {
 		
@@ -559,30 +570,34 @@ class account {
 		
 	}
 	
-	 /* Officer check function
-	  * This function will check against the current account object to see if they are an officer or not
-	  * This helps in user permissions and enables us to display certain content to officers of the guild */
+	 /* Officer check */
 	 public function isOfficer() {
+	 
+	 	/* This function will check against the current account object to see if they are an officer or not
+	  	 * This helps in user permissions and enables us to display certain content to officers of the guild */
     	
-    	// Do a check to see if this is user is an officer or not.
-    	if ($this->officer) {
-        	
-        	// If we've dropped into here then it means that the user is an officer.
-        	return true;
-        	
+    	// Get the primary character
+    	$character = $this->getPrimaryCharacter();
+    	$rank = $character->getRank();
+    	
+    	if($rank->id <= 2 || $rank->id == 5) {
+	    	
+	    	return true;
+	    	
     	}
     	
     	return false;
     	
 	}
 	
-	 /* Moderator check function
-	  * This function will check against the current account object to see if they are authentciated as a moderator or not
-	  * Note that for the purposes of this function, and the seniority of officer status over moderator status, it will match
-	  * both officer status or moderator status and return true. */
+	 /* Moderator check */
 	 public function isModerator() {
 		 
-		 if($this->moderator || $this->officer) {
+		/*	This function will check against the current account object to see if they are authentciated as a moderator or not
+	  	 * Note that for the purposes of this function, and the seniority of officer status over moderator status, it will match
+	 	 * both officer status or moderator status and return true. */
+		 
+		 if($this->forum_moderator) {
 			 
 			 // If we've dropped into here then it means that the user is either an officer or a moderator
 			 return true;
@@ -593,16 +608,80 @@ class account {
 		 
 	 }
 	 
+	 public function getPrimaryCharacter() {
+		 
+		 /* Create a new character object from this account */
+		 $character = new character($this->primary_character);
+		 return $character;
+		 
+	 }
+	 
+	 
+	 public function getAllCharacters() {
+		 
+		 $db = db();
+		 
+		 $result = $db->query("SELECT `id` FROM `characters` WHERE `account_id` = ". $this->id ." ORDER BY `name`");
+		 
+		 $db->close();
+		 
+		 return $result;
+		 
+	 }
+	 
+	 public function setPrimaryCharacter($character_id) {
+		 
+		/* Validate if this character is owned by this account */
+		$character = new character($character_id);
+		
+		/* Check if we own this character */
+		if($character->isThisMine($this->id)) {
+			
+			/* Create a DB */
+			$db = db();
+			
+			/* Update the primary character */
+			$db->query("UPDATE `accounts` SET `primary_character` = ". $character->id ." WHERE `id` = ". $this->id);
+			
+			$db->close();
+			
+			return true;
+			
+		}
+			
+		return false;
+		 
+	 }
+	 
+	 public function setPassword($value = NULL) {
+		 
+		 $db = db();
+		 
+		 if($value == NULL) {
+		 
+			 $this->password = $value;
+			 $db->query("UPDATE `accounts` SET `password` = NULL, `active` = 0 WHERE `id` = ". $this->id);
+			 $db->close();
+			 return true;
+			 
+		 } 
+		 
+		 $this->password = md5($value);
+		 $db->query("UPDATE `accounts` SET `password` = '". md5($value) ."' WHERE `id` = ". $this->id);
+		 $db->close();
+		 return true;
+		 
+	 }	 
 	
-} // class account
+}
 
-// 6. Character class
+/* 6. Character */
 class character {
 	
 	/* This class controls all the characters registered in the database, and the various items about them. */
 	
-	// Variables
-	private $id;
+	/* Variables */
+	public $id;
 	private $account_id;
 	public $name;
 	private $class;
@@ -616,7 +695,7 @@ class character {
 	public function __construct($character_id) {
 		
 		// First, set up a new instance of the database
-		$db = config::db();
+		$db = db();
 		
 		// Query the database to see if we can find this particular character
 		if( $result = $db->query("SELECT * FROM `characters` WHERE `id` = $character_id LIMIT 0, 1") ) {
@@ -663,7 +742,7 @@ class character {
 		
 		/* This function gets the ID of a certain character based on a given name
 		 * First, set up a new instance of the database */
-		$db = config::db();
+		$db = db();
 		
 		/* Query the database to see if we can find this particular character */
 		if( $result = $db->query("SELECT `id` FROM `characters` WHERE `name` = '$character_name' LIMIT 0, 1") ) {
@@ -694,20 +773,68 @@ class character {
 		
 	}
 	
+	public static function getAllCharacters() {
+		
+		/* This function gets all of the guild's characters and returns them as an object
+		 * First, set up a new instance of the database */
+		$db = db();
+		
+		/* Query the database to see if we can get them */
+		if( $result = $db->query("SELECT * FROM `characters`") ) {
+			
+			/* If it's dropped into here it means we can return the result set
+			 * But start by closing the database connection */
+			$db->close();
+			
+			/* Now return the result set */
+			return $result;
+			
+		} else {
+			
+			/* Oh dear, something went wrong
+			 * So close the database connection */
+			$db->close();
+			
+			/* And return out false */
+			return false;
+			
+		}
+		
+	}
+	
 	public function getAccount() {
 		
 		// Quite simply, we need to return an instance of the account object based on this character
-		$account = new account($this->account_id);
+		if(isset($this->account_id)) {
 		
-		// And return it out for us to use
-		return $account;
+			$account = new account($this->account_id);
+			
+			// And return it out for us to use
+			return $account;
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public function isThisMine($account_id) {
+		
+				// Quite simply, we need to return an instance of the account object based on this character
+		if($this->account_id == $account_id) {
+		
+			return true;
+			
+		}
+		
+		return false;
 		
 	}
 	
 	public function getClass() {
 		
 		// This function gets the class from configuration class
-		$class = config::getClass($this->class);
+		$class = getClass($this->class);
 		return $class;
 		
 	}
@@ -715,7 +842,7 @@ class character {
 	public function getRace() {
 		
 		// This function gets the race from the config class and returns it for us to use
-		$race = config::getRace($this->race);
+		$race = getRace($this->race);
 		return $race;
 		
 	}
@@ -737,7 +864,7 @@ class character {
 	
 	public function getRaceIcon() {
 		
-		$db = config::db();
+		$db = db();
 		$race = $this->getRace();
 		
 		switch($this->gender) {
@@ -760,7 +887,7 @@ class character {
 		// This function gets the ranks from the database and allows us to return them as an object
 		
 		// Start by defining a database connection
-		$db = config::db();
+		$db = db();
 		
 		// Run the database query
 		if( $result = $db->query("SELECT * FROM `guild_ranks` WHERE `id` = ". $this->rank ." LIMIT 0, 1") ) {
@@ -789,13 +916,231 @@ class character {
 		
 	}
 	
-	public function isFluffy() {
-		
-		/* Get the talents data from battle.net */
-		$json = file_get_contents('http://eu.battle.net/api/wow/character/Tarren-Mill/'. $this->name .'?fields=talents');
+	public function getActiveSpec() {
 		
 		/* Decode this data */
-		$bnet_data = json_decode($json);
+		$bnet_data = $this->getBattleNetData("talents");
+		
+		/* Run a conditional */
+		if( $bnet_data->talents[0]->selected ) {
+			
+			/* The first spec is selected
+			 * Return the name of the first spec */
+			return $bnet_data->talents[0]->name;
+			
+		} elseif( $bnet_data->talents[1]->selected ) {
+			
+			/* The second spec is selected
+			 * Return the name of the second spec */
+			return $bnet_data->talents[1]->name;
+		} else {
+			
+			/* Oh dear something's gone wrong */
+			return false;
+			
+		}
+		
+	}
+
+	public function getOffSpec() {
+		
+		/* Decode this data */
+		$bnet_data = $this->getBattleNetData("talents");
+		
+		/* Run a conditional */
+		if( $bnet_data->talents[0]->selected ) {
+			
+			/* The first spec is selected
+			 * Return the name of the second spec */
+			return $bnet_data->talents[1]->name;
+			
+		} elseif( $bnet_data->talents[1]->selected ) {
+			
+			/* The second spec is selected
+			 * Return the name of the first spec */
+			return $bnet_data->talents[0]->name;
+		} else {
+			
+			/* Oh dear something's gone wrong */
+			return false;
+			
+		}
+
+		
+	}
+	
+	public function getCurrentTitle() {
+		
+		/* This function fetches a list of titles owned by a character from battle.net
+		 * Decodes it, and then displays the characters name alongside their currently
+		 * selected title */
+		 
+		/* Get the data from battle.net */
+		if ( $bnet_data = $this->getBattleNetData("titles") ) {
+		
+			/* Loop through each of the titles until we find the one we want */
+			foreach($bnet_data->titles as $title) {
+				
+				if($title->selected) {
+					
+					/* If it's dropped into here it means we've found it!
+					 * Calcualte the name by replacing %s with the actual name */
+					$full_title = str_replace("%s", $this->name, $title->name);
+					
+					/* And return the full title */
+					return $full_title;
+					
+					/* And that's it! Nothing else to do, as it will return false everywhere else */
+					
+				} 
+				
+			}
+		
+		}
+		
+		/* Well maybe we haven't found a title, so let's just return their name */
+		return $this->name;
+		
+	}
+	
+	public function getThumbnail() {
+		
+		/* This function either returns the URL of their thumbnail for normal players
+		 * Or, if they're fluffy, they get a special boomkin one! */
+		 
+		 /* First get the protocol */
+		 global $protocol;
+		
+		if( $this->isFluffy() ) {
+			
+			switch($this->race) {
+				
+				case 6:
+					return "/media/images/icons/fluffykin.png";
+					break;
+				
+				case 8:
+					return "/media/images/icons/fluffykin.png";
+					break;
+				
+			}
+			
+		} else {
+			
+			return $protocol ."://eu.battle.net/static-render/eu/". $this->thumbnail;
+			
+		}
+		
+	}
+	
+	public function getAverageItemLevel($equipped = false) {
+		
+		/* This function gets the data regarding a users average item level and returns it */
+		if( $bnet_data = $this->getBattleNetData("items") ) {
+			
+			switch($equipped) {
+				
+				case true:
+					return $bnet_data->items->averageItemLevelEquipped;
+					break;
+					
+				case false:
+					return $bnet_data->items->averageItemLevel;
+					break;
+				
+			}
+			
+		}
+		
+	}
+	
+	public function isClaimed() {
+		
+		/* This function checks if this character has a valid Account ID */
+		if(isset($this->account_id)) {
+			
+			return true;
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public function verify($slot1, $slot2) {
+		
+		$bnet_data = $this->getBattleNetData("items");
+		
+		if( empty($bnet_data->items->$slot1) && empty($bnet_data->items->$slot2) ) {
+			
+			/* If it's dropped into here it means that both slots are empty */
+			return true;
+			
+		} else {
+			
+			/* Else return false */
+			return false;
+			
+		}
+		
+	}
+	
+	private function getBattleNetData($fields) {
+	
+		/* This function accepts a comma seperated list of fields to get from battle.net
+		 * Goes and fetches it, then decodes the data and returns it for use */
+		
+		/* Get the data from battle.net */
+		$json = file_get_contents('http://eu.battle.net/api/wow/character/Tarren-Mill/'. $this->name .'?fields='. $fields);
+		
+		if ( $bnet_data = json_decode($json) ) {
+		
+			/* Return the data */
+			return $bnet_data;	
+			
+		} else {
+		
+			/* Return false */
+			return false;	
+			
+		}
+		
+	}
+	
+	public function isOfficer() {
+		
+		if($this->rank <= 2 || $this->rank == 5) {
+			
+			return true;
+			
+		} else {
+			
+			return false;
+			
+		}
+		
+	}
+	
+	public function isModerator() {
+		
+		if($account = $this->getAccount()) {
+			
+			if($account->isModerator()) {
+				
+				return true;
+				
+			}
+			
+		}
+		
+		return false;
+		
+	}
+	
+	public function isFluffy() {
+		
+		/* Decode this data */
+		$bnet_data = $this->getBattleNetData("talents");
 		
 		if( ($this->class == 11) && ($bnet_data->talents[0]->name == "Balance" || $bnet_data->talents[1]->name == "Balance") ) {
 			return true;
@@ -823,7 +1168,7 @@ class news_item {
 	public function __construct($news_item_id) {
 		
 		// First, set up a new instance of the database
-		$db = config::db();
+		$db = db();
 		
 		// Query the database to see if we can find the news item by that ID
 		if( $result = $db->query("SELECT * FROM `news_items` WHERE `id` = $news_item_id LIMIT 0, 1") ) {
@@ -866,7 +1211,7 @@ class news_item {
 	public static function getArticles($limit = 10, $start = 0) {
 		
 		// First, set up a new instance of the database
-		$db = config::db();
+		$db = db();
 		
 		// Query the database to see if we can find the news items based on the values provided
 		if ( $result = $db->query("SELECT `id` FROM `news_items` ORDER BY `date_published` LIMIT $start, $limit") ) {
@@ -949,7 +1294,7 @@ class news_item {
 		// This function counts the number of comments recorded for this item
 		
 		// First, create a new instance of the database
-		$db = config::db();
+		$db = db();
 		
 		// Query the database to get the number of comments
 		if( $result = $db->query("SELECT `id` FROM `news_comments` WHERE `news_item_id` = ". $this->id) ) {
@@ -986,7 +1331,7 @@ class news_item {
 		// not children of other comments as these are called elsewhere in the application.
 		
 		// Create a new instance of the database
-		$db = config::db();
+		$db = db();
 		
 		// Query the database to get the ID numbers of all the comments for this article
 		if( $result = $db->query("SELECT `id` FROM `news_comments` WHERE `news_item_id` = ". $this->id ." AND `comment_in_reply_to_id` IS NULL ORDER BY `date_published`") ) {
@@ -1038,7 +1383,7 @@ class news_comment {
 		// This function constructs the news_comment object
 		
 		// First, instanciate a new object of the database
-		$db = config::db();
+		$db = db();
 		
 		// Next, run the query to select this particular comment from the database
 		if ( $result = $db->query("SELECT * FROM `news_comments` WHERE `id` = $comment_id LIMIT 0, 1") ) {
@@ -1114,7 +1459,7 @@ class news_comment {
 		// This function gets any child comments and returns their ID numbers in an array
 		
 		// First instanciate a new database object
-		$db = config::db();
+		$db = db();
 		
 		// Query the database to find the comments we want
 		if( $result = $db->query("SELECT `id` FROM `news_comments` WHERE `comment_in_reply_to_id` = ". $this->id ." ORDER BY `date_published`") ) {
@@ -1160,6 +1505,5 @@ class applying_character {
 	private $level;
 	private $achievementPoints;
 }
-
 
 ?>

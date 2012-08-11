@@ -1,7 +1,29 @@
 RewriteEngine on
 RewriteBase /
 
+RewriteRule ^account/login account/login.php [NC,L,QSA]
+RewriteRule ^account/logout account/logout.php [NC,L,QSA]
+
+RewriteRule ^account/register/verify$ account/register/verify.php [NC,L]
+RewriteRule ^account/register/activate$ account/register/activate.php [NC,L]
+
+RewriteRule ^account/activate/([0-9]+)/([A-Za-z0-9]+)$ account/activate.php?id=$1&code=$2 [NC,L]
+
+RewriteRule ^account/characters(\/)?$ account/ [NC,R,L]
+RewriteRule ^account/characters/set-primary/([0-9]+)$ account/characters/set-primary.php?id=$1 [NC,L,QSA]
+RewriteRule ^account/characters/claim$ account/characters/claim-post.php [NC,L]
+RewriteRule ^account/characters/claim/([0-9]+)$ account/characters/claim-get.php?id=$1 [NC,L,QSA]
+RewriteRule ^account/characters/verify$ account/characters/claim-verify.php [NC,L]
+
+RewriteRule ^account/password/$ account/ [NC,R,L]
+RewriteRule ^account/password/reset$ account/password/reset.php [NC,L]
+RewriteRule ^account/password/change$ account/password/change.php [NC,L]
+
+RewriteRule ^roster/character/(.+)$ roster/character.php?name=$1 [NC,L]
+RewriteRule ^roster/race/([a-zA-Z\-]+)$ roster/race.php?slug=$1 [NC,L]
+RewriteRule ^roster/class/([a-zA-Z\-]+)$ roster/class.php?slug=$1 [NC,L]
+RewriteRule ^roster/rank/([a-zA-Z\-\/]+)$ roster/rank.php?slug=$1 [NC,L]
+
 RewriteRule ^apply/verify$ apply/verify.php [NC,L]
 RewriteRule ^apply/finish$ apply/finish.php [NC,L]
 
-RewriteRule ^roster/character/(\w+)$ roster/character.php?name=$1 [NC,L]

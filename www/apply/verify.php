@@ -22,7 +22,7 @@ $email_address = $_POST['email']; // Email Address
 	
 /* The form returns a numerical ID of the realm. 
  * We need to process that and obtain the full name and the slug. */
-$realm = config::getRealm($realm_id);
+$realm = getRealm($realm_id);
 
 /* Now that we know the realm and the character name we can proceed
  * and get the JSON about the character from Battle.net */
@@ -61,25 +61,27 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 		<p>Dear '. $character->name .',</p>
 		<p>Thank you very much for applying to Ashkandari. We are satisfied that you meet our provisional requirements and are happy to continue the application process. In order to finalise your applciation we need you to verify your email address.</p>
 	
-	<p>The code you need to validate your email address is: <span style="font-weight: bold; font-size: 3em;">'. $code .'</span></p>
-	
-	<p>Please type this code into the box on our website. Once your email address has been verified your application will be registered into our database, where an officer will get back to you. If you have not heard back by '. $followup .' please either contact an officer in-game or online. A full list of officers and how to contact them can be found at <a href="http://ashkandari.com/roster/rank/officer">http://ashkandari.com/roster/rank/officer</a>.</p>
-	
-	<p>For the Horde!</p>
-	<p style="text-style: italics; font-size: 1.5em;">Ashkandari</p>
-	
-	<hr />
-	
-	<footer style="color: #333333;">
-		<p><span style="font-weight: bold;">Privacy Notice:</span> The information contained within this email is both private and confidential. If you are not the intended recipient, please delete this email from your system. Ashkandari respects your privacy and will never email you without your concent, nor will we pass on your details to any third party person or organisation under any circumstances. For further information, please visit <a href="http://ashkandari.com/legal/privacy">http://ashkandari.com/legal/privacy</a>. Thank you for your support and cooportation.</p>
-		<p><span style="font-weight: bold;">Disclaimer:</span> World of Warcraft&trade;, Mists of Pandaria&trade; and Blizzard Entertainment&trade; are all trademarks or registered trademarks of Blizzard Entertainment Inc. internationally. All related materials, logos, and images are copyright &copy; Blizzard Entertainment Inc. Ashkandari is in no way associated with or endorsed by Blizzard Entertainment.</p>
-		<p>Copyright &copy; '. date('Y') .' Ashkandari</p>
-	</footer>';
+		<p>The code you need to validate your email address is: <span style="font-weight: bold; font-size: 3em;">'. $code .'</span></p>
+		
+		<p>Please type this code into the box on our website. Once your email address has been verified your application will be registered into our database, where an officer will get back to you. If you have not heard back by '. $followup .' please either contact an officer in-game or online. A full list of officers and how to contact them can be found at <a href="http://ashkandari.com/roster/rank/officer">http://ashkandari.com/roster/rank/officer</a>.</p>
+		
+		<p>For the Horde!</p>
+		<p style="text-style: italics; font-size: 1.5em;">Ashkandari</p>
+		
+		<hr />
+		
+		<footer style="color: #333333;">
+			<p><span style="font-weight: bold;">Privacy Notice:</span> The information contained within this email is both private and confidential. If you are not the intended recipient, please delete this email from your system. Ashkandari respects your privacy and will never email you without your concent, nor will we pass on your details to any third party person or organisation under any circumstances. For further information, please visit <a href="http://ashkandari.com/legal/privacy">http://ashkandari.com/legal/privacy</a>. Thank you for your support and cooportation.</p>
+			<p><span style="font-weight: bold;">Disclaimer:</span> World of Warcraft&trade;, Mists of Pandaria&trade; and Blizzard Entertainment&trade; are all trademarks or registered trademarks of Blizzard Entertainment Inc. internationally. All related materials, logos, and images are copyright &copy; Blizzard Entertainment Inc. Ashkandari is in no way associated with or endorsed by Blizzard Entertainment.</p>
+			<p>Copyright &copy; '. date('Y') .' Ashkandari</p>
+		</footer>
+	</body>
+	</html>';
 	
 	/* Declare the headers */
 	$headers = "MIME-Version: 1.0\r\n";
 	$headers .= "Content-type: text/html; charset=utf-8\r\n";
-	$headers .= "From: Ashkandari <noreply@ashkandari.com>\r\n";
+	$headers .= "From: Ashkandari <applications@ashkandari.com>\r\n";
 	
 	// Mail it
 	if( mail($email_address, $subject, $message, $headers) ) {
@@ -106,7 +108,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 				<td><?php 
 				
 					/* This conditional gets the race from the database, based on the ID number given. */
-					if( $race = config::getRace($character->race) ) {
+					if( $race = getRace($character->race) ) {
 					
 						/* We now have to switch through the two possible genders (male and female) provided by battle.net */
 						switch ( $character->gender ) {
@@ -140,7 +142,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 				<td><?php 
 				
 					/* This condition gets the class from the database, based on the ID number given */
-					if( $class = config::getClass($character->class) ) {
+					if( $class = getClass($character->class) ) {
 					
 					/* Print out the icon for their class */
 					?><img src="<?php echo $class->icon_url; ?>" alt="Icon" /> <?php 
@@ -231,7 +233,9 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 		 
 		?><h1>Invalid Email Address</h1>
 		
-		<p>Unfortunately we weren't able to verify your email address and at the moment we cannot proceed. Your email address is required so that we can contact you with the progress of your application. Your email address is stored in our databases and officers cannot see it directly. For further information please read our <a href="/legal/privacy">privacy policy</a>.</p>
+		<p class="error">Unfortunately we weren't able to verify your email address and at the moment we cannot proceed.</p>
+		
+		<p>Your email address is required so that we can contact you with the progress of your application. Your email address is stored in our databases and officers cannot see it directly. For further information please read our <a href="/legal/privacy">privacy policy</a>.</p>
 		
 		<form action="/apply/verify" method="post">
 			<input type="hidden" name="realm" value="<?php echo $realm->id; ?>" />
@@ -257,13 +261,15 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 	<form action="/apply/verify" method="post">
 		<input type="hidden" name="email" value="<?php echo $email_address; ?>" />
 		
-		<p>Unfortunately we weren't able to find your character. Please re-type your character's realm and name, paying close attention to ensuring any accents the name has are included.</p>
+		<p class="error">Unfortunately we weren't able to find your character.</p>
+		
+		<p>Please re-type your character's realm and name, paying close attention to ensuring any accents the name has are included.</p>
 		
 		<p>What realm is your character currently on?</p>
 		<p><select name="realm" id="realms">
 		<option value=""> </option><?php
 		
-		$realms = config::getAllRealms();
+		$realms = getAllRealms();
 			
 		while( $realm = $realms->fetch_object() ) {
 				

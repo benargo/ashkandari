@@ -29,7 +29,7 @@ require(PATH.'framework/head.php');
 	<p><select name="realm" id="realms">
 		<option value=""> </option><?php
 		
-		$realms = config::getAllRealms();
+		$realms = getAllRealms();
 			
 		while( $realm = $realms->fetch_object() ) {
 				

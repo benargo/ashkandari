@@ -1,0 +1,5 @@
+#account-box,#characters-box{float:left;width:442px;padding:0;margin:0;}#account-box h1,#characters-box h1{text-align:center;}
+#account-box form input:not([type=submit]),#characters-box form input:not([type=submit]),#account-box form select,#characters-box form select{width:442px !important;}
+.set-primary{display:block;margin:0 0 10px;padding:10px;background:rgba(230, 130, 100, 0.1);border:solid 2px rgba(230, 130, 100, 0.1);-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;height:84px;}.set-primary.primary{border-color:#008467;cursor:default;}
+.set-primary img{vertical-align:middle;}
+.set-primary .thumbnail{float:right;padding:0px;border:none;-webkit-border-radius:none;-moz-border-radius:none;border-radius:none;}
