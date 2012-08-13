@@ -12,6 +12,13 @@ if( empty($_SERVER['HTTPS']) ) {
 // Require the head of the page
 require_once('../../framework/config.php');
 
+// Check if we're already logged in
+if(isset($_SESSION['account'])) {
+	
+		header("Location: https://ashkandari.com/account/");
+	
+}
+
 /* Set the page title */
 $page_title = "Account Activation";
 

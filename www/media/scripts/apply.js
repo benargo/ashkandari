@@ -1,9 +1,3 @@
-$(function() {
-	
-	$("#realms").combobox();
-
-});
-
 (function( $ ) {
 		$.widget( "ui.combobox", {
 			_create: function() {
@@ -110,3 +104,9 @@ $(function() {
 			}
 		});
 	})( jQuery );
+
+$(function() {
+	
+	$("#countries").combobox();
+	
+});

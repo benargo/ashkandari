@@ -77,6 +77,7 @@ if(isset($character->id)) {
 		
 			<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>" />
 			<input type="hidden" name="password" value="<?php echo $password; ?>" />
+			<input type="hidden" name="password_verify" value="<?php echo $password_verify; ?>" />
 			
 			<p>Please retype your character name, including any accents. The system should recognise your characters name and just select it from the list that forms.</p>
 			<p><select name="character" id="characters">
@@ -112,6 +113,7 @@ if(isset($character->id)) {
 	
 		<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>" />
 		<input type="hidden" name="password" value="<?php echo $password; ?>" />
+		<input type="hidden" name="password_verify" value="<?php echo $password_verify; ?>" />
 		
 		<p>Please retype your character name, including any accents. The system should recognise your characters name and just select it from the list that forms.</p>
 		<p><select name="character" id="characters">

@@ -33,28 +33,63 @@ require(PATH.'framework/head.php');
 	
 	<h1>My Account</h1>
 	
-	<?php if($account->isOfficer()) {
+	<?php 
+	
+	if(isset($_SESSION['account_msg'])) {
 		
-		?><p class="officer text center bold">Guild Officer</p><?php
+		?><div id="account_msg" class="<?php 
 		
-	} elseif($account->isModerator()) {
+		if(isset($_SESSION['account_msg_class'])) { 
+			echo $_SESSION['account_msg_class'];
+			unset($_SESSION['account_msg_class']);
+		} else { 
+			echo 'info';
+		} ?>"><?php echo $_SESSION['account_msg']; ?></div><?php
 		
-		?><p class="moderator text center bold">Forum Moderator</p><?php
+		unset($_SESSION['account_msg']);
 		
 	} ?>
 	
 	<h2>Email Address</h2>
-	<p><?php echo $account->email; ?> [<a href="/account/email" title="Change your email address">Edit</a>]</p>
+	<p><?php echo $account->email; ?> [<a href="/account/email/" title="Change your email address and manage your preferences">Edit</a>]</p>
 	
 	<h2>Password</h2>
 	<p>******** [<a href="/account/password/change">Edit</a>]</p>
 	
 	<h2>Forum Signature</h2>
-	<p>[<a href="#" id="forum-signature-show">Show</a>] [<a href="#" id="forum-signature-change">Edit</a>]</p>
+	<?php if(isset($account->forum_signature)) {
+		
+		?><section class="signature"><?php echo $account->forum_signature; ?></section>
+		<p>[<a href="/account/forums/signature">Edit</a>]</p><?php
+		
+	} else {
+		
+		?><p>You don't have a forum signature yet. [<a href="/account/forums/signature">Create one</a>]</p><?php
+		
+	}
 	
-	<?php if($account->isOfficer()) { ?>
+	if($account->isModerator()) { ?>
+		
+	<h2>Forum Moderators</h2>
+	<p>As a <span class="moderator">forum moderator</span>, you have special permissions on the <a href="/forums/" title="Click to visit the guild forums">forums</a>, including the ability to:</p>
+	<ul>
+		<li>Lock threads</li>
+		<li>Delete individual posts</li>
+		<li>Edit posts that are offensive but overall constructive</li>
+	</ul><?php
+		
+	}
 	
-	<p><a href="/officers/" class="button" title="Login to the Officer Control Panel">Officers Club</a></p><?php
+	if($account->isOfficer()) { ?>
+	
+	<h2>Officers Club</h2>
+	<p>As an <span class="officer">officer</span> of Ashkandari you can access the management panels for the following sections</p>
+	<ul>
+		<li><a href="/officers/news/" title="Add, edit or delete news articles">News articles</a></li>
+		<li><a href="/officers/forums/" title="Forum Control Panel">Forums</a></li>
+		<li><a href="/officers/applications/" title="Guild applications">Guild Applications</a></li>
+		<li><a href="/officers/accounts/" title="Manage other user accounts">User Accounts</a></li>
+	</ul><?php
 	
 	} ?>
 </section>

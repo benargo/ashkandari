@@ -28,7 +28,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/guild/Tarren-Mill/As
 <h2>News</h2><?php
 
 // Here is the news section of our front page. We need to display the three most recent news articles.
-if( $items = news::getArticles(3) ) {
+if( $items = news_item::getArticles(3) ) {
 	
 	// Loop through each of the news items
 	foreach($items as $item_id) {

@@ -8,6 +8,13 @@
 // Require the framework
 require_once('../../framework/config.php');
 
+// Check if we're already logged in
+if(isset($_SESSION['account'])) {
+	
+		header("Location: https://ashkandari.com/account/");
+	
+}
+
 // Set the page title
 $page_title = "Guild Application";
 
@@ -18,17 +25,19 @@ require(PATH.'framework/head.php');
 $db = db();
 
 /* Secondly, we need to get the values from the form */
-$character = $_POST['character'];
-$realm = $_POST['realm'];
-$email = $_POST['email'];
+$email = decrypt($_POST['email']);
+$dob = strtotime($_POST['dob']);
+if(isset($_POST['english'])) { $english = 1; } else { $english = 0; }
+if(isset($_POST['teamspeak'])) { $ts = 1; } else { $ts = 0; }
+if(isset($_POST['microphone'])) { $microphone = 1; } else { $microphone = 0; }
 $date = time();
 $followup = date('jS F', time()+(3*24*60*60));
 
 /* Thirdly, we need to verify that the code that we passed through the form was correct */
-if( $_POST['code'] == $_SESSION['validation_code'] ) {
+if( $_POST['code'] == decrypt($_POST['code_verify']) ) {
 
 	/* Run the database query to insert this all into the database */
-	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `received_date`) VALUES ( '$character', $realm, '$email', $date )");
+	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `dob`, `country`, `english`, `teamspeak`, `microphone`, `played_since`, `q1`, `q2`, `q3`, `received_date`) VALUES ( '". $db->real_escape_string($_POST['character']) ."', ". $_POST['realm'] .", '". $db->real_escape_string($email) ."', ". $dob .", '". $_POST['country'] ."', $english, $ts, $microphone, ". $_POST['played_since'] .", '". $db->real_escape_string($_POST['q1']) ."', '". $db->real_escape_string($_POST['q2']) ."', '". $db->real_escape_string($_POST['q3']) ."', $date )") or die($db->error);
 		
 	/* Now we can send out a nice heartwarming message saying well done. */ ?>
 	<h1>Application complete!</h1>
@@ -43,9 +52,19 @@ if( $_POST['code'] == $_SESSION['validation_code'] ) {
 		
 	<form action="/apply/finish" method="post">
 		
-		<input type="hidden" name="realm" value="<?php echo $realm; ?>" />
-		<input type="hidden" name="character" value="<?php echo $character; ?>" />
-		<input type="hidden" name="email" value="<?php echo $email; ?>" />
+		<input type="hidden" name="realm" value="<?php echo $_POST['realm']; ?>" />
+		<input type="hidden" name="character" value="<?php echo $_POST['character']; ?>" />
+		<input type="hidden" name="email" value="<?php echo encrypt($email); ?>" />
+		<input type="hidden" name="dob" value="<?php echo $_POST['dob']; ?>" />
+		<input type="hidden" name="country" value="<?php echo $_POST['country']; ?>" />
+		<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
+		<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
+		<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
+		<input type="hidden" name="played_since" value="<?php echo $_POST['played_since']; ?>" />
+		<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
+		<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
+		<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
+		<input type="hidden" name="code_verify" value="<?php echo $_POST['code_verify']; ?>" />
 			
 		<p>Oh dear, we've fallen over at the last hurdle. It seems that the validation code you entered wasn't right. No worries, we have all of your details still so we can have another go if you want to re-check your email.</p>
 

@@ -64,6 +64,11 @@ if( isset($_SESSION['account']) ) {
 				case '/account/index.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/account.css" />';
+					break;
+					
+				case '/account/forums/signature.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
+					break;
 				
 			}
 			
@@ -105,6 +110,11 @@ if( isset($_SESSION['account']) ) {
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/account.js"></script>';
+					break;
+					
+				case '/account/forums/signature.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
 				
 			}
 		?>
@@ -131,7 +141,7 @@ if( isset($_SESSION['account']) ) {
 							echo '<li><a href="/news/" title="News">News</a></li>';
 							echo '<li><a href="/roster/" title="Guild Roster">Guild Roster</a></li>';
 							echo '<li><a href="/forums/" title="Forums">Forums</a></li>';
-							echo '<li><a href="/rules/" title="Rules">Rules</a></li>';
+							echo '<li><a href="/teamspeak/" title="TeamSpeak">TeamSpeak</a></li>';
 							if ( isset($account) ) {
 									
 								echo '<li><a href="/account/" title="My profile, account settings and characters">My Account</a></li>';
