@@ -69,39 +69,44 @@ if($board->canCreateThread($account->id)) {
 			
 			/* Create a new forum thread object */
 			$thread = new forum_thread($t->id);
-			$application = $thread->getApplication();
 			$character = $thread->getCharacter();
 			
 			?><tr>
 			
 				<td><?php
 				
-				/* Is this topic sticky? */
-				if($thread->isSticky()) {
+				/* Check if this topic is sticky AND locked */
+				if($thread->isSticky() && $thread->isLocked()) {
 					
-					?>[Sticky] <?php
+					echo "[Sticky Locked] ";
 					
-				} ?><a href="<?php 
+				} elseif($thread->isSticky()) {
+					
+					/* Thread is sticky but not locked */
+					echo "[Sticky] ";
+					
+				} elseif($thread->isLocked()) {
+					
+					/* Thread is locked but not sticky */
+					echo "[Locked] ";
+					
+				}
+				?><a href="<?php 
 				
 				/* Is this topic an application */
-				if(isset($application->id)) {
+				if($thread->isApplication()) {
+				
+					/* Create an application instance */
+					$application = $thread->getApplication();
 					
+					/* And create the proper link */
 					echo "/applications/". $application->id;
 					
 				} else {
 				
 					echo "/forums/thread/". $thread->id;
 					
-				} ?>"><?php echo $thread->title; ?></a><?php
-				
-				/* Check if the thread is locked */
-				if($thread->isLocked()) {
-					
-					?> <img src="/media/images/icons/locked.gif" alt="Locked" class="noborder" /><?php
-					
-				}
-				
-				?></td>
+				} ?>"><?php echo $thread->title; ?></a></td>
 				
 				<td><?php if(isset($character->id)) {
 					

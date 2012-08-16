@@ -18,15 +18,21 @@ if(empty($_SESSION['account'])) {
 /* Get the new forum thread */
 $thread = new forum_thread($_GET['id']);
 
-/* Get the application (if there is one) */
-$application = $thread->getApplication();
+/* Get the thread's board */
+$board = $thread->getBoard();
 
 /* Check if it has an application */
-if(isset($application->id)) {
+if($thread->isApplication()) {
+
+	/* Get the application (if there is one) */
+	$application = $thread->getApplication();
 	
 	header("Location: /applications/". $application->id);
 	
 }
+
+/* Set the page title */
+$page_title = $thread->title ." - ". $board->title;
 
 /* Get the header */
 require(PATH.'framework/head.php');
@@ -94,7 +100,14 @@ if($thread->isSticky() && $thread->isLocked()) {
 }
 
 /* Echo thread title */
-echo $thread->title; ?></h1><?php
+echo $thread->title; ?></h1>
+
+<ul id="breadcrumbs">
+	<li><a href="/">Home</a></li>
+	<li><a href="/forums/">Forums</a></li>
+	<li><a href="/forums/<?php echo $board->id; ?>"><?php echo $board->title; ?></a></li>
+	<li><?php echo $thread->title; ?></li>
+</ul><?php
 
 /* Get the posts */
 $posts = $thread->getPosts();
@@ -102,7 +115,7 @@ $posts = $thread->getPosts();
 /* Loop through the posts */
 while($p = $posts->fetch_object()) {
 	
-	$post = new forum_post($post->id);
+	$post = new forum_post($p->id);
 	$author = $post->getAccount();
 	$character = $post->getCharacter();
 	$class = $character->getClass();
@@ -111,7 +124,7 @@ while($p = $posts->fetch_object()) {
 	
 	?><section class="reply" id="<?php echo $post->id; ?>"><hr />
 		<div class="character">
-			<p class="thumb<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
+			<p class="thumb<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
 			
 			<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $character->name; ?>" class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></a></p>
 			
@@ -173,7 +186,8 @@ while($p = $posts->fetch_object()) {
 				</div><?php
 			} ?>
 		</div>
-	</section><?php
+	</section>
+	<div class="clear both"></div><?php
 	
 }
 
@@ -223,6 +237,10 @@ if($thread->isNotLocked() || $account->isOfficer() || $account->isModerator()) {
 			--></script>
 		</div>
 	</section><?php
+	
+} else {
+	
+	?><p class="info">This thread is locked and replies cannot be posted.</p><?php
 	
 }
 

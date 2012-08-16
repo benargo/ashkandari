@@ -66,7 +66,7 @@ if( $_POST['code'] == decrypt($_POST['code_verify']) ) {
 	/* Now we can send out a nice heartwarming message saying well done. */ ?>
 	<h1>Application complete!</h1>
 	<p>That's it! We're all done here!</p>
-	<p>Thank you very much for applying to join us here at Ashkandari. An officer will get back to you very shortly. If you have not heard back by <?php echo $followup; ?> then please contact an officer either in-game or online. A full list of officers and how to contact them can be found in <a href="/roster/rank/officer">our roster</a>.</p><?php
+	<p>Thank you very much for applying to join us here at Ashkandari. An officer will get back to you very shortly. If you have not heard back by <?php echo $followup; ?> then please contact an officer either in-game or online. A full list of officers and how to contact them can be found in <a href="/officers/">our roster</a>.</p><?php
 		
 } else {
 	

@@ -74,6 +74,16 @@ if( isset($_SESSION['account']) ) {
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
 					break;
+					
+				case '/forums/thread/new.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
+					break;
+					
+				case '/forums/thread/view.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
+					break;
 				
 				case '/forums/post/edit.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
@@ -129,6 +139,18 @@ if( isset($_SESSION['account']) ) {
 					break;
 					
 				case '/forums/application.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
+				
+				case '/forums/thread/new.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
+					
+				case '/forums/thread/view.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';

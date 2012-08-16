@@ -13,17 +13,8 @@ if(empty($_SESSION['account'])) {
 	
 }
 
-/* Create a database connection */
-$db = db();
-
-/* Post the new forum board */
-$db->query("INSERT INTO `forum_posts` (`thread_id`, `author_account_id`, `body`, `timestamp`) VALUES (". $_POST['thread'] .", ". $_SESSION['account'] .", '". $db->real_escape_string($_POST['body']) ."', ". time() .")") or die($db->error);
-
-/* Get the Post ID */
-$post_id = $db->insert_id;
-
-/* Close the database connection */
-$db->close();
+/* Create the new forum post */
+forum_post::create($thread_id, $_SESSION['account'], $_POST['body']);
 
 /* Redirect back to the forums landing page */
 header("Location: /forums/thread/". $thread_id);

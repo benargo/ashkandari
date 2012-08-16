@@ -71,7 +71,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 		
 			<p>The code you need to validate your email address is: <span style="font-weight: bold; font-size: 3em;">'. $code .'</span></p>
 			
-			<p>Please type this code into the box on our website. Once your email address has been verified your application will be registered into our database, where an officer will get back to you. If you have not heard back by '. $followup .' please either contact an officer in-game or online. A full list of officers and how to contact them can be found at <a href="http://ashkandari.com/roster/rank/officer">http://ashkandari.com/roster/rank/officer</a>.</p>
+			<p>Please type this code into the box on our website. Once your email address has been verified your application will be registered into our database, where an officer will get back to you. If you have not heard back by '. $followup .' please either contact an officer in-game or online. A full list of officers and how to contact them can be found at <a href="http://ashkandari.com/officers/">http://ashkandari.com/officers/</a>.</p>
 			
 			<p>For the Horde!</p>
 			<p style="text-style: italics; font-size: 1.5em;">Ashkandari</p>
@@ -194,11 +194,9 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 			
 				<h2>Email Verification</h2>
 				
-				<p id="required">= Required</p>
-				
 				<p>We have sent an email with a unique code to the email address you supplied just previously. We need you to enter that code below so that we can validate your email address and contact you with the progress of your application. Enter the code in the box below, and then click Finish.</p>
 				
-				<label for="code" class="required"><p><input type="text" name="code" placeholder="XXXXXX" maxlength="6" required="true" /></p></label>
+				<label for="code"><p><input type="text" name="code" placeholder="XXXXXX" maxlength="6" required="true" /></p></label>
 				<p><input id="submit" type="submit" value="Finish" /></p>
 				
 			</form><?php

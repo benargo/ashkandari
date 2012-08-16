@@ -34,14 +34,15 @@ require(PATH.'framework/head.php');
 
 	<p id="required">= Required</p>
 
-	<label for="realm" class="required"><p>1. What realm is your character currently on?</p>
-	<select name="realm"><?php
+	<label for="realm" class="required"><p>1. What realm is your character currently on? (Start typing your realm's name and pick it from the list that appears)</p>
+	<select name="realm" id="realms">
+		<option value=""></option><?php
 		
 		$realms = getAllRealms();
 			
 		while( $realm = $realms->fetch_object() ) {
 				
-			?><option value="<?php echo $realm->id; ?>"<?php if($realm->id == 201) { echo ' selected="true"'; } ?>><?php echo $realm->name; ?></option><?php
+			?><option value="<?php echo $realm->id; ?>"><?php echo $realm->name; ?></option><?php
 					
 		}
 			

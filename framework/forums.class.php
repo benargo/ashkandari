@@ -540,6 +540,22 @@ class forum_thread {
 			
 	}
 	
+	/* Is this an application */
+	public function isApplication() {
+		
+		/* is there an application ID */
+		if(isset($this->application)) {
+			
+			/* Yes */
+			return true;
+			
+		}
+		
+		/* No */
+		return false;
+		
+	}
+	
 	/* Get the application */
 	public function getApplication() {
 		
@@ -665,6 +681,40 @@ class forum_thread {
 		
 	}
 	
+	/* Lock the thread */
+	public function lock() {
+		
+		/* Declare a database connection */
+		$db = db();
+		
+		/* Query the database to update the new status */
+		$db->query("UPDATE `forum_threads` SET `locked` = 1 WHERE `id` = ". $this->id);
+		
+		/* Close the database connection */
+		$db->close();
+		
+		/* And return true */
+		return true;
+		
+	}
+	
+	/* Unlock the thread */
+	public function unlock() {
+		
+		/* Declare a database connection */
+		$db = db();
+		
+		/* Query the database to update the new status */
+		$db->query("UPDATE `forum_threads` SET `locked` = 0 WHERE `id` = ". $this->id);
+		
+		/* Close the database connection */
+		$db->close();
+		
+		/* And return true */
+		return true;
+		
+	}
+	
 	/* Check if this topic is sticky */
 	public function isSticky() {
 		
@@ -675,6 +725,67 @@ class forum_thread {
 		}
 		
 		return false;
+		
+	}
+	
+	/* Set the topic as sticky */
+	public function setSticky() {
+		
+		/* Declare a database connection */
+		$db = db();
+		
+		/* Query the database to update the new status */
+		$db->query("UPDATE `forum_threads` SET `sticky` = 1 WHERE `id` = ". $this->id);
+		
+		/* Close the database connection */
+		$db->close();
+		
+		/* And return true */
+		return true;
+		
+	}
+	
+	/* Remove sticky status */
+	public function removeSticky() {
+		
+		/* Declare a database connection */
+		$db = db();
+		
+		/* Query the database to update the new status */
+		$db->query("UPDATE `forum_threads` SET `sticky` = 0 WHERE `id` = ". $this->id);
+		
+		/* Close the database connection */
+		$db->close();
+		
+		/* And return true */
+		return true;
+		
+	}
+	
+	/* Create a new forum thread */
+	public static function create($board, $author, $title, $body) {
+		
+		/* Declare a database connection */
+		$db = db();
+		
+		/* Escape the title */
+		$title = $db->real_escape_string($title);
+		
+		/* Generate the time */
+		$time = time();
+		
+		/* Insert into the database */
+		$db->query("INSERT INTO `forum_threads` (`board_id`, `author_account_id`, `title`, `most_recent_post_time`) VALUES ($board, $author, '$title', $time)") or die($db->error);
+		
+		/* Get the thread's ID */
+		$thread_id = $db->insert_id;
+		
+		/* Create the primary post */
+		forum_post::create($thread_id, $author, $body);
+		
+		/* And return the thread ID */
+		return $thread_id;
+		
 		
 	}
 	
@@ -837,6 +948,26 @@ class forum_post {
 			$db->close();
 			
 		}
+		
+	}
+	
+	/* Create the post */
+	public static function create($thread, $author, $body) {
+		
+		/* Declare a database connection */
+		$db = db();
+		
+		/* Escape the body */
+		$body = $db->real_escape_string($body);
+		
+		/* Generate the time */
+		$time = time();
+		
+		/* Run the database query */
+		$db->query("INSERT INTO `forum_posts` (`thread_id`, `author_account_id`, `body`, `timestamp`) VALUES ($thread, $author, '$body', $time)");
+		
+		/* And return the post ID */
+		return true;
 		
 	}
 	

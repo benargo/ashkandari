@@ -27,9 +27,7 @@ RewriteRule ^account/email/preferences$ account/email/set-preferences.php [NC,L]
 RewriteRule ^account/forums/$ account/forums/signature [R,NC]
 RewriteRule ^account/forums/signature$ account/forums/signature.php [NC,L]
 
-RewriteRule ^officers/applications$ officers/applications/ [NC,R]
-RewriteRule ^officers/applications/$ officers/applications.php [NC,L]
-RewriteRule ^officers/applications/(undecided|accepted|declined)$ officers/applications.php?decision=$1 [NC,L]
+RewriteRule ^officers/applications/(undecided|accepted|declined)$ officers/applications/index.php?decision=$1 [NC,L]
 
 RewriteRule ^officers/forums/add/$ officers/forums/add [NC,R]
 RewriteRule ^officers/forums/add$ officers/forums/add.php [NC,L] 
@@ -49,11 +47,15 @@ RewriteRule ^applications/$ forums/board.php?id=1 [NC,L]
 RewriteRule ^applications/([0-9]+)$ forums/application.php?id=$1 [NC,L]
 
 RewriteRule ^forums/new$ forums/thread/new.php [NC,L]
+RewriteRule ^forums/lock$ forums/thread/lock.php [NC,L]
+RewriteRule ^forums/sticky$ forums/thread/sticky.php [NC,L]
+
 RewriteRule ^forums/reply$ forums/post/reply.php [NC,L]
 RewriteRule ^forums/edit$ forums/post/edit.php [NC,L]
 RewriteRule ^forums/delete$ forums/post/delete.php [NC,L]
 
-RewriteRule ^teamspeak(\/)?$ teamspeak.php [NC,L]
+RewriteRule ^teamspeak$ teamspeak/ [NC,R]
+RewriteRule ^teamspeak/$ teamspeak.php [NC,L]
 
 RewriteRule ^apply/verify$ apply/verify.php [NC,L]
 RewriteRule ^apply/finish$ apply/finish.php [NC,L]

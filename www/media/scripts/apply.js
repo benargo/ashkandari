@@ -107,6 +107,6 @@
 
 $(function() {
 	
-	$("#countries").combobox();
+	$("#realms").combobox();
 	
 });

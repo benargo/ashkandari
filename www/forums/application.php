@@ -52,10 +52,21 @@ $cooking = $application->getCooking();
 
 <?php 
 
+/* Check if this character has had a decision made */
+if($application->decided()) {
+
+	/* Get the officer who decided */
+	$officer = $application->getOfficer();
+	
+	/* Yes they have been decided */
+	?><p class="info">This character was <?php echo strtolower($application->getDecision()); ?> on <?php echo date('jS F Y', $application->decision_date); ?> by <?php echo $officer->name; ?></p><?php
+	
+}
+
 /* Print a notice if they're not from our realm */
 if($realm->id != 201) {
 	
-	?><p class="notice">This character is on the realm <span class="bold"><?php echo $realm->name; ?></span>. If accepted, <?php 
+	?><p class="warning">This character is on the realm <span class="bold"><?php echo $realm->name; ?></span>. If accepted, <?php 
 	/* Get the right term for the gender */
 	switch($application->getGender()) {
 		
@@ -74,7 +85,7 @@ if($realm->id != 201) {
 /* Print a notice if they're on Alliance */
 if($race->faction == "alliance") {
 	
-	?><p class="notice">This character is currently <span class="bold">Alliance</span>. If accepted, <?php 
+	?><p class="warning">This character is currently <span class="bold">Alliance</span>. If accepted, <?php 
 	/* Get the right term for the gender */
 	switch($application->getGender()) {
 		
@@ -350,11 +361,18 @@ switch($application->getGender()) {
 <p><?php echo nl2br($application->q4); ?></p>
 
 
-<?php if($account->isOfficer()) {
+<?php if($application->decided() == false && $account->isOfficer()) {
 	
-	?><form action="/officers/application-decide.php" method="post" class="decision">
-		<p><input type="submit" name="decision" value="Accept" /> <input type="submit" name="decision" value="Decline" /></p>
-	</form><?php
+	?>
+		
+		<div class="text center"><form action="https://ashkandari.com/officers/applications/decide.php" method="post" class="decision">
+				<input type="hidden" name="id" value="<?php echo $application->id; ?>" />
+				<input type="submit" name="decision" value="Accept" />
+			</form>
+			<form action="https://ashkandari.com/officers/applications/decide.php" method="post" class="decision">
+				<input type="hidden" name="id" value="<?php echo $application->id; ?>" />
+				<input type="submit" name="decision" value="Decline" />
+			</form></div><?php
 	
 } 
 
@@ -373,7 +391,7 @@ while($post = $posts->fetch_object()) {
 	
 	?><section class="reply" id="<?php echo $post->id; ?>"><hr />
 		<div class="character">
-			<p class="thumb<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
+			<p class="thumb<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
 			
 			<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $character->name; ?>" class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></a></p>
 			
@@ -440,7 +458,7 @@ while($post = $posts->fetch_object()) {
 }
 
 /* Check if the thread is locked */
-if($thread->isNotLocked() || $account->isOfficer() || $account->isModerator()) {
+if($application->decided() == false || $account->isOfficer()) {
 	
 	$primary_class = $primary_character->getClass();
 	$primary_race = $primary_character->getRace();
@@ -485,6 +503,14 @@ if($thread->isNotLocked() || $account->isOfficer() || $account->isModerator()) {
 			--></script>
 		</div>
 	</section><?php
+	
+} else {
+
+	/* Get the officer who decided */
+	$officer = $application->getOfficer();
+	
+	/* Yes they have been decided */
+	?><p class="notice">This character was <?php echo strtolower($application->getDecision()); ?> on <?php echo date('jS F Y', $application->decision_date); ?> by <?php $officer->name; ?>. As a result, comments are no longer allowed.</p><?php
 	
 }
 
