@@ -81,7 +81,7 @@ if( isset($_POST['email']) && isset($_POST['password']) ) {
 				<p>Password:</p>
 				<p><input type="password" name="password" required="true" placeholder="Password" /></p>
 				
-				<p><input type="submit" value="Login" /></p>
+				<p class="text center"><input type="submit" value="Login" /></p>
 				
 				<p class="text right"><a href="/account/password/reset" title="Reset your password">Forgotten your password?</a></p>
 			
@@ -132,7 +132,7 @@ if( isset($_POST['email']) && isset($_POST['password']) ) {
 		<p>Password:</p>
 		<p><input type="password" name="password" required="true" placeholder="Password" /></p>
 		
-		<p><input type="submit" value="Login" /></p>
+		<p class="text center"><input type="submit" value="Login" /></p>
 		
 		<p class="text right"><a href="/account/password/reset" title="Reset your password">Forgotten your password?</a></p>
 	

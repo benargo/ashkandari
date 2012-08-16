@@ -202,6 +202,14 @@ img.noborder {
 	border-radius: none;
 }
 
+img.icon {
+	
+	height: 18px;
+	width: auto;
+	vertical-align: middle;
+	
+}
+
 article a > img:hover {
 	background-color: rgba(230, 130, 100, 0.2);
 }
@@ -213,6 +221,11 @@ table {
 
 table.fill {
 	width: 884px;
+}
+
+table.application td {
+	width: 201px;
+	text-align: left;
 }
 
 table th, table td {
@@ -239,8 +252,27 @@ table.fill tbody tr:hover {
 	background-color: rgba(230, 130, 100, 0.1);
 }
 
+table#boards tr th:nth-child(4n+1), table#boards tr td:nth-child(4n+1) {
+	text-align: left;
+}
+
+table#boards tr:nth-child(4n+1), table#boards tr:nth-child(4n+2) {
+	background-color: transparent;
+}
+
+table#boards tr:nth-child(4n+3), table#boards tr:nth-child(4n+4) {
+	background-color: rgba(43, 21, 7, 0.5);
+}
+
 table.tablesorter th.sortable {
 	cursor: pointer;
+}
+
+table td > select {
+	
+	width: auto !important;
+	margin: 0 auto;
+	
 }
 
 /* 2.5. Lists */
@@ -262,9 +294,22 @@ ol > li {
 
 /* 2.6. Forms */
 
+form {
+	display: inline;
+}
+
 label {
 	display: block;
 	width: 100%;
+}
+
+p#required {
+	text-align: right;
+}
+
+p#required:before {
+	content: "★ ";
+	color: #FFA400;
 }
 
 label.required p:after {
@@ -314,23 +359,54 @@ input[type="checkbox"] { vertical-align: middle; }
 label, input[type=button], input[type=submit], button, { cursor: pointer; }
 
 input[type=button], input[type=submit], a.button {
-	display: block;
-	margin: 10px auto;
+	display: inline-block;
+	margin: 0 auto;
 	padding: none;
 	width: 294px;
 	height: 32px;
 	line-height: 32px;
 	color: #FFA400;
 	text-align: center;
-	
+	vertical-align: middle;
+	font-size: 1.0em;
 	border: none;
 	
 	background: transparent url('../images/theme/form-buttons.png') top left;
 }
 
-input[type=button]:hover, input[type=submit]:hover, a.button:hover {
+input[type=button].float.right, input[type=submit].float.right {
+	
+	margin: 0px;
+	padding: 0px;
+	
+}
+
+input[type=button][disabled=true], input[type=submit][disabled=true], a.button.disabled, input[type=button][disabled=true]:hover, input[type=submit][disabled=true]:hover, a.button.disabled:hover {
 	background-position: bottom left;
+	color: #8694A1;
+}
+
+input[type=button]:hover, input[type=submit]:hover, a.button:hover {
+	background-position: center left;
 	border: none;
+}
+
+input[type=button].text, input[type=submit].text {
+	display: inline;
+	width: auto;
+	height: auto;
+	line-height: 1.0em;
+	margin: 0;
+	padding: 0;
+	background: none;
+	border-top: none;
+	border-right: none;
+	border-bottom: dotted 1px #FFA400;
+	border-left: none;
+}
+
+input[type=button].text:hover, input[type=submit].text:hover {
+	border-bottom-style: solid;
 }
 
 /* 2.7. Tooltips */
@@ -490,6 +566,58 @@ background-color: #FFBABA;
 background-image: url('../images/theme/error.png');
 }
 
+.decision {
+	text-align: center;
+}
+
+.decision input {
+	display: inline-block;
+}
+
+.reply {
+	clear: both;
+}
+
+.reply .character {
+	width: 284px;
+	padding: 5px;
+	margin: 10px 0;
+	float: left;
+}
+
+.reply .character .thumb {
+	float: left;
+	border: none;
+	padding: none;
+	margin: 0 10px;
+}
+
+.reply .character p {
+	margin: 0;
+}
+
+.reply .character * {
+	max-width: 284px;
+}
+
+.reply .body {
+	width: 580px;
+	padding: 5px;
+	margin: 0 0 10px;
+	float: right;
+}
+
+.reply .body .signature {
+	
+	border-top: solid 1px #B39265;
+	margin: 5px 0 0;
+	
+}
+
+.reply .body * {
+	max-width: 580px;
+}
+
 /* 3. Layout */
 #wrapper-top {
 	background: url('../images/theme/wrapper-top.jpg') 50% top no-repeat;
@@ -592,6 +720,7 @@ article {
 }
 
 ul#breadcrumbs {
+	margin: 10px 0;
 	width: 884px;
 	height: 30px;
 }

@@ -86,6 +86,7 @@ require(PATH.'framework/head.php');
 	<p>As an <span class="officer">officer</span> of Ashkandari you can access the management panels for the following sections</p>
 	<ul>
 		<li><a href="/officers/news/" title="Add, edit or delete news articles">News articles</a></li>
+		<li><a href="/officers/epgp/" title="Update the EPGP standings">EPGP</a></li>
 		<li><a href="/officers/forums/" title="Forum Control Panel">Forums</a></li>
 		<li><a href="/officers/applications/" title="Guild applications">Guild Applications</a></li>
 		<li><a href="/officers/accounts/" title="Manage other user accounts">User Accounts</a></li>

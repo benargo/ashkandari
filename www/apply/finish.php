@@ -27,17 +27,41 @@ $db = db();
 /* Secondly, we need to get the values from the form */
 $email = decrypt($_POST['email']);
 $dob = strtotime($_POST['dob']);
-if(isset($_POST['english'])) { $english = 1; } else { $english = 0; }
-if(isset($_POST['teamspeak'])) { $ts = 1; } else { $ts = 0; }
-if(isset($_POST['microphone'])) { $microphone = 1; } else { $microphone = 0; }
+if(is_null($_POST['english'])) { $english = 0; } else { $english = 1; }
+if(is_null($_POST['teamspeak'])) { $ts = 0; } else { $ts = 1; }
+if(is_null($_POST['microphone'])) { $microphone = 0; } else { $microphone = 1; }
 $date = time();
 $followup = date('jS F', time()+(3*24*60*60));
 
 /* Thirdly, we need to verify that the code that we passed through the form was correct */
 if( $_POST['code'] == decrypt($_POST['code_verify']) ) {
 
-	/* Run the database query to insert this all into the database */
-	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `dob`, `country`, `english`, `teamspeak`, `microphone`, `played_since`, `q1`, `q2`, `q3`, `received_date`) VALUES ( '". $db->real_escape_string($_POST['character']) ."', ". $_POST['realm'] .", '". $db->real_escape_string($email) ."', ". $dob .", '". $_POST['country'] ."', $english, $ts, $microphone, ". $_POST['played_since'] .", '". $db->real_escape_string($_POST['q1']) ."', '". $db->real_escape_string($_POST['q2']) ."', '". $db->real_escape_string($_POST['q3']) ."', $date )") or die($db->error);
+	/* Run the database query to insert this all into the applications database */
+	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `english`, `teamspeak`, `microphone`, `played_since`, `q1`, `q2`, `q3`, `q4`, `active_spec`, `received_date`) VALUES ( '". $db->real_escape_string($_POST['character']) ."', ". $_POST['realm'] .", '". $db->real_escape_string($email) ."', $english, $ts, $microphone, ". $_POST['played_since'] .", '". $db->real_escape_string($_POST['q1']) ."', '". $db->real_escape_string($_POST['q2']) ."', '". $db->real_escape_string($_POST['q3']) ."', '". $db->real_escape_string($_POST['q4']) ."', ". $_POST['active_spec'] .", $date )") or die($db->error);
+	
+	/* Get the application ID */
+	$app_id = $db->insert_id;
+	
+	/* Create the new application instance */
+	$application = new application($app_id);
+	
+	/* Get the applicants class */
+	$class = $application->getClass();
+	
+	/* Get the applicants primary spec */
+	$spec = $application->getPrimarySpec();
+	
+	/* Generate the thread title */
+	$thread_title = $application->name .": ". $spec->name ." ". $class->name ." - ". $application->getItemLevel() ." item level (". $application->getEquippedItemLevel() ." equipped)";  
+	
+	/* Run the query to create the forum thread */
+	$db->query("INSERT INTO `forum_threads` (`board_id`, `application_id`, `title`, `most_recent_post_time`) VALUES (1, ". $application->id .", '$thread_title', ". time() .")") or die($db->error);
+	
+	/* Generate the thread ID */
+	$thread_id = $db->insert_id;
+	
+	/* Update the application to include the new thread ID */
+	$application->setThread($thread_id);
 		
 	/* Now we can send out a nice heartwarming message saying well done. */ ?>
 	<h1>Application complete!</h1>
@@ -64,6 +88,8 @@ if( $_POST['code'] == decrypt($_POST['code_verify']) ) {
 		<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
 		<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
 		<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
+		<input type="hidden" name="q4" value="<?php echo $_POST['q4']; ?>" />
+		<input type="hidden" name="active_spec" value="<?php echo $_POST['active_spec']; ?>" />
 		<input type="hidden" name="code_verify" value="<?php echo $_POST['code_verify']; ?>" />
 			
 		<p>Oh dear, we've fallen over at the last hurdle. It seems that the validation code you entered wasn't right. No worries, we have all of your details still so we can have another go if you want to re-check your email.</p>

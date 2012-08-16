@@ -75,12 +75,14 @@ if(isset($character->id)) {
 		
 		<form action="/account/register/verify" method="post">
 		
+			<p id="required">= Required</p>
+		
 			<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>" />
 			<input type="hidden" name="password" value="<?php echo $password; ?>" />
 			<input type="hidden" name="password_verify" value="<?php echo $password_verify; ?>" />
 			
-			<p>Please retype your character name, including any accents. The system should recognise your characters name and just select it from the list that forms.</p>
-			<p><select name="character" id="characters">
+			<label for="character" class="required"><p>Please retype your character name, including any accents. The system should recognise your characters name and just select it from the list that forms.</p>
+			<select name="character" id="characters">
 				<option value=""> </option><?php
 				
 				/* Get all the characters */
@@ -92,7 +94,7 @@ if(isset($character->id)) {
 							
 				}
 					
-				?></select></p>
+				?></select></label>
 				
 			<p>If your character is not showing up correctly, it may mean the guild roster is slightly out of date. The roster is automatically updated every morning at 23:00 UTC so please try again after that.</p>
 		

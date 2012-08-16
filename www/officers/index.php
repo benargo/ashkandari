@@ -37,13 +37,7 @@ if($account->isOfficer()) {
 <p>Use the links below to add, update and remove various items.</p>
 
 <nav class="officer">
-	<ul>
-		<li><a href="/officers/">Home</a></li>
-		<li><a href="/officers/news/">News Articles</a></li>
-		<li><a href="/officers/forums/">Forums</a></li>
-		<li><a href="/officers/applications/">Guild Applications</a></li>
-		<li><a href="/officers/accounts/">User Accounts</a></
-	</ul>
+	<?php include(PATH.'framework/officer_nav.php'); ?>
 </nav>
 
 <?php

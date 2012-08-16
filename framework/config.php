@@ -56,19 +56,6 @@ function db() {
 		
 }
 
-/* 4. Configuration functions */
-function getAllCountries() {
-	
-	$db = db();
-	
-	$result = $db->query("SELECT * FROM `countries` ORDER BY `name`");
-	
-	$db->close();
-	
-	return $result;
-	
-}
-
 function getAllRealms() {
 
 	/* Get all the realms from the database
@@ -393,5 +380,8 @@ require_once(PATH.'framework/news_comment.class.php');
 
 /* 8. Guild Applications */
 require_once(PATH.'framework/applications.class.php');
+
+/* 9. Forums */
+require_once(PATH.'framework/forums.class.php');
 
 ?>

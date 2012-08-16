@@ -99,133 +99,11 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 			 
 			?><h1>Verify your Application</h1>
 			
-			<p><img src="<?php echo $protocol; ?>://eu.battle.net/static-render/eu/<?php echo $character->thumbnail; ?>" alt="Character Thumbnail" id="character_thumbnail" class="float right" />Thank you, <?php echo $character->name; ?>.</p>
-			
-			<p>Please review the information we've been able to source below about your character. If the character we've been able to find is yours, then please follow the instructions below to verify your email address.</p>
-			
-			<table id="form2">
-				<!-- Realm -->
-				<tr>
-					<td class="bold">Realm:</td>
-					<td><?php echo $character->realm; ?></td>
-				</tr>
-				
-				<!-- Race -->
-				<tr>
-					<td class="bold">Race:</td>
-					<td><?php 
-					
-						/* This conditional gets the race from the database, based on the ID number given. */
-						if( $race = getRace($character->race) ) {
-						
-							/* We now have to switch through the two possible genders (male and female) provided by battle.net */
-							switch ( $character->gender ) {
-								
-								/* Male */
-								case 0:
-									?><img src="<?php echo $race->male_icon; ?>" alt="Male Icon" /><?php
-								break;
-								
-								/* Female */
-								case 1:
-									?><img src="<?php echo $race->female_icon; ?>" alt="Female Icon" /><?php
-								break;
-								
-							} /* End Gender Switch */ ?> <?php 
-							
-							/* Print out the race's full name */
-							echo $race->name;
-						
-					} else { 
-						
-						/* This means we've been unable to determine their race */
-						echo 'Unknown'; 
-					
-					} ?></td>
-				</tr>
-				
-				<!-- Class -->
-				<tr>
-					<td class="bold">Class:</td>
-					<td><?php 
-					
-						/* This condition gets the class from the database, based on the ID number given */
-						if( $class = getClass($character->class) ) {
-						
-						/* Print out the icon for their class */
-						?><img src="<?php echo $class->icon_url; ?>" alt="Icon" /> <?php 
-						
-						/* Print out the class' full name */
-						echo $class->name;
-						
-					} else { 
-					
-						/* This means we've been unable to determine their class */
-						echo 'Unknown'; 
-					} ?></td>
-				</tr>
-				
-				<!-- Talents -->
-				<tr>
-					<td class="bold">Specialisations:</td>
-					<td><?php 
-					
-						/* We can print the first spec without any problem at all, as they're always going to have a first spec.
-						 * Frankly if they haven't got a spec (most likely under level 10) the system will automatically kick them out
-						 * and we won't even get this far in the application.
-						 *
-						 * We have a slightly bigger problem first, we need to check if this is the selected spec first of all
-						 * So to do this we need a new conditional that checks for the "selected" attribute. */
-						if( isset($character->talents[0]->selected) ) {
-							 
-							/* If it's dropped into here it means that the first specialisation is currently selected, 
-							 * and we can circle it in bold. */
-							  
-							 ?><span class="bold"><?php echo $character->talents[0]->name; ?></span><?php
-							 
-						} else {
-							 
-							/* If it's dropped into here, it means that this is not his currently selected spec, 
-							 * and we can just print it without the bold */
-							  
-							echo $character->talents[0]->name;
-							 
-						 }
-						 
-						/* Now we have to do a check to see if they have a second spec. */
-						
-						if( isset($character->talents[1]->name) ) {
-							
-							/* If it's dropped into here it means they do have a secondary spec, and we can include that here
-							 * However, it's not just as simple as that, as we have to do another check to see if this one's
-							 * selected or not. */
-							 
-							if( isset($character->talents[1]->selected) ) {
-								
-								/* If it's dropped into here it means that his secondary spec is the currently selected one
-								 * and we can enshrine it in a world of bold. */
-								?><span class="bold"> / <?php echo $character->talents[1]->name; ?></span><?php
-								
-							} else {
-								
-								/* If it's dropped into here, it means that this is not his currently selected spec,
-								 * and we can just print it out normally */
-								
-								echo ' / '. $character->talents[1]->name;
-								
-							}
-							
-						} /* Nothing else to worry about here */
-					?></td>
-				</tr>
-			</table>
-			
 			<form action="/apply/finish" method="post">
+				
 				<input type="hidden" name="realm" value="<?php echo $realm->id; ?>" />
 				<input type="hidden" name="character" value="<?php echo $character->name; ?>" />
 				<input type="hidden" name="email" value="<?php echo $email_address; ?>" />
-				<input type="hidden" name="dob" value="<?php echo $_POST['dob']; ?>" />
-				<input type="hidden" name="country" value="<?php echo $_POST['country']; ?>" />
 				<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
 				<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
 				<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
@@ -233,13 +111,94 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 				<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
 				<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
 				<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
-				<input type="hidden" name="code_verify" value="<?php echo encrypt($code); ?>" />
+				<input type="hidden" name="q4" value="<?php echo $_POST['q4']; ?>" />
+				<input type="hidden" name="code_verify" value="<?php echo encrypt($code); ?>" />	
+			
+				<p><img src="<?php echo $protocol; ?>://eu.battle.net/static-render/eu/<?php echo $character->thumbnail; ?>" alt="Character Thumbnail" id="character_thumbnail" class="float right" />Thank you, <?php echo $character->name; ?>.</p>
 				
+				<p>Please review the information we've been able to source below about your character. If the character we've been able to find is yours, then please select your active spec then follow the instructions below to verify your email address.</p>
+				
+				<table id="form2">
+					<!-- Realm -->
+					<tr>
+						<td class="bold">Realm:</td>
+						<td><?php echo $character->realm; ?></td>
+					</tr>
+					
+					<!-- Race -->
+					<tr>
+						<td class="bold">Race:</td>
+						<td><?php 
+						
+							/* This conditional gets the race from the database, based on the ID number given. */
+							if( $race = getRace($character->race) ) {
+							
+								/* We now have to switch through the two possible genders (male and female) provided by battle.net */
+								switch ( $character->gender ) {
+									
+									/* Male */
+									case 0:
+										?><img src="<?php echo $race->male_icon; ?>" alt="Male Icon" /><?php
+									break;
+									
+									/* Female */
+									case 1:
+										?><img src="<?php echo $race->female_icon; ?>" alt="Female Icon" /><?php
+									break;
+									
+								} /* End Gender Switch */ ?> <?php 
+								
+								/* Print out the race's full name */
+								echo $race->name;
+							
+						} else { 
+							
+							/* This means we've been unable to determine their race */
+							echo 'Unknown'; 
+						
+						} ?></td>
+					</tr>
+					
+					<!-- Class -->
+					<tr>
+						<td class="bold">Class:</td>
+						<td><?php 
+						
+							/* This condition gets the class from the database, based on the ID number given */
+							if( $class = getClass($character->class) ) {
+							
+							/* Print out the icon for their class */
+							?><img src="<?php echo $class->icon_url; ?>" alt="Icon" /> <?php 
+							
+							/* Print out the class' full name */
+							echo $class->name;
+							
+						} else { 
+						
+							/* This means we've been unable to determine their class */
+							echo 'Unknown'; 
+						} ?></td>
+					</tr>
+					
+					<!-- Talents -->
+					<tr>
+						<td class="bold">Active Spec:</td>
+						<td><select name="active_spec">
+							<option value="0"><?php echo $character->talents[0]->name; ?></option><?php
+							if( isset($character->talents[1]->name) ) {
+							?><option value="1"><?php echo  $character->talents[1]->name; ?></option><?php	
+							}
+						?></td>
+					</tr>
+				</table>
+			
 				<h2>Email Verification</h2>
+				
+				<p id="required">= Required</p>
 				
 				<p>We have sent an email with a unique code to the email address you supplied just previously. We need you to enter that code below so that we can validate your email address and contact you with the progress of your application. Enter the code in the box below, and then click Finish.</p>
 				
-				<p><input type="text" name="code" placeholder="XXXXXX" maxlength="6" required="true" /></p>
+				<label for="code" class="required"><p><input type="text" name="code" placeholder="XXXXXX" maxlength="6" required="true" /></p></label>
 				<p><input id="submit" type="submit" value="Finish" /></p>
 				
 			</form><?php
@@ -258,8 +217,6 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 			<form action="/apply/verify" method="post">
 				<input type="hidden" name="realm" value="<?php echo $realm->id; ?>" />
 				<input type="hidden" name="character" value="<?php echo $character->name; ?>" />
-				<input type="hidden" name="dob" value="<?php echo $_POST['dob']; ?>" />
-				<input type="hidden" name="country" value="<?php echo $_POST['country']; ?>" />
 				<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
 				<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
 				<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
@@ -267,10 +224,13 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 				<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
 				<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
 				<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
+				<input type="hidden" name="q4" value="<?php echo $_POST['q4']; ?>" />
 				
 				<p>We can try again if you want, but first we need you to re-type your email address.</p>
 				
-				<p><input type="email" name="email" placeholder="Email Address" required="true" /></p>
+				<p id="required">= Required</p>
+				
+				<label for="email" class="required"><p><input type="email" name="email" placeholder="Email Address" required="true" /></p></label>
 				<p><input id="submit" type="submit" value="Continue"></p>
 				
 			</form><?php
@@ -293,7 +253,15 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 	
 	<form action="/apply/verify" method="post">
 		<input type="hidden" name="email" value="<?php echo $email_address; ?>" />
-		
+		<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
+		<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
+		<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
+		<input type="hidden" name="played_since" value="<?php echo $_POST['played_since']; ?>" />
+		<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
+		<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
+		<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
+		<input type="hidden" name="q4" value="<?php echo $_POST['q4']; ?>" />
+
 		<p class="error">Unfortunately we weren't able to find your character.</p>
 		
 		<p>Please re-type your character's realm and name, paying close attention to ensuring any accents the name has are included.</p>

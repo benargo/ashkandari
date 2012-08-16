@@ -15,10 +15,13 @@ if(isset($_SESSION['account'])) {
 }
 
 // Set the page title
-$page_title = "Verify your Character";
+$page_title = "Activate Your Account";
 
 // Require the page header
 require(PATH.'framework/head.php');
+
+// Set the email address
+$email = $_POST['email'];
 
 /* Now we can get the character from the database */
 $character = new character($_POST['character']);
@@ -35,7 +38,7 @@ if( $character->verify($_POST['slot1'], $_POST['slot2']) ) {
 	$db = db();
 	
 	/* Run the database query to insert the account */ 
-	$db->query("INSERT INTO `accounts` (`email`, `password`, `activation_code`, `primary_character`) VALUES ('". $_POST['email'] ."', '". $_POST['password'] ."', '$code', ". $character->id .")");
+	$db->query("INSERT INTO `accounts` (`email`, `password`, `activation_code`, `primary_character`) VALUES ('$email', '". $_POST['password'] ."', '$code', ". $character->id .")");
 	
 	/* Get the account ID from the previous query */
 	$account_id = $db->insert_id;
@@ -84,7 +87,7 @@ if( $character->verify($_POST['slot1'], $_POST['slot2']) ) {
 	$headers .= "From: Ashkandari <account@ashkandari.com>\r\n";
 	
 	// Mail it
-	if( mail($_POST['email'], $subject, $message, $headers) ) {
+	if( mail($email, $subject, $message, $headers) ) {
 		
 		/* Now we can print out a success message */
 		?><h1>Activate your Account</h1>
@@ -106,34 +109,32 @@ if( $character->verify($_POST['slot1'], $_POST['slot2']) ) {
 } else {
 	
 	/* If it's dropped into here it means that this particular character has already been claimed */
-	?><h1>Unable to Claim Character</h1>
 	
-	<p>Sorry, but <?php echo $character->name; ?> has already been claimed and verified as being owned by somebody else. Please try entering another character name and trying again.</p>
+	/* Declare the two slots we're going to use for the verification */
+	$slot1 = getRandomItemSlot();
+	$slot2 = getRandomItemSlot($slot1->name);
 	
-	<form action="/account/register/verify" method="post">
+	?><h1>Unable to Verify Character</h1>
 	
-		<input type="hidden" name="email" value="<?php echo $_POST['email']; ?>" />
+	<p>Sorry, but we were unable to verify that you own this character. <?php echo $character->name; ?>.</p>
+	
+	<form action="/account/register/activate" method="post">
+	
+		<input type="hidden" name="email" value="<?php echo $email; ?>" />
 		<input type="hidden" name="password" value="<?php echo $_POST['password']; ?>" />
+		<input type="hidden" name="character" value="<?php echo $character->id; ?>" />
+		<input type="hidden" name="slot1" value="<?php echo $slot1->id; ?>" />
+		<input type="hidden" name="slot2" value="<?php echo $slot2->id; ?>" />
 		
-		<p>Please retype your character name, including any accents. The system should recognise your characters name and just select it from the list that forms.</p>
-		<p><select name="character" id="characters">
-			<option value=""> </option><?php
-			
-			/* Get all the characters */
-			$characters = character::getAllCharacters();
-				
-			while( $char = $characters->fetch_object() ) {
-					
-				?><option value="<?php echo $char->id; ?>"><?php echo $char->name; ?></option><?php
+		<p>In order to try again we need you to remove two different pieces of gear from your character:</p>
+		
+		<ul>
+			<li class="bold"><?php echo $slot1->name; ?></li>
+			<li class="bold"><?php echo $slot2->name; ?></li>
+		</ul>
 						
-			}
-				
-			?></select></p>
-			
-		<p>If your character is not showing up correctly, it may mean the guild roster is slightly out of date. The roster is automatically updated every morning at 23:00 UTC so please try again after that.</p>
-	
-		<p>When you're ready, click Continue. It may take a few minutes to fetch and verify your character from Battle.net, so please be patient and do not refresh the page.</p>
-		<p><input id="submit" type="submit" value="Continue" /></p>
+		<p>Once you have removed those two pieces of gear, we need you to completely log out of your World of Warcraft account (i.e. shut down the game client altogether). Once you have done that you can click "Verify" below and move on to the final stage of the application process.</p>
+		<p><input id="submit" type="submit" value="Verify" /></p>
 	
 	</form><?php
 	

@@ -69,6 +69,16 @@ if( isset($_SESSION['account']) ) {
 				case '/account/forums/signature.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
 					break;
+					
+				case '/forums/application.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
+					break;
+				
+				case '/forums/post/edit.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
+					break;
 				
 			}
 			
@@ -79,6 +89,7 @@ if( isset($_SESSION['account']) ) {
 				case '/apply/index.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/apply.js"></script>';
 					break;
 					
@@ -115,6 +126,19 @@ if( isset($_SESSION['account']) ) {
 				case '/account/forums/signature.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					break;
+					
+				case '/forums/application.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
+					
+				case '/forums/post/edit.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
 				
 			}
 		?>
@@ -138,7 +162,7 @@ if( isset($_SESSION['account']) ) {
 						<nav id="primary">
 							<ul><?php
 							echo '<li><a href="/" title="Home">Home</a></li>';
-							echo '<li><a href="/news/" title="News">News</a></li>';
+							echo '<li><a href="/epgp/" title="EPGP Standings">EPGP</a></li>';
 							echo '<li><a href="/roster/" title="Guild Roster">Guild Roster</a></li>';
 							echo '<li><a href="/forums/" title="Forums">Forums</a></li>';
 							echo '<li><a href="/teamspeak/" title="TeamSpeak">TeamSpeak</a></li>';
