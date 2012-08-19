@@ -141,6 +141,28 @@ class application {
 		
 	}
 	
+	/* Verify their ownership */
+	public static function verify($realm_id, $name, $slot1, $slot2) {
+	
+		/* Get the realm */
+		$realm = getRealm($realm_id);
+		
+		$bnet_data = json_decode(file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $name ."?fields=items"));
+		
+		if( empty($bnet_data->items->$slot1) && empty($bnet_data->items->$slot2) ) {
+			
+			/* If it's dropped into here it means that both slots are empty */
+			return true;
+			
+		} else {
+			
+			/* Else return false */
+			return false;
+			
+		}
+		
+	}
+	
 	/* Get their realm */
 	public function getRealm() {
 		
@@ -256,23 +278,6 @@ class application {
 		
 		/* And return it */
 		return $points;
-		
-	}
-	
-	/* Get their avatar */
-	public function getAvatar() {
-		
-		/* Get their battle.net data */
-		$bnet_data = $this->getBattleNetData();
-		
-		/* Get the global protocol */
-		global $protocol;
-		
-		/* Get their thumbnail and append it onto a base string */
-		$thumbnail = $protocol ."://eu.battle.net/static-render/eu/". $bnet_data->thumbnail;
-		
-		/* And return it */
-		return $thumbnail;
 		
 	}
 	

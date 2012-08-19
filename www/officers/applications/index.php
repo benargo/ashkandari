@@ -11,7 +11,7 @@ if( isset($_SERVER['HTTPS']) ) {
 }
 
 // Require the framework files
-require_once('../../framework/config.php');
+require_once('../../../framework/config.php');
 
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {

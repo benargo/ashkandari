@@ -28,6 +28,7 @@ require(PATH.'framework/head.php');
 /* Create a new account from the provided ID. */
 $tmp_account = new account($_GET['id']);
 
+/* Activate the account */
 $activated = $tmp_account->activate($_GET['code']);
 
 /* Run the activation function */

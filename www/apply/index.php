@@ -54,7 +54,7 @@ require(PATH.'framework/head.php');
 	<label for="email" class="required"><p>3. What is your email address?</p>
 	<input type="email" name="email" placeholder="Email Address" required="true"></label>
 	
-	<p><small>Your email address is required so that we can contact you with the progress of your application. Your email address is stored in our databases and officers cannot see it directly. For further information please read our <a href="/legal/privacy">privacy policy</a>.</small></p>
+	<p><small>Your email address is required so that we can contact you with the progress of your application and will be validated during the next step. Your email address is stored in our databases and officers cannot see it directly. For further information please read our <a href="/legal/privacy">privacy policy</a>.</small></p>
 	
 	<p>4. <input type="checkbox" name="english" /> Do you speak English?</p>
 	

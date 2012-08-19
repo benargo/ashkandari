@@ -1,4 +1,4 @@
-<?php /* account/register/index.php */
+w<?php /* account/register/index.php */
 
 /* 
  * This is the page where guild members can register and create an account

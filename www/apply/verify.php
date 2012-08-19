@@ -182,7 +182,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 					
 					<!-- Talents -->
 					<tr>
-						<td class="bold">Active Spec:</td>
+						<td class="bold">Primary Spec:</td>
 						<td><select name="active_spec">
 							<option value="0"><?php echo $character->talents[0]->name; ?></option><?php
 							if( isset($character->talents[1]->name) ) {
@@ -191,7 +191,36 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 						?></td>
 					</tr>
 				</table>
+				
+				<form action="/apply/verify" method="post"><?php
+				
+				/* Declare the two slots we're going to use for the verification */
+				$slot1 = getRandomItemSlot();
+				$slot2 = getRandomItemSlot($slot1->name);
+				
+				?><input type="hidden" name="realm" value="<?php echo $realm->id; ?>" />
+				<input type="hidden" name="character" value="<?php echo $character->name; ?>" />
+				<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
+				<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
+				<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
+				<input type="hidden" name="played_since" value="<?php echo $_POST['played_since']; ?>" />
+				<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
+				<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
+				<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
+				<input type="hidden" name="q4" value="<?php echo $_POST['q4']; ?>" />
+				<input type="hidden" name="slot1" value="<?php echo $slot1->id; ?>" />
+				<input type="hidden" name="slot2" value="<?php echo $slot2->id; ?>" />
+				
+				<p>In order to prove that you own the character listed above, we need you to remove the following two pieces of gear from your character and check that you have removed those two pieces. To do this you will need access to your World of Warcraft installation and be able to log in and out.</p>
+				
+				<p>So, the items we need you to remove are:</p>
+		
+				<ul>
+					<li class="bold"><?php echo $slot1->name; ?></li>
+					<li class="bold"><?php echo $slot2->name; ?></li>
+				</ul>
 			
+				<p>Once you have removed those two pieces of gear, we need you to completely log out of your World of Warcraft account (i.e. shut down the game client altogether).</p>			
 				<h2>Email Verification</h2>
 				
 				<p>We have sent an email with a unique code to the email address you supplied just previously. We need you to enter that code below so that we can validate your email address and contact you with the progress of your application. Enter the code in the box below, and then click Finish.</p>
@@ -212,17 +241,8 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 			
 			<p>Your email address is required so that we can contact you with the progress of your application. Your email address is stored in our databases and officers cannot see it directly. For further information please read our <a href="/legal/privacy">privacy policy</a>.</p>
 			
-			<form action="/apply/verify" method="post">
-				<input type="hidden" name="realm" value="<?php echo $realm->id; ?>" />
-				<input type="hidden" name="character" value="<?php echo $character->name; ?>" />
-				<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
-				<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
-				<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
-				<input type="hidden" name="played_since" value="<?php echo $_POST['played_since']; ?>" />
-				<input type="hidden" name="q1" value="<?php echo $_POST['q1']; ?>" />
-				<input type="hidden" name="q2" value="<?php echo $_POST['q2']; ?>" />
-				<input type="hidden" name="q3" value="<?php echo $_POST['q3']; ?>" />
-				<input type="hidden" name="q4" value="<?php echo $_POST['q4']; ?>" />
+			
+
 				
 				<p>We can try again if you want, but first we need you to re-type your email address.</p>
 				

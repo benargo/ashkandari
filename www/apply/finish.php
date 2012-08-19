@@ -27,14 +27,14 @@ $db = db();
 /* Secondly, we need to get the values from the form */
 $email = decrypt($_POST['email']);
 $dob = strtotime($_POST['dob']);
-if(is_null($_POST['english'])) { $english = 0; } else { $english = 1; }
-if(is_null($_POST['teamspeak'])) { $ts = 0; } else { $ts = 1; }
-if(is_null($_POST['microphone'])) { $microphone = 0; } else { $microphone = 1; }
+if(empty($_POST['english'])) { $english = 0; } else { $english = 1; }
+if(empty($_POST['teamspeak'])) { $ts = 0; } else { $ts = 1; }
+if(empty($_POST['microphone'])) { $microphone = 0; } else { $microphone = 1; }
 $date = time();
 $followup = date('jS F', time()+(3*24*60*60));
 
 /* Thirdly, we need to verify that the code that we passed through the form was correct */
-if( $_POST['code'] == decrypt($_POST['code_verify']) ) {
+if($_POST['code'] == decrypt($_POST['code_verify']) && application::verify($_POST['realm'], $_POST['character'], $_POST['slot1'], $_POST['slot2'])) {
 
 	/* Run the database query to insert this all into the applications database */
 	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `english`, `teamspeak`, `microphone`, `played_since`, `q1`, `q2`, `q3`, `q4`, `active_spec`, `received_date`) VALUES ( '". $db->real_escape_string($_POST['character']) ."', ". $_POST['realm'] .", '". $db->real_escape_string($email) ."', $english, $ts, $microphone, ". $_POST['played_since'] .", '". $db->real_escape_string($_POST['q1']) ."', '". $db->real_escape_string($_POST['q2']) ."', '". $db->real_escape_string($_POST['q3']) ."', '". $db->real_escape_string($_POST['q4']) ."', ". $_POST['active_spec'] .", $date )") or die($db->error);
