@@ -45,8 +45,19 @@ require(PATH.'framework/head.php');
 			/* Create a new forum thread object */
 			$board = new forum_board($b->id);
 			
+			/* Check if there's an account */
+			if(isset($account)) {
+				
+				$account_id = $account->id;
+				
+			} else {
+				
+				$account_id = NULL;
+				
+			}
+			
 			/* Check if they're authorised to view this board */
-			if($board->isAuthorised($account->id)) {
+			if($board->isAuthorised($account_id)) {
 			
 				?><tr>
 				

@@ -210,11 +210,19 @@ class forum_board {
 	public function isAuthorised($account_id) {
 		
 		/* Generate the account */
-		$account = new account($account_id);
+		if(isset($account_id)) {
+			
+			$account = new account($account_id);
+			
+			/* Get this account's officer status */
+			$officer_status = $account->isOfficer();
+			
+		} else {
 		
-		/* Get this account's officer status */
-		$officer_status = $account->isOfficer();
+			$officer_status = false;
 		
+		}
+			
 		/* Check if this board is for officers only */
 		if($this->isOfficerOnly() && $officer_status == true) {
 			
