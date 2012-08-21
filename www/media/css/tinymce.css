@@ -21,6 +21,10 @@
 	font-size: 10px;
 }
 
+.mceIframeContainer {
+	height: 200px;
+}
+
 .mceEditor pre {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10px;
