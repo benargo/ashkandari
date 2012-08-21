@@ -121,7 +121,7 @@ while($p = $posts->fetch_object()) {
 	
 	?><section class="reply" id="<?php echo $post->id; ?>"><hr />
 		<div class="character">
-			<p class="thumb<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
+			<p class="thumb<?php if(isset($account) { if($account->isModerator()) { echo " moderator"; } if($account->isOfficer()) { echo " officer"; } } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
 			
 			<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $character->name; ?>" class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></a></p>
 			
@@ -140,11 +140,15 @@ while($p = $posts->fetch_object()) {
 		</div>
 		
 		<div class="body">
-			<?php if($author->id == $account->id || $account->isModerator() || $account->isOfficer()) {
+			<?php if(isset($account)) {
+			
+				if($author->id == $account->id || $account->isModerator() || $account->isOfficer()) {
 				
 				?><div class="float right"><form action="/forums/edit" method="post"><input type="hidden" name="post_id" value="<?php echo $post->id; ?>" />[<input type="submit" value="Edit" class="text" />]</form>
 				<form action="/forums/delete" method="post"><input type="hidden" name="post_id" value="<?php echo $post->id; ?>" />[<input type="submit" value="Delete" class="text" />]</form></div><?php
-				
+					
+				}
+					
 			} 
 			
 			?><div class="body_content<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><?php echo $post->body; ?></div><?php
