@@ -19,10 +19,6 @@
 	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
 }
 
-.mceIframeContainer * {
-	font: 1.5em Helvetica, Arial, Verdana, sans-serif !important;
-}
-
 .mceEditor pre {
 	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
 }
