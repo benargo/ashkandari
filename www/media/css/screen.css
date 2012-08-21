@@ -461,11 +461,11 @@ input[type=button].text:hover, input[type=submit].text:hover {
 	padding: 0px;
 }
 
-.bold {
+strong, .bold {
 	font-weight: bold !important;
 }
 
-.italics {
+em, .italics {
 	font-style: italic !important;
 }
 
