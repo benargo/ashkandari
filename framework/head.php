@@ -68,6 +68,19 @@ if( isset($_SESSION['account']) ) {
 					
 				case '/forums/application.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';	
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/tinymce.css" />';
+					break;
+					
+				case '/forums/thread/new.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/tinymce.css" />';
+					break;
+				
+				case '/forums/thread/view.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/tinymce.css" />';
+					break;
+					
+				case '/forums/post/edit.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/tinymce.css" />';
 					break;
 				
 			}
