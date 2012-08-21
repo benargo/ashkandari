@@ -66,28 +66,8 @@ if( isset($_SESSION['account']) ) {
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/account.css" />';
 					break;
 					
-				case '/account/forums/signature.php':
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
-					break;
-					
 				case '/forums/application.php':
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
-					break;
-					
-				case '/forums/thread/new.php':
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
-					break;
-					
-				case '/forums/thread/view.php':
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
-					break;
-				
-				case '/forums/post/edit.php':
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
-					echo '<link type="text/css" rel="stylesheet" href="/media/css/wysiwyg/jquery.wysiwyg.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';	
 					break;
 				
 			}
@@ -135,30 +115,30 @@ if( isset($_SESSION['account']) ) {
 					
 				case '/account/forums/signature.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
-					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					break;
 					
 				case '/forums/application.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
-					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 				
 				case '/forums/thread/new.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
-					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 					
 				case '/forums/thread/view.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
-					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 					
 				case '/forums/post/edit.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
-					echo '<script type="text/javascript" src="/media/scripts/jquery.wysiwyg.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 				
