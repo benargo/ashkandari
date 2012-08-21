@@ -50,7 +50,7 @@ if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters`
 	<?php
 	
 		/* Create a basic priority number */
-		$priority = 1;
+		$priority = 0;
 
 		/* In here we can loop through each of the members */
 		while($member = $roster->fetch_object()) {
