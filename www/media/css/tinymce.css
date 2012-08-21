@@ -1,7 +1,6 @@
 .mceEditor body {
 	background-color: #FFFFFF;
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
 	scrollbar-3dlight-color: #F0F0EE;
 	scrollbar-arrow-color: #676662;
 	scrollbar-base-color: #F0F0EE;
@@ -19,10 +18,6 @@
 .mceEditor td {
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 10px;
-}
-
-.mceIframeContainer {
-	height: 200px;
 }
 
 .mceEditor pre {
