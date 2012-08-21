@@ -13,7 +13,7 @@
 }
 
 .mceEditor tr.mceFirst {
-	background-color: #FFFFFF;
+	background-color: #FFFFFF !important;
 }
 
 .mceEditor td {
