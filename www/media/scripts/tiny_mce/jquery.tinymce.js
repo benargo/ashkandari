@@ -15,6 +15,7 @@ $().ready(function() {
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
 		theme_advanced_resizing : true,
+		height : "480",
 
 		// Example content CSS (should be your site CSS)
 		content_css : "/media/css/tinymce.css",
