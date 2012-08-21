@@ -31,7 +31,9 @@ $page_title = $thread->title ." - ". $board->title;
 require(PATH.'framework/head.php');
 
 /* Check if we should show the moderation functions */
-if($account->isModerator() || $account->isOfficer()) {
+if(isset($account)) {
+
+	if($account->isModerator() || $account->isOfficer()) {
 	
 	?><div class="float right">
 	
@@ -70,6 +72,8 @@ if($account->isModerator() || $account->isOfficer()) {
 		</form>
 	
 	</div><?php
+	
+	}
 	
 }
 
@@ -185,54 +189,58 @@ while($p = $posts->fetch_object()) {
 }
 
 /* Check if the thread is locked */
-if($thread->isNotLocked() || $account->isOfficer() || $account->isModerator()) {
+if(isset($account)) {
 	
-	$primary_class = $primary_character->getClass();
-	$primary_race = $primary_character->getRace();
-	$primary_rank = $primary_character->getRank(); 
+	if($thread->isNotLocked() || $account->isOfficer() || $account->isModerator()) {
 	
-	?><section class="reply"><hr />
-		<div class="character">
-			<p class="thumb<?php if($primary_character->isModerator()) { echo " moderator"; } if($primary_character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character/<?php echo $primary_character->name; ?>" class="noborder"><img src="<?php echo $primary_character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
-			
-			<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $primary_character->name; ?>" class="<?php echo $primary_class->slug; ?>"><?php echo $primary_character->name; ?></a></p>
-			
-			<p class="<?php echo $primary_class->slug; ?>"><?php echo $primary_character->level; ?> <?php echo $primary_race->name; ?> <?php echo $primary_class->name; ?></p>
-			
-			<p><a href="/roster/rank/<?php echo $primary_rank->slug; ?>"><?php echo $primary_rank->long_name; ?></a></p>
-			
-			<?php if($account->isModerator() && !$account->isOfficer()) {
+		$primary_class = $primary_character->getClass();
+		$primary_race = $primary_character->getRace();
+		$primary_rank = $primary_character->getRank(); 
+		
+		?><section class="reply"><hr />
+			<div class="character">
+				<p class="thumb<?php if($primary_character->isModerator()) { echo " moderator"; } if($primary_character->isOfficer()) { echo " officer"; } ?>"><a href="/roster/character/<?php echo $primary_character->name; ?>" class="noborder"><img src="<?php echo $primary_character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
 				
-				?><p class="moderator">Forum Moderator</p><?php
+				<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $primary_character->name; ?>" class="<?php echo $primary_class->slug; ?>"><?php echo $primary_character->name; ?></a></p>
 				
-			} ?>
-			
-			<p><?php echo $primary_character->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement Points" class="noborder" /></p>
-		</div>
-		<div class="body">
-			<h2>Reply to Thread</h2>
-			
-			<form action="/forums/reply" method="post">
-			
-				<input type="hidden" name="thread" value="<?php echo $thread->id; ?>" />
+				<p class="<?php echo $primary_class->slug; ?>"><?php echo $primary_character->level; ?> <?php echo $primary_race->name; ?> <?php echo $primary_class->name; ?></p>
 				
-				<p><textarea name="body" class="tinymce" rows="10" required="true"></textarea></p>
-				<p><input type="submit" value="Post Reply" /></p>
-			
-			</form>
-			<script type="text/javascript"><!--
-			(function($) {
-				$(document).ready(function() {
-					$('textarea').autosize();  
-				});
-			})(jQuery);
-			--></script>
-		</div>
-	</section><?php
-	
-} else {
-	
-	?><p class="info">This thread is locked and replies cannot be posted.</p><?php
+				<p><a href="/roster/rank/<?php echo $primary_rank->slug; ?>"><?php echo $primary_rank->long_name; ?></a></p>
+				
+				<?php if($account->isModerator() && !$account->isOfficer()) {
+					
+					?><p class="moderator">Forum Moderator</p><?php
+					
+				} ?>
+				
+				<p><?php echo $primary_character->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement Points" class="noborder" /></p>
+			</div>
+			<div class="body">
+				<h2>Reply to Thread</h2>
+				
+				<form action="/forums/reply" method="post">
+				
+					<input type="hidden" name="thread" value="<?php echo $thread->id; ?>" />
+					
+					<p><textarea name="body" class="tinymce" rows="10" required="true"></textarea></p>
+					<p><input type="submit" value="Post Reply" /></p>
+				
+				</form>
+				<script type="text/javascript"><!--
+				(function($) {
+					$(document).ready(function() {
+						$('textarea').autosize();  
+					});
+				})(jQuery);
+				--></script>
+			</div>
+		</section><?php
+		
+	} else {
+		
+		?><p class="info">This thread is locked and replies cannot be posted.</p><?php
+		
+	}
 	
 }
 

@@ -10,13 +10,7 @@ if( isset($_SESSION['account']) ) {
 	$account = new account($_SESSION['account']);
 	$primary_character = $account->getPrimaryCharacter();
 	
-} else {
-	
-	$account = null;
-	$primary_character = null;
-	
 }
-
 
 ?>
 <!DOCTYPE html>
