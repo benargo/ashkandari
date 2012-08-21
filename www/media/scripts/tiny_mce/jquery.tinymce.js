@@ -14,7 +14,7 @@ $().ready(function() {
 		theme_advanced_buttons2 : "bullist,numlist,|,outdent,indent,blockquote,|,link,unlink,anchor,image,|,help,code",
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
-		body_class : "wysiwyg",
+		height: "480px",
 
 		// Example content CSS (should be your site CSS)
 		content_css : "/media/css/tinymce.css",
