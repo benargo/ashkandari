@@ -11,7 +11,7 @@ $().ready(function() {
 		plugins: "autolink, emotions, lists, media, table",
 
 		// Example content CSS (should be your site CSS)
-		content_css : "/media/css/screen.css",
+		content_css : "/media/css/tinymce.css",
 
 		// Drop lists for link/image/media/template dialogs
 		template_external_list_url : "lists/template_list.js",
