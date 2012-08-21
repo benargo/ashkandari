@@ -461,14 +461,6 @@ input[type=button].text:hover, input[type=submit].text:hover {
 	padding: 0px;
 }
 
-strong, .bold {
-	font-weight: bold !important;
-}
-
-em, .italics {
-	font-style: italic !important;
-}
-
 .text.center {
 	text-align: center;
 }
@@ -799,4 +791,12 @@ footer a {
 
 footer a:hover {
 	text-decoration: underline;
+}
+
+strong, .bold {
+	font-weight: 700 !important;
+}
+
+em, .italics {
+	font-style: italic !important;
 }
