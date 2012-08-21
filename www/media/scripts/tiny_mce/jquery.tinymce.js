@@ -7,6 +7,8 @@ $().ready(function() {
 
 		// General options
 		theme : "simple",
+		
+		plugins: "autolink, emotions, lists, media, table",
 
 		// Example content CSS (should be your site CSS)
 		content_css : "/media/css/screen.css",
