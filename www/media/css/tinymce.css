@@ -1,0 +1,109 @@
+.mceEditor body {
+	background-color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	scrollbar-3dlight-color: #F0F0EE;
+	scrollbar-arrow-color: #676662;
+	scrollbar-base-color: #F0F0EE;
+	scrollbar-darkshadow-color: #DDDDDD;
+	scrollbar-face-color: #E0E0DD;
+	scrollbar-highlight-color: #F0F0EE;
+	scrollbar-shadow-color: #F0F0EE;
+	scrollbar-track-color: #F5F5F5;
+}
+
+.mceEditor tr.mceFirst {
+	background-color: #FFFFFF;
+}
+
+.mceEditor td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.mceEditor pre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.mceEditor .example1 {
+	font-weight: bold;
+	font-size: 14px
+}
+
+.mceEditor .example2 {
+	font-weight: bold;
+	font-size: 12px;
+	color: #FF0000
+}
+
+.mceEditor .tablerow1 {
+	background-color: #BBBBBB;
+}
+
+.mceEditor thead {
+	background-color: #FFBBBB;
+}
+
+.mceEditor tfoot {
+	background-color: #BBBBFF;
+}
+
+.mceEditor th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/* Basic formats */
+
+.mceEditor .bold {
+	font-weight: bold;
+}
+
+.mceEditor .italic {
+	font-style: italic;
+}
+
+.mceEditor .underline {
+	text-decoration: underline;
+}
+
+/* Global align classes */
+
+.mceEditor .left {
+	text-align: inherit;
+}
+
+.mceEditor .center {
+	text-align: center;
+}
+
+.mceEditor .right {
+	text-align: right;
+}
+
+.mceEditor .full {
+	text-align: justify
+}
+
+/* Image and table specific aligns */
+
+.mceEditor img.left, .mceEditor table.left {
+	float: left;
+	text-align: inherit;
+}
+
+.mceEditor img.center, .mceEditor table.center {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: inherit;
+}
+
+.mceEditor img.center {
+	display: block;
+}
+
+.mceEditor img.right, .mceEditor table.right {
+	float: right;
+	text-align: inherit;
+}
