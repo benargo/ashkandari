@@ -12,8 +12,8 @@
 	scrollbar-track-color: #F5F5F5;
 }
 
-.mceEditor #mce_0_toolbargroup {
-	background-color: #FFFFFF;
+.mceEditor tr {
+	background-color: #FFFFFF !important;
 }
 
 .mceEditor td {
