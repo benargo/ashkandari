@@ -10,8 +10,8 @@ $().ready(function() {
 		plugins : "autolink,emotions,lists,style,directionality,media,table,advlist",
 		
 		// Theme options
-		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect",
-		theme_advanced_buttons2 : "bullist,numlist,|,tablecontrols,|,outdent,indent,blockquote,|,link,unlink,anchor,image,emotions,|,help,code",
+		theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect,|,help",
+		theme_advanced_buttons2 : "bullist,numlist,|,tablecontrols,|,outdent,indent,blockquote,|,link,unlink,anchor,image,emotions,|,code",
 		theme_advanced_toolbar_location : "top",
 		theme_advanced_toolbar_align : "left",
 		height: "480px",

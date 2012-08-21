@@ -32,12 +32,16 @@ RewriteRule ^roster/race/([a-zA-Z\-]+)$ roster/race.php?slug=$1 [NC,L]
 RewriteRule ^roster/class/([a-zA-Z\-]+)$ roster/class.php?slug=$1 [NC,L]
 RewriteRule ^roster/rank/([a-zA-Z\-\/]+)$ roster/rank.php?slug=$1 [NC,L]
 
+RewriteRule ^applications/$ forums/board.php?id=1 [NC,L]
+RewriteRule ^applications/([0-9]+)$ forums/application.php?id=$1 [NC,L]
+
+RewriteRule ^rules$ rules/ [NC,R]
+RewriteRule ^forums/thread/12$ rules/ [NC,R]
+RewriteRule ^rules/$ forums/thread/view.php?id=12 [NC,L]
+
 RewriteRule ^forums/1$ applications/ [NC,R]
 RewriteRule ^forums/([0-9]+)$ forums/board.php?id=$1 [NC,L]
 RewriteRule ^forums/thread/([0-9]+)$ forums/thread/view.php?id=$1 [NC,L]
-
-RewriteRule ^applications/$ forums/board.php?id=1 [NC,L]
-RewriteRule ^applications/([0-9]+)$ forums/application.php?id=$1 [NC,L]
 
 RewriteRule ^forums/new$ forums/thread/new.php [NC,L]
 RewriteRule ^forums/lock$ forums/thread/lock.php [NC,L]
