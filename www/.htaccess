@@ -27,7 +27,7 @@ RewriteRule ^account/email/preferences$ account/email/set-preferences.php [NC,L]
 RewriteRule ^account/forums/$ account/forums/signature [R,NC]
 RewriteRule ^account/forums/signature$ account/forums/signature.php [NC,L]
 
-RewriteRule ^epgp/$ roster/epgp [NC,R]
+RewriteRule ^epgp(\/)?$ roster/epgp [NC,R]
 
 RewriteRule ^roster/character/(.+)$ roster/character.php?name=$1 [NC,L]
 RewriteRule ^roster/race/([a-zA-Z\-]+)$ roster/race.php?slug=$1 [NC,L]
