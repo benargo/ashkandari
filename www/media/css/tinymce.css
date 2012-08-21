@@ -11,10 +11,6 @@
 	scrollbar-track-color: #F5F5F5;
 }
 
-.wysiwyg {
-	height: 480px !important;
-}
-
 .mceEditor tr {
 	background-color: transparent !important;
 }
