@@ -20,7 +20,7 @@
 }
 
 .mceIframeContainer * {
-	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
+	font: 1.5em Helvetica, Arial, Verdana, sans-serif !important;
 }
 
 .mceEditor pre {
