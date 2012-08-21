@@ -61,14 +61,7 @@ if(!$board->isLocked() || $account->isOfficer() || $account->isModerator()) {
 		
 		<p class="text center"><input type="submit" value="Create Thread" /></p>
 	
-	</form>
-	<script type="text/javascript"><!--
-	(function($) {
-		$(document).ready(function() {
-			$('textarea').autosize();  
-		});
-	})(jQuery);
-	--></script><?php
+	</form><?php
 	
 } else {
 
