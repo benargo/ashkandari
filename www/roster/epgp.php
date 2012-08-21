@@ -56,7 +56,7 @@ if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters`
 		while($member = $roster->fetch_object()) {
 		
 			/* Increment the priority */
-			$priority = $priority++;
+			$priority = $priority + 1;
 		
 			$character = new character($member->id);
 			$race = $character->getRace();
