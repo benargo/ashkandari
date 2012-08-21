@@ -16,9 +16,22 @@ $raw_epgp = $_POST['epgp'];
 /* Decode the JSON */
 $epgp = json_decode($raw_epgp);
 
-/* And print it out raw */
-print_r($epgp);
-exit;
+/* Now go through each of the characters */
+foreach($epgp->roster as $entry) {
+	
+	/* Get the character ID */
+	$character_id = character::getCharacterByName($entry[0]);
+	
+	/* Create the character object */
+	$character = new character($character_id);
+	
+	/* Set the EP */
+	$character->setEP($entry[1]);
+	
+	/* Set the GP */
+	$character-setGP($entry[2]);
+	
+}
 
 /* Return to the thread */
 header("Location: /officers/");

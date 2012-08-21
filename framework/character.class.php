@@ -15,6 +15,8 @@ class character {
 	public $achievements;
 	private $rank;
 	public $thumbnail;
+	public $ep;
+	public $gp;
 	
 	public function __construct($character_id) {
 		
@@ -45,6 +47,8 @@ class character {
 			$this->achievements = $obj->achievementPoints;
 			$this->rank = $obj->rank;
 			$this->thumbnail = $obj->thumbnail_url;
+			$this->ep = $obj->ep;
+			$this->gp = $obj->gp;
 		
 			// And finally return out true
 			return true;
@@ -388,6 +392,44 @@ class character {
 		}
 		
 		return false;
+		
+	}
+	
+	public function setEP($new_ep) {
+		
+		/* First, set it in this instance */
+		$this->ep = $new_ep;
+		
+		/* Create a database */
+		$db = db();
+		
+		/* Update the database */
+		$db->query("UPDATE `characters` SET `ep` = $new_ep WHERE `id` = ". $this->id);
+		
+		/* Close the database */
+		$db->close();
+		
+		/* Return true */
+		return true;
+		
+	}
+	
+	public function setGP($new_gp) {
+		
+		/* First, set it in this instance */
+		$this->gp = $new_gp;
+		
+		/* Create a database */
+		$db = db();
+		
+		/* Update the database */
+		$db->query("UPDATE `characters` SET `gp` = $new_gp WHERE `id` = ". $this->id);
+		
+		/* Close the database */
+		$db->close();
+		
+		/* Return true */
+		return true;
 		
 	}
 	
