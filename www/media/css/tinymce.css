@@ -16,13 +16,11 @@
 }
 
 .mceEditor td {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
 }
 
 .mceEditor pre {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 10px;
+	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
 }
 
 .mceEditor .example1 {
@@ -49,8 +47,7 @@
 }
 
 .mceEditor th {
-	font-family: Verdana, Arial, Helvetica, sans-serif;
-	font-size: 13px;
+	font: 1.5em Helvetica, Arial, Verdana, sans-serif;
 }
 
 /* Basic formats */
