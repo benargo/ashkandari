@@ -8,13 +8,6 @@ if( isset($_SERVER['HTTPS']) ) {
 // Require the head of the page
 require_once('../../framework/config.php');
 
-// Check if we're already logged in
-if(empty($_SESSION['account'])) {
-	
-	header("Location: https://ashkandari.com/account/login?ref=". $_SERVER['REQUEST_URI']);
-	
-}
-
 /* Get the board we want */
 $board = new forum_board($_GET['id']);
 
@@ -24,7 +17,9 @@ $page_title = $board->title;
 require(PATH.'framework/head.php');
 
 /* Check if this board is locked */
-if($board->canCreateThread($account->id)) {
+if(isset($account)) {
+
+	if($board->canCreateThread($account->id)) {
 	
 ?><!-- Start new thread button -->
 
@@ -35,7 +30,9 @@ if($board->canCreateThread($account->id)) {
 	<input type="submit" value="New Topic" class="float right" />
 
 </form><?php
-
+	
+	}
+	
 } ?>
 
 <!-- Board title -->

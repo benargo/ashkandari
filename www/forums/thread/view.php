@@ -8,13 +8,6 @@ if( isset($_SERVER['HTTPS']) ) {
 // Require the head of the page
 require_once('../../../framework/config.php');
 
-// Check if we're already logged in
-if(empty($_SESSION['account'])) {
-	
-	header("Location: https://ashkandari.com/account/login?ref=". $_SERVER['REQUEST_URI']);
-	
-}
-
 /* Get the new forum thread */
 $thread = new forum_thread($_GET['id']);
 
