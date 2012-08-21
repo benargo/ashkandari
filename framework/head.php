@@ -106,6 +106,26 @@ if( isset($_SESSION['account']) ) {
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
+				case '/roster/race.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
+					break;
+					
+				case '/roster/class.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
+					break;
+					
+				case '/roster/rank.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
+					break;
+					
+				case '/roster/epgp.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
+					break;
+					
 				case '/account/register/index.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
