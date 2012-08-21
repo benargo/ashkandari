@@ -36,7 +36,7 @@ if($account->isOfficer()) {
 
 <p>You can update the EPGP standings by posting the content from the EPGP addon here.</p>
 
-<form action="/officers/epgp/update.php" method="post">
+<form action="https://ashkandari.com/officers/epgp/update.php" method="post">
 
 	<p><textarea name="epgp" rows="5"></textarea></p>
 	<p><input type="submit" value="Update" /></p>

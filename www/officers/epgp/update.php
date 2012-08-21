@@ -29,7 +29,7 @@ foreach($epgp->roster as $entry) {
 	$character->setEP($entry[1]);
 	
 	/* Set the GP */
-	$character-setGP($entry[2]);
+	$character->setGP($entry[2]);
 	
 }
 
