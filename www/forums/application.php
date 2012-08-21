@@ -489,14 +489,13 @@ if($application->decided() == false || $account->isOfficer()) {
 			
 				<input type="hidden" name="thread" value="<?php echo $thread->id; ?>" />
 				
-				<p><textarea name="body" id="wysiwyg" rows="10" required="true"></textarea></p>
+				<p><textarea name="body" class="tinymce" rows="10" required="true"></textarea></p>
 				<p><input type="submit" value="Post Reply" /></p>
 			
 			</form>
 			<script type="text/javascript"><!--
 			(function($) {
 				$(document).ready(function() {
-					$('#wysiwyg').wysiwyg();
 					$('textarea').autosize();  
 				});
 			})(jQuery);

@@ -31,15 +31,13 @@ if($post->isEditable($account->id)) {
 	
 		<input type="hidden" name="post_id" value="<?php echo $post->id; ?>" />
 		
-		<label for="body"><textarea name="body" id="wysiwyg" required="true" rows="10"><?php echo $post->body; ?></textarea></label>
+		<label for="body"><textarea name="body" class="tinymce" required="true" rows="10"><?php echo $post->body; ?></textarea></label>
 		
 		<p class="text center"><input type="submit" value="Save Post" /></p>
 		
-	</form>
-	<script type="text/javascript"><!--
+	</form><script type="text/javascript"><!--
 	(function($) {
 		$(document).ready(function() {
-			$('#wysiwyg').wysiwyg();
 			$('textarea').autosize();  
 		});
 	})(jQuery);

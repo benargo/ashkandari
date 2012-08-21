@@ -48,7 +48,7 @@ if(!$board->isLocked() || $account->isOfficer() || $account->isModerator()) {
 		<input type="text" name="title" required="true" maxlength="128" /></label>
 		
 		<label for="body" class="required"><p>Body</p>
-		<textarea name="body" id="wysiwyg" required="true" rows="5"></textarea></label>
+		<textarea name="body" class="tinymce" required="true" rows="5"></textarea></label>
 		
 		<?php /* Check if the user is an officer or a moderator */
 		if($account->isOfficer() || $account->isModerator()) {
@@ -65,7 +65,6 @@ if(!$board->isLocked() || $account->isOfficer() || $account->isModerator()) {
 	<script type="text/javascript"><!--
 	(function($) {
 		$(document).ready(function() {
-			$('#wysiwyg').wysiwyg();
 			$('textarea').autosize();  
 		});
 	})(jQuery);
