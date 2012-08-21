@@ -138,7 +138,7 @@ if( $roster = $db->query("SELECT `id` FROM `characters` WHERE `race` = ". $race-
                     	sorter:'ranks'
                     }<?php if( isset($account) ) {
 					?>,
-					6: {
+					8: {
 						sorter:false
 					}<?php } ?>
                 } 
