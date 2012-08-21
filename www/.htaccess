@@ -27,10 +27,13 @@ RewriteRule ^account/email/preferences$ account/email/set-preferences.php [NC,L]
 RewriteRule ^account/forums/$ account/forums/signature [R,NC]
 RewriteRule ^account/forums/signature$ account/forums/signature.php [NC,L]
 
+RewriteRule ^epgp/$ roster/epgp [NC,R]
+
 RewriteRule ^roster/character/(.+)$ roster/character.php?name=$1 [NC,L]
 RewriteRule ^roster/race/([a-zA-Z\-]+)$ roster/race.php?slug=$1 [NC,L]
 RewriteRule ^roster/class/([a-zA-Z\-]+)$ roster/class.php?slug=$1 [NC,L]
 RewriteRule ^roster/rank/([a-zA-Z\-\/]+)$ roster/rank.php?slug=$1 [NC,L]
+RewriteRule ^roster/epgp$ roster/epgp.php [NC,L]
 
 RewriteRule ^applications/$ forums/board.php?id=1 [NC,L]
 RewriteRule ^applications/([0-9]+)$ forums/application.php?id=$1 [NC,L]
