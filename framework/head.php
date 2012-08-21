@@ -130,6 +130,10 @@ if( isset($_SESSION['account']) ) {
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					break;
 					
+				case '/officers/epgp/index.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
+					
 				case '/forums/application.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
