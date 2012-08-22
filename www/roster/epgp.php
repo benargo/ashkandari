@@ -15,17 +15,17 @@ if( isset($_SERVER['HTTPS']) ) {
 require_once('../../framework/config.php');
 
 /* Set the page title */
-$page_title = "Guild Roster";
+$page_title = "EPGP Standings";
 
 /* Require the head of the page */
 require(PATH.'framework/head.php');
 
-?><h1>Guild Roster</h1><?php
+?><h1>EPGP Standards</h1><?php
 
 /* Set up the database */
 $db = db();
 
-if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters` ORDER BY `epgp` DESC, `rank`") ) {
+if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters` WHERE `level` = 85 OR `level` = 90 ORDER BY `epgp` DESC, `rank`") ) {
 
 	/* If it's dropped into here it means that we've succesfully received the guild roster from Battle.net */
 	
@@ -36,14 +36,9 @@ if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters`
 				<th class="sortable">Name</th>
 				<th>Race</th>
 				<th>Class</th>
-				<th class="sortable">Level</th>
-				<th class="sortable">Guild Rank</th>
 				<th class="sortable">EP</th>
 				<th class="sortable">GP</th>
 				<th class="sortable">Loot Priority</th>
-				<?php if( isset($account) ) {
-					?><th>Claimed</th><?php
-				} ?>
 			</tr>
 		</thead>
 		<tbody>
@@ -68,24 +63,9 @@ if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters`
 				<td><a href="/roster/character/<?php echo $character->name; ?>" title="Click to view more details" class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></a></td>
 				<td><a href="/roster/race/<?php echo $race->slug; ?>" title="Click to view all the <?php echo $race->name; ?>s" class="noborder"><img src="<?php echo $character->getRaceIcon(); ?>" alt="<?php echo $race->name; ?>" /></a></td>
 				<td><a href="/roster/class/<?php echo $class->slug; ?>" title="Click to view all the <?php echo $class->name; ?>s" class="noborder"><img src="<?php echo $class->icon_url; ?>" alt="<?php echo $class->name; ?>" /></a></td>
-				<td><?php echo $character->level; ?></td>
-				<td class="<?php echo $rank->id; ?>"><a href="/roster/rank/<?php echo $rank->slug; ?>" title="Click to view all the <?php echo $rank->long_name; ?>s"><?php echo $rank->long_name; ?></a></td>
 				<td><?php echo $character->ep; ?></td>
 				<td><?php echo $character->gp; ?></td>
 				<td><?php echo $priority; ?></td>
-				<?php if( isset($account) ) {
-					
-					if($character->isClaimed()) {
-						
-						?><td>Claimed</td><?php
-						
-					} else {
-						
-						?><td><a href="/account/characters/claim/<?php echo $character->id; ?>" title="Claim this character">Claim</a></td><?php
-						
-					}
-					
-				} ?>
 			</tr>
 <?php	} ?>
 		</tbody>
@@ -129,14 +109,7 @@ if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters`
 					},
 					2: {
 						sorter:false
-					},
-                	4: { 
-                    	sorter:'ranks'
-                    }<?php if( isset($account) ) {
-					?>,
-					8: {
-						sorter:false
-					}<?php } ?>
+					}
                 } 
 			});
 		}); 
