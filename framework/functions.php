@@ -5,7 +5,7 @@ function getAllRealms() {
 	 * This function returns a RESULT SET */
 		
 	// Set up a new instance of the database
-		$db = db();
+	$db = db();
 		
 	// Run the query to select all realms
 	$result = $db->query("SELECT * FROM `realms` ORDER BY `name`");

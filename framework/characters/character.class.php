@@ -52,7 +52,11 @@ class character {
 			$this->gp = $obj->gp;
 			
 			/* Generate the battle.net information */
-			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/tarren-mill/". $this->name ."?fields=items,talents,professions");
+			if($this->level > 9) {
+			
+				$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/tarren-mill/". $this->name ."?fields=items,talents,professions");
+				
+			}
 		
 			// And finally return out true
 			return true;
