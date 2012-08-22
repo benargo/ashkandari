@@ -511,16 +511,18 @@ class character {
 	
 	public function isOfficer() {
 		
-		if($this->rank <= 2 || $this->rank == 5) {
+		/* Get the account */
+		$account = $this->getAccount();
+		
+		/* Check if they're an officer */
+		if($account->isOfficer()) {
 			
 			return true;
 			
-		} else {
-			
-			return false;
-			
 		}
-		
+	
+		return false;
+		 
 	}
 	
 	public function isModerator() {
