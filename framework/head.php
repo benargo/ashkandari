@@ -200,7 +200,7 @@ if( isset($_SESSION['account']) ) {
 						<nav id="primary">
 							<ul><?php
 							echo '<li><a href="/" title="Home">Home</a></li>';
-							echo '<li><a href="/epgp/" title="EPGP Standings">EPGP</a></li>';
+							echo '<li><a href="/roster/epgp" title="EPGP Standings">EPGP</a></li>';
 							echo '<li><a href="/roster/" title="Guild Roster">Guild Roster</a></li>';
 							echo '<li><a href="/forums/" title="Forums">Forums</a></li>';
 							echo '<li><a href="/teamspeak/" title="TeamSpeak">TeamSpeak</a></li>';

@@ -52,6 +52,7 @@ if(isset($account)) {
 	<thead>
 		<tr>
 			<th>Thread Title</th>
+			<th>Number of Posts</th>
 			<th>Started By</th>
 			<th>Latest Post</th>
 		</tr>
@@ -105,6 +106,7 @@ if(isset($account)) {
 					
 				} ?>"><?php echo $thread->title; ?></a></td>
 				
+				<td><?php echo $thread->countPosts(); ?></td>
 				<td><?php if(isset($character->id)) {
 					
 					?><a href="/roster/character/<?php echo $character->name; ?>" title="Click to see this characters' profile"><?php echo $character->name; ?></a><?php
