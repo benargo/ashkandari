@@ -551,6 +551,29 @@ class character {
 		
 	}
 	
+	public function getAlts() {
+		
+		/* get the database */
+		$db = db();
+		
+		/* Get the alts */
+		$result = $db->query("SELECT `id` FROM `characters` WHERE `account_id` = ". $this->account_id ." AND `id` <> ". $this->id ." ORDER BY `level` DESC, `name`");
+		
+		/* Close the database connection */
+		$db->close();
+		
+		/* Loop through the alts */
+		while($obj = $result->fetch_object()) {
+			
+			$alt = new character($obj->id);
+			
+			/* Return the alt */
+			return $alt;
+			
+		}
+		
+	}
+	
 }
 
 ?>
