@@ -33,7 +33,7 @@ if( isset($_SESSION['account']) ) {
 		<link rel="apple-touch-icon" href="/media/images/iphone-icon.png" />
 		
 		<!-- Core Stylesheets -->
-		<link type="text/css" rel="stylesheet" media="screen and (min-device-width:641px)" href="/media/css/screen.min.css" />
+		<link type="text/css" rel="stylesheet" media="screen and (min-device-width:641px)" href="/media/css/screen.css" />
 		<link type="text/css" rel="stylesheet" media="screen and (min-device-width:0px) and (max-device-width:640px)" href="/media/css/mobile.css" />
 		<link type="text/css" rel="stylesheet" media="print" href="/media/css/print.css" />
 		
