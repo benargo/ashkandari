@@ -313,7 +313,7 @@ class application {
 	public function getProfession($position = 0) {
 			
 		/* Get their profession based on the $postion */
-		$profession = new profession($this->id, $position);
+		$profession = new app_profession($this->id, $position);
 		
 		/* And return this as an standard class object */
 		return $profession;
@@ -324,7 +324,7 @@ class application {
 	public function getFirstAid() {
 		
 		/* Get an instance of the first aid class */
-		$first_aid = new first_aid($this->id);
+		$first_aid = new app_first_aid($this->id);
 		
 		/* And return it */
 		return $first_aid;
@@ -335,7 +335,7 @@ class application {
 	public function getFishing() {
 		
 		/* Get an instance of the fishing class */
-		$fishing = new fishing($this->id);
+		$fishing = new app_fishing($this->id);
 		
 		/* And return it */
 		return $fishing;
@@ -346,7 +346,7 @@ class application {
 	public function getCooking() {
 		
 		/* Get an instance of the cooking class */
-		$cooking = new cooking($this->id);
+		$cooking = new app_cooking($this->id);
 		
 		/* And return it */
 		return $cooking;

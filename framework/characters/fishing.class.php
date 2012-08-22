@@ -1,5 +1,5 @@
 <?php
-class fishing extends application {
+class app_fishing extends application {
 	
 	/* Variables */
 	public $skill;
@@ -46,7 +46,7 @@ class fishing extends application {
 	
 }
 
-class fishing extends character {
+class char_fishing extends character {
 	
 	/* Variables */
 	public $skill;

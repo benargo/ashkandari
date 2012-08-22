@@ -1,5 +1,5 @@
 <?php
-class profession extends application {
+class app_profession extends application {
 	
 	/* Variables */
 	public $name;
@@ -50,7 +50,7 @@ class profession extends application {
 	
 }
 
-class profession extends character {
+class char_profession extends character {
 	
 	/* Variables */
 	public $name;

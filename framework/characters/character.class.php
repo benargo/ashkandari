@@ -392,7 +392,7 @@ class character {
 	public function getProfession($position = 0) {
 			
 		/* Get their profession based on the $postion */
-		$profession = new profession($this->id, $position);
+		$profession = new char_profession($this->id, $position);
 		
 		/* And return this as an standard class object */
 		return $profession;
@@ -403,7 +403,7 @@ class character {
 	public function getFirstAid() {
 		
 		/* Get an instance of the first aid class */
-		$first_aid = new first_aid($this->id);
+		$first_aid = new char_first_aid($this->id);
 		
 		/* And return it */
 		return $first_aid;
@@ -414,7 +414,7 @@ class character {
 	public function getFishing() {
 		
 		/* Get an instance of the fishing class */
-		$fishing = new fishing($this->id);
+		$fishing = new char_fishing($this->id);
 		
 		/* And return it */
 		return $fishing;
@@ -425,7 +425,7 @@ class character {
 	public function getCooking() {
 		
 		/* Get an instance of the cooking class */
-		$cooking = new cooking($this->id);
+		$cooking = new char_cooking($this->id);
 		
 		/* And return it */
 		return $cooking;

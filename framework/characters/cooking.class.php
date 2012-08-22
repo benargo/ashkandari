@@ -1,5 +1,5 @@
 <?php
-class cooking extends application {
+class app_cooking extends application {
 	
 	/* Variables */
 	public $skill;
@@ -162,7 +162,7 @@ class cooking extends application {
 	
 }
 
-class cooking extends character {
+class char_cooking extends character {
 	
 	/* Variables */
 	public $skill;

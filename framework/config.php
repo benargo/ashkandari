@@ -68,6 +68,8 @@ require_once(PATH.'framework/account.class.php');
 
 /* 6. Guild Applications */
 require_once(PATH.'framework/applications.class.php');
+require_once(PATH.'framework/characters/progression.class.php');
+require_once(PATH.'framework/characters/spec.class.php');
 
 /* 7. Character classes */
 require_once(PATH.'framework/characters/character.class.php');
@@ -75,8 +77,6 @@ require_once(PATH.'framework/characters/cooking.class.php');
 require_once(PATH.'framework/characters/first-aid.class.php');
 require_once(PATH.'framework/characters/fishing.class.php');
 require_once(PATH.'framework/characters/profession.class.php');
-require_once(PATH.'framework/characters/progression.class.php');
-require_once(PATH.'framework/characters/spec.class.php');
 
 /* 8. News class */
 require_once(PATH.'framework/news_item.class.php');

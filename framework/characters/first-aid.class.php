@@ -1,5 +1,5 @@
 <?php
-class first_aid extends application {
+class app_first_aid extends application {
 	
 	/* Variables */
 	public $skill;
@@ -46,7 +46,7 @@ class first_aid extends application {
 	
 }
 
-class first_aid extends character {
+class char_first_aid extends character {
 	
 	/* Variables */
 	public $skill;
