@@ -747,6 +747,10 @@ footer #footerlinks li:before {
 	content: "// ";
 }
 
+footer #footerlinks li:first-of-type:before {
+	content: none;
+}
+
 footer a:hover {
 	text-decoration: underline;
 }
