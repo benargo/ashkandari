@@ -109,7 +109,7 @@ if( $character = new character($character_id) ) {
 		</tr>
 	</tbody>
 </table>
-<table>
+<table class="fill">
 	<thead>
 		<tr>
 			<th colspan="2">Specialisations</th>
