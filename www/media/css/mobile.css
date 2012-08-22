@@ -140,6 +140,7 @@ body article img .icon {
 body table {
   margin: 10px 0;
   width: 100%;
+  max-width: 100%;
 }
 body table tr {
   border-bottom: solid 1px #231207;
@@ -394,7 +395,7 @@ body nav#primary ul {
   margin: 0;
 }
 body nav#primary li {
-  margin: 10px 0;
+  padding: 10px 0;
 }
 body nav#primary li,
 body nav#primary li > a {
