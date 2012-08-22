@@ -739,7 +739,7 @@ footer a {
 }
 
 footer li {
-	display: inline-block;
+	display: inline;
 	list-style: none;
 }
 
