@@ -114,6 +114,7 @@ if( $character = new character($character_id) ) {
 		<tr>
 			<th colspan="2">Specialisations</th>
 			<th colspan="2">Item Level</th>
+			<th colspan="2">EPGP</th>
 		</tr>
 	</thead>
 	<tbody>
