@@ -739,7 +739,8 @@ footer a {
 }
 
 footer li {
-	display: inline;
+	display: inline-block;
+	list-style: none;
 }
 
 footer li:before {
