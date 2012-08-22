@@ -141,7 +141,6 @@ body table {
   margin: 10px 0;
   width: 100%;
   max-width: 100%;
-  overflow: scroll;
 }
 body table tr {
   border-bottom: solid 1px #231207;
@@ -224,6 +223,10 @@ body form textarea,
 body form input[type="radio"],
 body form input[type="checkbox"] {
   vertical-align: middle;
+}
+body form input[type="radio"],
+body form input[type="checkbox"] {
+  height: 32px;
 }
 body form input[type=button],
 body form input[type=submit],
