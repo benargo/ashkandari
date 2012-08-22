@@ -21,7 +21,9 @@ require(PATH.'framework/head.php');
 
 ?><h1>TeamSpeak</h1>
 
-<p>Ashkandari runs a private 512-slot TeamSpeak 3 server. It is open for all members to use and guests are permitted on a temporary basis.</p><?php
+<p>Ashkandari runs a private 512-slot TeamSpeak 3 server. It is open for all members to use and guests are permitted on a temporary basis.</p>
+
+<p>All members are encouraged to <a href="http://www.teamspeak.com/?page=downloads" target="_blank">download TeamSpeak</a> and keep it installed on their computers.</p><?php
 
 /* Check if we are authorised to give out the TeamSpeak connection information */
 if(isset($account)) {
