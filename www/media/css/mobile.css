@@ -385,8 +385,8 @@ body header a#wowlogo {
 }
 body nav#primary {
   overflow: scroll;
-  width: 600%
-		height: 100px;
+  width: 600%;
+  height: 100px;
   margin: 5px 0;
   padding: 5px 0;
 }
