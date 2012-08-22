@@ -50,7 +50,7 @@ if(isset($account)) {
 	
 	<p>Please do not share the channel password to anyone outside of the guild. If you invite guests onto the teamspeak server, you can move them into your channel by dragging from the home page. To do this you may need to confirm your client as an official guild member. You can do this by connecting using the button below.</p>
 
-	<p><a href="/teamspeak/connect" class="button">Connect to Server</a> <a href="/teamspeak/bookmark" class="button">Add to Bookmarks</a></p>
+	<p class="text center"><a href="/teamspeak/connect" class="button">Connect to Server</a> <a href="/teamspeak/bookmark" class="button">Add to Bookmarks</a></p>
 	<?php
 	
 	/* Check if the user is an officer */
@@ -67,7 +67,7 @@ if(isset($account)) {
 			<li>Access the private officer channels.</li>
 		</ul>
 		
-		<p>To upgrade your client status to officer status, just connect using the button above, and it will upgrade you automatically.<?php
+		<p>To upgrade your client status to officer status, just connect using the button above, and it will upgrade you automatically.</p><?php
 		
 	}
 	
