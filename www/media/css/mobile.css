@@ -222,19 +222,8 @@ body form button {
 body form input[type=button],
 body form input[type=submit],
 body form a.button {
-  display: inline-block;
-  margin: 0 auto;
-  padding: none;
-  width: 100%;
+  display: block;
   height: 100px;
-  line-height: 100px;
-  background-size: 300px;
-  color: #FFA400;
-  text-align: center;
-  vertical-align: middle;
-  font-size: 1.0em;
-  border: none;
-  background: transparent url('../images/theme/form-buttons.png') top left;
 }
 body form input[type=button][disabled=true],
 body form input[type=submit][disabled=true],
