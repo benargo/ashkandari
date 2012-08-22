@@ -62,7 +62,7 @@ require(PATH.'framework/head.php');
 
 <h2>About Us</h2>
 
-<p>This website is owned and operated by by Dushyant Kanungo, Ashkandari Web Services, 6 Berkeley Road, Cirencester, GL7 1TY, United Kingdom.</p>
+<p>This website is owned and operated by by Ben Argo, Ashkandari Web Services, 6 Berkeley Road, Cirencester, GL7 1TY, United Kingdom.</p>
 
 <p class="italics">This notice is based on the disclaimer example provided by KeithGarrow.com, and was last updated on <strong>August 22, 2012</strong>.</p><?php
 
