@@ -108,6 +108,8 @@ if( $character = new character($character_id) ) {
 			</div></td>
 		</tr>
 	</tbody>
+</table>
+<table>
 	<thead>
 		<tr>
 			<th colspan="2">Specialisations</th>
