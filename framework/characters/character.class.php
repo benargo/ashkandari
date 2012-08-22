@@ -501,28 +501,6 @@ class character {
 		
 	}
 	
-	private function getBattleNetData($fields) {
-	
-		/* This function accepts a comma seperated list of fields to get from battle.net
-		 * Goes and fetches it, then decodes the data and returns it for use */
-		
-		/* Get the data from battle.net */
-		$json = file_get_contents('http://eu.battle.net/api/wow/character/Tarren-Mill/'. $this->name .'?fields='. $fields);
-		
-		if ( $bnet_data = json_decode($json) ) {
-		
-			/* Return the data */
-			return $bnet_data;	
-			
-		} else {
-		
-			/* Return false */
-			return false;	
-			
-		}
-		
-	}
-	
 	public function isOfficer() {
 		
 		if($this->rank <= 2 || $this->rank == 5) {
