@@ -66,7 +66,10 @@ require_once(PATH.'framework/functions.php');
 /* 5. Account class */
 require_once(PATH.'framework/account.class.php');
 
-/* 6. Character classes */
+/* 6. Guild Applications */
+require_once(PATH.'framework/applications.class.php');
+
+/* 7. Character classes */
 require_once(PATH.'framework/characters/character.class.php');
 require_once(PATH.'framework/characters/cooking.class.php');
 require_once(PATH.'framework/characters/first-aid.class.php');
@@ -75,12 +78,9 @@ require_once(PATH.'framework/characters/profession.class.php');
 require_once(PATH.'framework/characters/progression.class.php');
 require_once(PATH.'framework/characters/spec.class.php');
 
-/* 7. News class */
+/* 8. News class */
 require_once(PATH.'framework/news_item.class.php');
 require_once(PATH.'framework/news_comment.class.php');
-
-/* 8. Guild Applications */
-require_once(PATH.'framework/applications.class.php');
 
 /* 9. Forums */
 require_once(PATH.'framework/forums/functions.php');
