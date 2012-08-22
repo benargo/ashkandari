@@ -4,7 +4,7 @@
  * in the guild from battle.net, and match them up against our database. */
 
 /* Require the database details */
-require_once('../db/mysqli_connection.php');
+require_once('/home/ashkandari/db/mysqli_connection.php');
 
 /* Start creating an instance of the database */
 $db = new mysqli($db_details["host"], $db_details["user"], $db_details["password"], $db_details["name"]);
