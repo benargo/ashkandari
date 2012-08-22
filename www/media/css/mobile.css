@@ -210,21 +210,9 @@ body form textarea {
   border: 1px solid #b1b4a9;
   padding: 6px;
 }
-body form select {
-  margin: 0px;
-  display: block;
-  border: 1px solid #b1b4a9;
-  padding: 6px;
-}
 body form select[size],
-body form textarea,
-body form input[type="radio"],
-body form input[type="checkbox"] {
+body form textarea {
   vertical-align: middle;
-}
-body form input[type="radio"],
-body form input[type="checkbox"] {
-  height: 100px;
 }
 body form input[type=button],
 body form input[type=submit],
