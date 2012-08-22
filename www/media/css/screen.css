@@ -172,7 +172,7 @@ article a:hover {
 	border-bottom-style: solid;
 }
 
-article a[href^="http://"]:after {
+a[href^="http"]:after, a[href^="http"]:after:hover {
 	content: url('../images/theme/external-link-yellow.png')
 }
 

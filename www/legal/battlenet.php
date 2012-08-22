@@ -18,7 +18,7 @@ require(PATH.'framework/head.php');
 
 ?><h1>Usage of the Blizzard Community Platform API</h1>
 
-<p>Some of the services provided by Ashkandari Web Services (hereafter "Ashkandari"), a non-profit individual operation operating within the United Kingdom of Great Britain and Northern Ireland (hereafter the "United Kingdom"), use data obtained from the Blizzard Community Platform API, and is subject to their <a href="/http://blizzard.github.com/api-wow-docs/#idp57480" target="_blank">API Policy</a>.</p>
+<p>Some of the services provided by Ashkandari Web Services (hereafter "Ashkandari"), a non-profit individual operation operating within the United Kingdom of Great Britain and Northern Ireland (hereafter the "United Kingdom"), use data obtained from the Blizzard Community Platform API, and is subject to their <a href="http://blizzard.github.com/api-wow-docs/#idp57480" target="_blank">API Policy</a>.</p>
 
 <p>We are obligated to provide the source code that communicates with Battle.net. You can find this code and its development history published online at <a href="https://github.com/benargo/Ashkandari/">https://github.com/benargo/Ashkandari/</a>.</p>
 
