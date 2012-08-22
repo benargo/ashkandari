@@ -145,7 +145,11 @@ if( $character = new character($character_id) ) {
 		
 		?><h2>Alts</h2><?php
 		
-		while($alt = $character->getAlts()) {
+		$alts = $character->getAlts()
+		
+		while($alt = $alts->fetch_object()) {
+		
+			$alt = new character($alt->id);
 		
 			$class = $alt->getClass();
 			$race = $alt->getRace();

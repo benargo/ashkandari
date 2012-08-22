@@ -562,15 +562,7 @@ class character {
 		/* Close the database connection */
 		$db->close();
 		
-		/* Loop through the alts */
-		while($obj = $result->fetch_object()) {
-			
-			$alt = new character($obj->id);
-			
-			/* Return the alt */
-			return $alt;
-			
-		}
+		return $result;
 		
 	}
 	
