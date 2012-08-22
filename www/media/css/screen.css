@@ -738,6 +738,14 @@ footer a {
 	border-bottom: none;
 }
 
+footer li {
+	display: inline;
+}
+
+footer li:before {
+	content: "// ";
+}
+
 footer a:hover {
 	text-decoration: underline;
 }
