@@ -25,7 +25,7 @@ require(PATH.'framework/head.php');
 /* Set up the database */
 $db = db();
 
-if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters` WHERE `level` = 85 OR `level` = 90 ORDER BY `epgp` DESC, `rank`") ) {
+if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters` WHERE `ep` <> 0 AND `gp` <> 0 ORDER BY `epgp` DESC, `rank`") ) {
 
 	/* If it's dropped into here it means that we've succesfully received the guild roster from Battle.net */
 	
