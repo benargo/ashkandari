@@ -193,10 +193,10 @@ if($race->faction == "alliance") {
 <h2>Progression</h2>
 
 <?php /* Dragon Soul */
-$ds = $application->getProgression("Dragon Soul");
+$ds = $application->getProgression(26);
 
 /* Firelands */
-$fl = $application->getProgression("Firelands");
+$fl = $application->getProgression(25);
 
 ?><table class="fill">
 	<thead>

@@ -17,6 +17,7 @@ class character {
 	public $thumbnail;
 	public $ep;
 	public $gp;
+	private $bnet_json;
 	
 	public function __construct($character_id) {
 		
@@ -49,20 +50,25 @@ class character {
 			$this->thumbnail = $obj->thumbnail_url;
 			$this->ep = $obj->ep;
 			$this->gp = $obj->gp;
+			
+			/* Generate the battle.net information */
+			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions,titles,mounts,companions");
 		
 			// And finally return out true
 			return true;
 			
-		} else {
-			
-			// Unfortunately we couldn't find such a character
-			// so we'll close the database connection
-			$db->close();
-			
-			// And exit out false
-			return false;
-			
 		}
+		
+	}
+	
+	/* Decode their battle.net data */
+	public function getBattleNetData() {
+		
+		/* Using the JSON Decode function, get their battle.net data from this instance */
+		$bnet_decoded = json_decode($this->bnet_json);
+		
+		/* And return it */
+		return $bnet_decoded;
 		
 	}
 	
@@ -379,6 +385,82 @@ class character {
 			}
 			
 		}
+		
+	}
+
+	/* Get primary profession */
+	public function getProfession($position = 0) {
+			
+		/* Get their profession based on the $postion */
+		$profession = new profession($this->id, $position);
+		
+		/* And return this as an standard class object */
+		return $profession;
+		
+	}
+	
+	/* Get first aid skill */
+	public function getFirstAid() {
+		
+		/* Get an instance of the first aid class */
+		$first_aid = new first_aid($this->id);
+		
+		/* And return it */
+		return $first_aid;
+		
+	}
+	
+	/* Get fishing skill */
+	public function getFishing() {
+		
+		/* Get an instance of the fishing class */
+		$fishing = new fishing($this->id);
+		
+		/* And return it */
+		return $fishing;
+		
+	} 
+	
+	/* Get cooking skill */
+	public function getCooking() {
+		
+		/* Get an instance of the cooking class */
+		$cooking = new cooking($this->id);
+		
+		/* And return it */
+		return $cooking;
+		
+	}
+	
+	/* Get their active spec */
+	public function getPrimarySpec() {
+		
+		/* Create an instance of the spec based on their active spec */
+		$spec = new spec($this->id, $this->active_spec);
+		
+		/* And return it */
+		return $spec;
+		
+	}
+	
+	/* Get their off spec */
+	public function getOffSpec() {
+		
+		/* Create an instance of the spec object based on their off spec */
+		$spec = new spec($this->id, $this->off_spec);
+		
+		/* And return it */
+		return $spec;
+		
+	}
+	
+	/* Get their progression based on a raid ID */
+	public function getProgression() {
+		
+		/* Create a new progression instance */
+		$progression = new progression($this->id, );
+		
+		return $progression;
 		
 	}
 	
