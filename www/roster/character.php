@@ -56,7 +56,7 @@ if( $character = new character($character_id) ) {
 	<tbody>
 		<tr>
 			<td class="bold">Level:</td>
-			<td><?php echo $character->getLevel(); ?></td>
+			<td><?php echo $character->level; ?></td>
 			
 			<td class="bold"><img src="<?php echo $profession1->getIcon(); ?>" alt="<?php echo $profession1->name; ?> icon" class="icon" /> <?php echo $profession1->name; ?></td>
 			<td><div class="ui-progress-bar ui-container" id="prof1_bar">
