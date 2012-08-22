@@ -250,7 +250,7 @@ class character {
 		
 	}
 	
-	public function getActiveSpec() {
+	public function getPrimarySpec() {
 		
 		/* Decode this data */
 		$bnet_data = $this->getBattleNetData("talents");
@@ -429,28 +429,6 @@ class character {
 		
 		/* And return it */
 		return $cooking;
-		
-	}
-	
-	/* Get their active spec */
-	public function getPrimarySpec() {
-		
-		/* Create an instance of the spec based on their active spec */
-		$spec = new spec($this->id, $this->active_spec);
-		
-		/* And return it */
-		return $spec;
-		
-	}
-	
-	/* Get their off spec */
-	public function getOffSpec() {
-		
-		/* Create an instance of the spec object based on their off spec */
-		$spec = new spec($this->id, $this->off_spec);
-		
-		/* And return it */
-		return $spec;
 		
 	}
 	
