@@ -14,7 +14,7 @@ if(isset($_SESSION['account'])) {
 	require_once(PATH.'framework/teamspeak/tokens.php');
 	
 	/* Now connect them */
-	header("Location: ts3server://ashkandari.com/?port=9987&nickname=". $character->name ."&token=$token&addbookmark=1");
+	header("Location: ts3server://ashkandari.com/?port=9987&nickname=". $character->name ."&amp;token=$token&amp;addbookmark=1");
 	
 } else {
 	
