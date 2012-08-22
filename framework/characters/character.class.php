@@ -314,7 +314,7 @@ class character {
 		 * selected title */
 		 
 		/* Get the data from battle.net */
-		$bnet_data = $this->getBattleNetData()
+		$bnet_data = $this->getBattleNetData();
 		
 		/* Loop through each of the titles until we find the one we want */
 		foreach($bnet_data->titles as $title) {
