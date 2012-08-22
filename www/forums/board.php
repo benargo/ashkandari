@@ -52,7 +52,7 @@ if(isset($account)) {
 	<thead>
 		<tr>
 			<th>Thread Title</th>
-			<th>Number of Posts</th>
+			<th>&#35; of Posts</th>
 			<th>Started By</th>
 			<th>Latest Post</th>
 		</tr>
