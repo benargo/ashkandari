@@ -20,7 +20,7 @@ $page_title = "EPGP Standings";
 /* Require the head of the page */
 require(PATH.'framework/head.php');
 
-?><h1>EPGP Standards</h1><?php
+?><h1>EPGP Standings</h1><?php
 
 /* Set up the database */
 $db = db();
