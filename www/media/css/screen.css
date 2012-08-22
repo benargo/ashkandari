@@ -224,12 +224,12 @@ table.fill {
 	width: 884px;
 }
 
-table.4 td {
+table.col4 td {
 	width: 201px;
 	text-align: left;
 }
 
-table.6 td {
+table.col6 td {
 	width: 137px;
 	text-align: left;
 }
