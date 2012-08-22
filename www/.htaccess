@@ -59,6 +59,7 @@ RewriteRule ^forums/edit$ forums/post/edit.php [NC,L]
 RewriteRule ^forums/delete$ forums/post/delete.php [NC,L]
 
 RewriteRule ^teamspeak/connect$ teamspeak/connect.php [NC,L]
+RewriteRule ^teamspeak/bookmark$ teamspeak/bookmark.php [NC,L]
 RewriteRule ^teamspeak/donate$ teamspeak/donate.php [NC,L]
 
 RewriteRule ^apply/verify$ apply/verify.php [NC,L]

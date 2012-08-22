@@ -26,11 +26,8 @@ require(PATH.'framework/head.php');
 /* Check if we are authorised to give out the TeamSpeak connection information */
 if(isset($account)) {
 	
-	/* Set the user */
-	//$teamspeak->setUser($account->id);
-	
 	/* Yes we are */
-	?><p>To connect to the server, either <a href="/teamspeak/connect">click here</a> or use the following information:</p>
+	?><p>To connect to the server, either use the big connect button below, or use the following information:</p>
 	
 	<table>
 		<tbody>
@@ -51,19 +48,14 @@ if(isset($account)) {
 	
 	<p>While there is no password required to log in to the TeamSpeak server, all the channels are password protected with the password <span class="bold">hero</span>.</p>
 	
-	<p>Please do not share the channel password to anyone outside of the guild. If you invite guests onto the teamspeak server, you can move them into your channel by dragging from the home page. To do this you may need to confirm your client as an official guild member. You can do this by connecting through our <a href="/teamspeak/connect">web connection service</a>.</p><?php
+	<p>Please do not share the channel password to anyone outside of the guild. If you invite guests onto the teamspeak server, you can move them into your channel by dragging from the home page. To do this you may need to confirm your client as an official guild member. You can do this by connecting using the button below.</p>
+
+	<p><a href="/teamspeak/connect" class="button">Connect to Server</a> <a href="/teamspeak/bookmark" class="button">Add to Bookmarks</a></p>
+	<?php
 	
 	/* Check if the user is an officer */
 	if($account->isOfficer()) {
-	
-		/* Yes they are
-		 * Check if they're a server admin yet
-		if(!$teamspeak->isServerAdmin()) {
-			
-			// Make them a server admin
-			$teamspeak->makeServerAdmin();
-			
-		} */
+
 		
 		?><h2>Officer Privilages</h2>
 		<p>As an officer, you are entitled to additional privilages regarding the TeamSpeak server. These include:</p>
@@ -75,7 +67,7 @@ if(isset($account)) {
 			<li>Access the private officer channels.</li>
 		</ul>
 		
-		<p>To upgrade your client status to officer status, just connect using the <a href="/teamspeak/connect">web connection service</a>, and it will upgrade you automatically.<?php
+		<p>To upgrade your client status to officer status, just connect using the button above, and it will upgrade you automatically.<?php
 		
 	}
 	
