@@ -147,7 +147,7 @@ if( $character = new character($character_id) ) {
 		
 		$alts = $character->getAlts();
 		
-		/*while($obj = $alts->fetch_object()) {
+		while($obj = $alts->fetch_object()) {
 		
 			$alt = new character($obj->id);
 		
@@ -161,7 +161,7 @@ if( $character = new character($character_id) ) {
 				<p>Achievement Points: <?php echo $alt->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement points icon" class="noborder" /></p>
 			</a><?php
 			
-		} */
+		}
 		
 	}
 
