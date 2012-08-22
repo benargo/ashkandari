@@ -21,6 +21,7 @@ class account {
 	private $suspended;
 	public $forum_signature;
 	private $forum_moderator;
+	private $officer;
 	public $primary_character;
 	private $news;
 	private $digest;
@@ -58,6 +59,7 @@ class account {
 		$this->active = $account->active;
 		$this->forum_signature = $account->forum_signature;
 		$this->forum_moderator = $account->forum_moderator;
+		$this->officer = $account->officer;
 		$this->primary_character = $account->primary_character;
 		$this->news = $account->news;
 		$this->digest = $account->digest;
@@ -287,12 +289,7 @@ class account {
 	 
 	 	/* This function will check against the current account object to see if they are an officer or not
 	  	 * This helps in user permissions and enables us to display certain content to officers of the guild */
-    	
-    	// Get the primary character
-    	$character = $this->getPrimaryCharacter();
-    	$rank = $character->getRank();
-    	
-    	if($rank->id <= 2 || $rank->id == 5) {
+    	if(isset($this->officer)) {
 	    	
 	    	return true;
 	    	
