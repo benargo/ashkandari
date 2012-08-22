@@ -504,7 +504,7 @@ input[type=button].text:hover, input[type=submit].text:hover {
 	clear: none;
 }
 
-.jsshow {
+.jsshow, .display.block {
 	display: block;
 }
 
