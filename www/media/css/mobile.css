@@ -214,6 +214,11 @@ body form select[size],
 body form textarea {
   vertical-align: middle;
 }
+body form input[type=checkbox],
+body form input[type=radio] {
+  width: 100px;
+  height: 100px;
+}
 body form input[type=button],
 body form input[type=submit],
 body form button {
@@ -223,7 +228,8 @@ body form input[type=button],
 body form input[type=submit],
 body form a.button {
   display: block;
-  height: 100px;
+  margin: 20px auto;
+  height: 60px;
 }
 body form input[type=button][disabled=true],
 body form input[type=submit][disabled=true],

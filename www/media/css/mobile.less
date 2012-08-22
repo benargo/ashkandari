@@ -238,11 +238,17 @@ body {
 		
 		select[size], textarea { vertical-align: middle; }
 		
+		input[type=checkbox], input[type=radio] {
+			width: 100px;
+			height: 100px;
+		}
+		
 		input[type=button], input[type=submit], button, { cursor: pointer; }
 		
 		input[type=button], input[type=submit], a.button {
 			display: block;
-			height: 100px;
+			margin: 20px auto;
+			height: 60px;
 		}
 		
 		input[type=button][disabled=true], input[type=submit][disabled=true], a.button.disabled, input[type=button][disabled=true]:hover, input[type=submit][disabled=true]:hover, a.button.disabled:hover {
