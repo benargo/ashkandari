@@ -109,13 +109,6 @@ if( $character = new character($character_id) ) {
 				</div>
 			</div></td>
 		</tr>
-		<tr>
-			<td class="bold">Effort Points (EP):</td>
-			<td><?php echo $character->ep; ?></td>
-			
-			<td class="bold">Gear Points (GP):</td>
-			<td><?php echo $character->gp; ?></td>
-		</tr>
 	</tbody>
 	<thead>
 		<tr>
@@ -130,6 +123,9 @@ if( $character = new character($character_id) ) {
 			
 			<td class="bold">Average Item Level:</td>
 			<td><?php echo $character->getItemLevel(); ?></td>
+			
+			<td class="bold">Effort Points (EP):</td>
+			<td><?php echo $character->ep; ?></td>
 		</tr>
 		
 		<tr>
@@ -138,90 +134,12 @@ if( $character = new character($character_id) ) {
 			
 			<td class="bold">Equipped Item Level:</td>
 			<td><?php echo $character->getEquippedItemLevel(); ?></td>
+			
+			<td class="bold">Gear Points (GP):</td>
+			<td><?php echo $character->gp; ?></td>
 		</tr>
 	</tbody>
 </table>
-
-<h2>Progression</h2>
-
-<?php /* Dragon Soul */
-
-?><table class="fill">
-	<thead>
-		<tr>
-			<td></td>
-			<?php for($i = 0; $i < $ds->countBosses(); $i++) {
-				
-				$boss = $ds->getBoss($i);
-				
-				?><th><?php echo $boss->name; ?></th><?php
-
-			} ?>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="bold">Normal Kills:</td>
-			<?php for($i = 0; $i < $ds->countBosses(); $i++) {
-				
-				$boss = $ds->getBoss($i);
-				
-				?><td><?php echo $boss->normalKills; ?></td><?php
-
-			} ?>
-		</tr>
-		<tr>
-			<td class="bold">Heroic Kills:</td>
-			<?php for($i = 0; $i < $ds->countBosses(); $i++) {
-				
-				$boss = $ds->getBoss($i);
-				
-				?><td><?php echo $boss->heroicKills; ?></td><?php
-
-			} ?>
-		</tr>
-	</tbody>
-	
-	<thead>
-		<tr>
-			<th colspan="<?php echo $fl->countBosses()+1; ?>">Firelands</th>
-		</tr>
-		<tr>
-			<td></td>
-			<?php for($i = 0; $i < $fl->countBosses(); $i++) {
-				
-				$boss = $fl->getBoss($i);
-				
-				?><th><?php echo $boss->name; ?></th><?php
-
-			} ?>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td class="bold">Normal Kills:</td>
-			<?php for($i = 0; $i < $fl->countBosses(); $i++) {
-				
-				$boss = $fl->getBoss($i);
-				
-				?><td><?php echo $boss->normalKills; ?></td><?php
-
-			} ?>
-		</tr>
-		<tr>
-			<td class="bold">Heroic Kills:</td>
-			<?php for($i = 0; $i < $fl->countBosses(); $i++) {
-				
-				$boss = $fl->getBoss($i);
-				
-				?><td><?php echo $boss->heroicKills; ?></td><?php
-
-			} ?>
-		</tr>
-	</tbody>
-</table>
-
-
 	
 <?php }
 

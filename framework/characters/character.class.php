@@ -454,16 +454,6 @@ class character {
 		
 	}
 	
-	/* Get their progression based on a raid ID */
-	public function getProgression() {
-		
-		/* Create a new progression instance */
-		$progression = new progression($this->id, );
-		
-		return $progression;
-		
-	}
-	
 	public function isClaimed() {
 		
 		/* This function checks if this character has a valid Account ID */
