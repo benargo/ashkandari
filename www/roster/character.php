@@ -147,9 +147,9 @@ if( $character = new character($character_id) ) {
 		
 		$alts = $character->getAlts();
 		
-		while($alt = $alts->fetch_object()) {
+		while($obj = $alts->fetch_object()) {
 		
-			$alt = new character($alt->id);
+			$alt = new character($obj->id);
 		
 			$class = $alt->getClass();
 			$race = $alt->getRace();
