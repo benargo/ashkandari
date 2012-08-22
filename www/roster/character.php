@@ -35,7 +35,7 @@ if( $character = new character($character_id) ) {
 	/* Require the head of the page */
 	require(PATH.'framework/head.php');
 	
-	?><h1><?php echo $character->getCurrentTitle(); ?></h1>
+	?><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" class="float right" /><h1><?php echo $character->getCurrentTitle(); ?></h1>
 	
 	<ul id="breadcrumbs">
 		<li><a href="/">Home</a></li>
@@ -44,7 +44,7 @@ if( $character = new character($character_id) ) {
 		<li class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></li>
 	</ul>
 	
-	<table class="fill col4">
+	<table class="fill col4 clear both">
 	<thead>
 		<tr>
 			<th colspan="2">Basic Details</th>
