@@ -2,4 +2,5 @@ db/*
 certs/*
 framework/salt.php
 framework/country_api_key.php
+framework/teamspeak/tokens.php
 logs/*
