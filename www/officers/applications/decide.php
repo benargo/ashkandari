@@ -9,7 +9,7 @@ $application = new application($_POST['id']);
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-	header("Location: https://ashkandari.com/account/login?ref=/applications/". $application->id);
+	header("Location: /account/login?ref=/applications/". $application->id);
 	
 }
 

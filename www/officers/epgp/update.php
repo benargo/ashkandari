@@ -6,7 +6,7 @@ require_once('../../../framework/config.php');
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-	header("Location: https://ashkandari.com/account/login?ref=/officers/epgp/");
+	header("Location: /account/login?ref=/officers/epgp/");
 	
 }
 

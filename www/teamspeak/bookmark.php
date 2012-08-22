@@ -15,7 +15,7 @@ if(isset($_SESSION['account'])) {
 	
 } else {
 	
-	header("Location: https://ashkandari.com/account/login?ref=/teamspeak/connect");
+	header("Location: /account/login?ref=/teamspeak/connect");
 	
 }
 

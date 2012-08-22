@@ -9,7 +9,7 @@
  
 // Switch HTTPS off
 if( isset($_SERVER['HTTPS']) ) {
-	header('Location: http://ashkandari.com'. $_SERVER['REQUEST_URI']);
+	header('Location: http://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
 }
 
 // Require the framework

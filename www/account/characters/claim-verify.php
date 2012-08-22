@@ -10,7 +10,7 @@ require_once('../../../framework/config.php');
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-		header("Location: https://ashkandari.com/account/login?ref=". $_SERVER['REQUEST_URI']);
+		header("Location: /account/login?ref=/account/");
 	
 }
 

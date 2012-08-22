@@ -7,7 +7,7 @@
  
 // Switch HTTPS on
 if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://ashkandari.com'. $_SERVER['REQUEST_URI']);
+	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
 }
 
 // Require the framework
@@ -16,7 +16,7 @@ require_once('../../framework/config.php');
 // Check if we're already logged in
 if(isset($_SESSION['account'])) {
 	
-		header("Location: https://ashkandari.com/account/");
+		header("Location: /account/");
 	
 }
 

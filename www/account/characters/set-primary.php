@@ -10,7 +10,7 @@ require_once('../../../framework/config.php');
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-		header("Location: https://ashkandari.com/account/login?ref=". $_SERVER['REQUEST_URI']);
+		header("Location: /account/login?ref=". $_SERVER['REQUEST_URI']);
 	
 }
 
@@ -27,6 +27,6 @@ $_SESSION['new_primary_character'] = $_GET['id'];
 
 if($_SERVER['REQUEST_URI'] == "/account/characters/set-primary/". $_GET['id']) {
 	
-	header("location: https://ashkandari.com/account/");
+	header("location: /account/");
 	
 }

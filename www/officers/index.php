@@ -7,9 +7,9 @@
  * Which one we use is determined by the presence of $_POST variables.
  */
  
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://ashkandari.com'. $_SERVER['REQUEST_URI']);
+// Switch HTTPS off
+if( isset($_SERVER['HTTPS']) ) {
+	header('Location: http://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
 }
 
 // Require the framework files
@@ -18,7 +18,7 @@ require_once('../../framework/config.php');
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-	header("Location: https://ashkandari.com/account/login?ref=". $_SERVER['REQUEST_URI']);
+	header("Location: /account/login?ref=". $_SERVER['REQUEST_URI']);
 	
 }
 

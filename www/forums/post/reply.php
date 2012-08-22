@@ -9,7 +9,7 @@ $thread_id = $_POST['thread'];
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-	header("Location: https://ashkandari.com/account/login?ref=/forums/thread/". $thread_id);
+	header("Location: /account/login?ref=/forums/thread/". $thread_id);
 	
 }
 

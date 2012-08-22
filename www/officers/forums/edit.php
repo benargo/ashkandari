@@ -2,7 +2,7 @@
  
 // Switch HTTPS off
 if( isset($_SERVER['HTTPS']) ) {
-	header('Loboardion: http://ashkandari.com'. $_SERVER['REQUEST_URI']);
+	header('Loboardion: http://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
 }
 
 // Require the framework files
@@ -11,7 +11,7 @@ require_once('../../../framework/config.php');
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-	header("Loboardion: https://ashkandari.com/account/login?ref=". $_SERVER['REQUEST_URI']);
+	header("Loboardion: /account/login?ref=". $_SERVER['REQUEST_URI']);
 	
 }
 

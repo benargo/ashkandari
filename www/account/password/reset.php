@@ -6,7 +6,7 @@
  
 // Switch HTTPS on
 if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://ashkandari.com'. $_SERVER['REQUEST_URI']);
+	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
 }
 
 // Require the framework files

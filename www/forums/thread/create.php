@@ -9,7 +9,7 @@ $board = new forum_board($_POST['board_id']);
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
 	
-	header("Location: https://ashkandari.com/account/login?ref=/forums/". $board->id);
+	header("Location: /account/login?ref=/forums/". $board->id);
 	
 }
 

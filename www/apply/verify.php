@@ -12,7 +12,7 @@ require_once('../../framework/config.php');
 // Check if we're already logged in
 if(isset($_SESSION['account'])) {
 	
-		header("Location: https://ashkandari.com/account/");
+		header("Location: /account/");
 	
 }
 
