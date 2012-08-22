@@ -36,6 +36,10 @@ if( isset($_SESSION['account']) ) {
 		<link type="text/css" rel="stylesheet" media="screen" href="/media/css/screen.css" />
 		<link type="text/css" rel="stylesheet" media="print" href="/media/css/print.css" />
 		
+		<!-- Core JavaScript -->
+		<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+		
 		<!-- Additional Material (if any) -->
 		<?php
 			// Additional Stylesheet Handler
@@ -50,6 +54,10 @@ if( isset($_SESSION['account']) ) {
 				case '/apply/verify.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/apply.css" />';
+					break;
+					
+				case '/roster/character.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
 					break;
 					
 				case '/account/register/index.php':
@@ -89,64 +97,57 @@ if( isset($_SESSION['account']) ) {
 			switch( $_SERVER['SCRIPT_NAME'] ) {
 				
 				case '/apply/index.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/apply.js"></script>';
 					break;
 					
 				case '/apply/verify.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/apply.js"></script>';
 					break;
 					
 				case '/roster/index.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
 				case '/roster/race.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
 				case '/roster/class.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
 				case '/roster/rank.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
 				case '/roster/epgp.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.tablesorter.js"></script>';
 					break;
 					
+				case '/roster/character.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
+					
 				case '/account/register/index.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
 					break;
 					
 				case '/account/register/verify.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
 					break;
 					
 				case '/account/index.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/account.js"></script>';
 					break;
 					
 				case '/account/forums/signature.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					break;
 					
@@ -155,25 +156,21 @@ if( isset($_SESSION['account']) ) {
 					break;
 					
 				case '/forums/application.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 				
 				case '/forums/thread/new.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 					
 				case '/forums/thread/view.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 					
 				case '/forums/post/edit.php':
-					echo '<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
