@@ -50,13 +50,6 @@ class character {
 			$this->thumbnail = $obj->thumbnail_url;
 			$this->ep = $obj->ep;
 			$this->gp = $obj->gp;
-			
-			/* Generate the battle.net information */
-			if($this->level > 9) {
-			
-				$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/tarren-mill/". $this->name ."?fields=items,titles,talents,professions");
-				
-			}
 		
 			// And finally return out true
 			return true;
@@ -67,6 +60,12 @@ class character {
 	
 	/* Decode their battle.net data */
 	public function getBattleNetData() {
+	
+		if(empty($this->bnet_json)) {
+			
+			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/tarren-mill/". $this->name ."?fields=items,titles,talents,professions");
+			
+		}
 		
 		/* Using the JSON Decode function, get their battle.net data from this instance */
 		$bnet_decoded = json_decode($this->bnet_json);
