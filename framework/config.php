@@ -33,7 +33,7 @@ if( empty($_SERVER["HTTPS"]) ) {
 
 /* 2. Constants */
 define("PATH", "/home/ashkandari/"); // Base path for this server
-define("BASE_URL", $protocol."://ashkandari.com"); // The URL this web application runs off
+define("BASE_URL", $protocol."://www.ashkandari.com"); // The URL this web application runs off
 
 /* Salt integration - This is in a seperate file for security reasons */
 require_once(PATH."framework/salt.php");
