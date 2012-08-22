@@ -738,12 +738,12 @@ footer a {
 	border-bottom: none;
 }
 
-footer li {
+footer #footerlinks li {
 	display: inline;
 	list-style: none;
 }
 
-footer li:before {
+footer #footerlinks li:before {
 	content: "// ";
 }
 
