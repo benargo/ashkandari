@@ -193,7 +193,7 @@ if( isset($_SESSION['account']) ) {
 						?></p>
 					</div>
 					<header>
-						<a href="/" title="Home" id="wowlogo"></a>
+						<a href="/" title="Home" id="wowlogo">Ashkandari</a>
 						<!-- Primary Navigation -->
 						<nav id="primary">
 							<ul><?php

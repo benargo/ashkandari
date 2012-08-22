@@ -717,7 +717,7 @@ nav.officer li:hover {
 	content: "» ";
 }
 
-#breadcrumbs li:first-of-type::before {
+#breadcrumbs li:first-of-type:before {
 	content: none;
 }
 
