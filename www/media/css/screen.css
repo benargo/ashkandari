@@ -224,8 +224,13 @@ table.fill {
 	width: 884px;
 }
 
-table.application td {
+table.application.4 td {
 	width: 201px;
+	text-align: left;
+}
+
+table.application.3 {
+	width: 284px;
 	text-align: left;
 }
 
