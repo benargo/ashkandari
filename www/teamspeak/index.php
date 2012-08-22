@@ -51,7 +51,7 @@ if(isset($account)) {
 	
 	<p>While there is no password required to log in to the TeamSpeak server, all the channels are password protected with the password <span class="bold">hero</span>.</p>
 	
-	<p>Please do not share the channel password to anyone outside of the guild. If you invite guests onto the teamspeak server, you can move them into your channel by dragging from the home page. To do this you may need to confirm your client as an official guild member. You can do this by connecting through our <a href="/teamspeak/connect">web connection service</a></p>.<?php
+	<p>Please do not share the channel password to anyone outside of the guild. If you invite guests onto the teamspeak server, you can move them into your channel by dragging from the home page. To do this you may need to confirm your client as an official guild member. You can do this by connecting through our <a href="/teamspeak/connect">web connection service</a>.</p><?php
 	
 	/* Check if the user is an officer */
 	if($account->isOfficer()) {
