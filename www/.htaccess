@@ -59,3 +59,7 @@ RewriteRule ^teamspeak/donate$ teamspeak/donate.php [NC,L]
 
 RewriteRule ^apply/verify$ apply/verify.php [NC,L]
 RewriteRule ^apply/finish$ apply/finish.php [NC,L]
+
+RewriteRule ^legal/privacy$ legal/privacy.php [NC,L]
+RewriteRule ^legal/terms$ legal/terms-and-conditions.php [NC,L]
+RewriteRule ^legal/battlenet$ legal/battlenet.php [NC,L]
