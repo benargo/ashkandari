@@ -155,7 +155,7 @@ if( $character = new character($character_id) ) {
 			<p class="bold"><?php echo $alt->name; ?></p>
 			<p class="<?php echo $class->slug; ?>"><img src="<?php echo $character->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
 			<p>Achievement Points: <?php echo $alt->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement points icon" class="noborder" /></p>
-		</a>
+		</a><?php
 		
 	}
 	
