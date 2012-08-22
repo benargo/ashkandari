@@ -38,7 +38,7 @@ if( isset($_SESSION['account']) ) {
 		
 		<!-- Core JavaScript -->
 		<script type="text/javascript" src="/media/scripts/jquery-1.7.2.min.js"></script>
-		<script type="text/javascript" src="http://static.wowhead.com/widgets/power.js"></script>
+		<script type="text/javascript" src="<?php echo $protocol; ?>://static.wowhead.com/widgets/power.js"></script>
 		
 		<!-- Additional Material (if any) -->
 		<?php
