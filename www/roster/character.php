@@ -141,27 +141,27 @@ if( $character = new character($character_id) ) {
 		</tr>
 	</tbody>
 </table>
-<?php if($character->isClaimed()) {
-	
-	?><h2>Alts</h2><?php
-	
-	while($alt = $character->getAlts()) {
-	
-		$class = $alt->getClass();
-		$race = $alt->getRace();
+	<?php if($character->isClaimed()) {
 		
-		?><a href="/roster/character/<?php echo $alt->name; ?>">
-			<img src="<?php echo $alt->getThumbnail(); ?>" alt="Character Thumbnail" class="float right" />
-			<p class="bold"><?php echo $alt->name; ?></p>
-			<p class="<?php echo $class->slug; ?>"><img src="<?php echo $character->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
-			<p>Achievement Points: <?php echo $alt->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement points icon" class="noborder" /></p>
-		</a><?php
+		?><h2>Alts</h2><?php
+		
+		while($alt = $character->getAlts()) {
+		
+			$class = $alt->getClass();
+			$race = $alt->getRace();
+			
+			?><a href="/roster/character/<?php echo $alt->name; ?>">
+				<img src="<?php echo $alt->getThumbnail(); ?>" alt="Character Thumbnail" class="float right" />
+				<p class="bold"><?php echo $alt->name; ?></p>
+				<p class="<?php echo $class->slug; ?>"><img src="<?php echo $character->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
+				<p>Achievement Points: <?php echo $alt->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement points icon" class="noborder" /></p>
+			</a><?php
+			
+		}
 		
 	}
-	
+
 }
-	
-<?php }
 
 // Require the foot of the page
 require(PATH.'framework/foot.php'); ?>
