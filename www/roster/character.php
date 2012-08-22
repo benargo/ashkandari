@@ -44,7 +44,7 @@ if( $character = new character($character_id) ) {
 		<li class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></li>
 	</ul>
 	
-	<table class="fill character 4">
+	<table class="fill 4">
 	<thead>
 		<tr>
 			<th colspan="2">Basic Details</th>
@@ -109,7 +109,7 @@ if( $character = new character($character_id) ) {
 		</tr>
 	</tbody>
 </table>
-<table class="fill character 3">
+<table class="fill 6">
 	<thead>
 		<tr>
 			<th colspan="2">Specialisations</th>
