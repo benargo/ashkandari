@@ -1,0 +1,536 @@
+/* 1. Imports */
+@charset "UTF-8";
+@import url('reset.css');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+/* 2. Inline Styles */
+/* 2.1. Typography */
+body {
+	font-family: Helvetica, Arial, Verdana, sans-serif;
+	color: #B39265;
+	background-color: transparent;
+	background-image: url('body.png');
+	background-repeat: repeat-y;
+	background-position: top center;
+	background-size: 100%;
+
+	p {
+		line-height: 1.8em;
+		margin: 10px 0;
+	}
+	
+	h1, h2 {
+		font-family: Times, 'Times New Roman', serif;
+		color: #008467;
+	}
+	
+	h1 {
+		font-size: 3em;
+	}
+	
+	h2 {
+		font-size: 2.4em;
+	}
+	
+	h3 {
+		font-size: 2.0em;
+		font-weight: bold;
+	}
+	
+	h4 {
+		font-size: 1.8em;
+		font-weight: bold;
+	}
+	
+	/* Class Colours */
+	.warrior {
+		color: #C69B6D;
+	}
+	
+	.paladin {
+		color: #F48CBA;
+	}
+	
+	.hunter {
+		color: #AAD372;
+	}
+	
+	.rogue {
+		color: #FFF468;
+	}
+	
+	.priest {
+		color: #F0EBE0;
+	}
+	
+	.dk {
+		color: #C41E3B;
+	}
+	
+	.shaman {
+		color: #2359FF;
+	}
+	
+	.mage {
+		color: #68CCEF;
+	}
+	
+	.warlock {
+		color: #9382C9;
+	}
+	
+	.druid {
+		color: #FF7C0A;
+	}
+	
+	a.warrior{
+		border-bottom-color: #C69B6D;
+	}
+	
+	a.paladin {
+		border-bottom-color: #F48CBA;
+	}
+	
+	a.hunter {
+		border-bottom-color: #AAD372;
+	}
+	
+	a.rogue {
+		border-bottom-color: #FFF468;
+	}
+	
+	a.priest {
+		border-bottom-color: #F0EBE0;	
+	}
+	
+	a.dk {
+		border-bottom-color: #C41E3B;
+	}
+	
+	a.shaman {
+		border-bottom-color: #2359FF;
+	}
+	
+	a.mage {
+		border-bottom-color: #68CCEF;
+	}
+	
+	a.warlock {
+		border-bottom-color: #9382C9;
+	}
+	
+	a.druid {
+		border-bottom-color: #FF7C0A;
+	}
+	
+	/* 2.2. Links */
+	a {
+		color: #FFA400;
+		text-decoration: underline;
+		border: none;
+	
+		[href^="http"]:after, [href^="http"]:after:hover {
+			content: url('../images/theme/external-link-yellow.png');
+		}
+	}
+	
+	/* 2.3. Images */
+	article img {
+		display: block;
+		padding: 5px 0;
+		max-width: 100%;
+	
+		border: none;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		
+		.icon {
+		
+		display: inline-block;
+		height: 18px;
+		width: auto;
+		vertical-align: middle;
+		
+		}
+	}
+
+	/* 2.4. Tables */
+	table {
+		margin: 10px 0;
+		width: 100%;
+		
+		tr {
+			border-bottom: solid 1px #231207;
+		}
+		
+		tr:nth-child(2n+1) {
+			background-color: rgba(43, 21, 7, 0.5);
+		}
+		
+		th, td {
+			padding: 5px;
+			vertical-align: middle;
+			text-align: center;
+		}
+
+		th {
+			font-size: 1.2em;
+		}
+		
+	}
+	
+	/* 2.5. Lists */
+	ul, ol {
+		
+		margin-left: 10px;
+		
+		li {
+			line-height: 1.8em;
+		}
+	}
+	
+	ul > li {
+		list-style: disc;
+	}
+	
+	ol > li {
+		list-style: decimal;
+	}
+
+	/* 2.6. Forms */
+	form {
+		display: block;
+	
+		label {
+			display: block;
+			width: 100%;
+			cursor: pointer;
+			
+			.required p:after {
+				content: " ★";
+				color: #FFA400;
+			}
+
+		}
+		
+		p#required {
+			text-align: right;
+		
+			&:before {
+				content: "★ ";
+				color: #FFA400;
+			}
+		
+		}
+		
+		select, input, textarea, button { font: 1.5em Helvetica, Arial, Verdana, sans-serif; }
+
+		textarea {
+			line-height: 1.4em;
+		}
+		 
+		input[type="text"], input[type="email"], input[type="tel"], input[type="password"], input[type="date"], input.ui-comboxbox-input, textarea {
+			display: block;
+			border: 1px solid #b1b4a9;
+			padding: 6px;
+			width: 866px;
+		}
+		
+		select {
+			margin: 0px;
+			display: block;
+			border: 1px solid #b1b4a9;
+			padding: 6px;
+			width: 882px;
+		}
+		
+		select[size], textarea, input[type="radio"], input[type="checkbox"] { vertical-align: middle; }
+ 
+		input[type=button], input[type=submit], button, { cursor: pointer; }
+		
+		input[type=button], input[type=submit], a.button {
+			display: inline-block;
+			margin: 0 auto;
+			padding: none;
+			width: 294px;
+			height: 32px;
+			line-height: 32px;
+			color: #FFA400;
+			text-align: center;
+			vertical-align: middle;
+			font-size: 1.0em;
+			border: none;
+			
+			background: transparent url('../images/theme/form-buttons.png') top left;
+		}
+		
+		input[type=button][disabled=true], input[type=submit][disabled=true], a.button.disabled, input[type=button][disabled=true]:hover, input[type=submit][disabled=true]:hover, a.button.disabled:hover {
+			background-position: bottom left;
+			color: #8694A1;
+		}
+		
+		input[type=button]:hover, input[type=submit]:hover, a.button:hover {
+			background-position: center left;
+			border: none;
+		}
+		
+		input[type=button].text, input[type=submit].text {
+			display: inline;
+			width: auto;
+			height: auto;
+			line-height: 1.0em;
+			margin: 0;
+			padding: 0;
+			background: none;
+			border-top: none;
+			border-right: none;
+			border-bottom: dotted 1px #FFA400;
+			border-left: none;
+		}
+		
+		input[type=button].text:hover, input[type=submit].text:hover {
+			border-bottom-style: solid;
+		}
+
+	}
+	
+	/* 2.8. Common classes */
+	.moderator {
+		color: #81B558;
+	}
+	
+	.moderator img {
+		-webkit-box-shadow: 0px 0px 10px 3px #81B558;
+		box-shadow: 0px 0px 10px 3px #81B558;
+		padding: 0px;
+	}
+	
+	.officer, .moderator.officer {
+		color: #00B4FF;	
+	}
+	
+	.officer img, .moderator.officer img {
+		-webkit-box-shadow: 0px 0px 10px 3px #00B4FF;
+		box-shadow: 0px 0px 10px 3px #00B4FF;
+		padding: 0px;
+	}
+	
+	.text.center {
+		text-align: center;
+	}
+	
+	.text.right {
+		text-align: right;
+	}
+	
+	.jsshow, .display.block {
+		display: block;
+	}
+	
+	.nojs .jsshow {
+		display: none;
+	}
+	
+	.jshide {
+		display: none;
+	}
+	
+	.nojs-show {
+		display: none;
+	}
+	
+	.nojs .nojs-show {
+		display: block;
+	}
+	
+	.nojs .nojs-hide {
+		display: none;
+	}
+	
+	.info, .success, .warning, .error, .validation {
+	border: 1px solid;
+	margin: 10px 0px;
+	padding:15px 10px 15px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	}
+	.info {
+	color: #00529B;
+	background-color: #BDE5F8;
+	background-image: url('../images/theme/info.png');
+	}
+	.success {
+	color: #4F8A10;
+	background-color: #DFF2BF;
+	background-image:url('../images/theme/success.png');
+	}
+	.warning {
+	color: #9F6000;
+	background-color: #FEEFB3;
+	background-image: url('../images/theme/warning.png');
+	}
+	.error {
+	color: #D8000C;
+	background-color: #FFBABA;
+	background-image: url('../images/theme/error.png');
+	}
+	
+	.decision {
+		text-align: center;
+	}
+	
+	.decision input {
+		display: inline-block;
+	}
+	
+	.reply {
+	
+		.character {
+			width: 100%;
+			margin: 10px 0;
+			
+			p {
+				margin: 0;
+			}
+
+		}
+
+		.body {
+			margin: 10px 0;
+			
+			.signature {
+				border-top: solid 1px #B39265;
+				margin: 5px 0 0;	
+			}
+		}
+		
+	}
+	
+	header {
+		a#wowlogo {
+			visibility: visible;
+			font-family: Times, 'Times New Roman', serif;
+			color: #008467;
+			font-size: 3.0em;
+		}
+	}
+	
+	/* 3.2. Primary Navigation */
+	nav#primary {
+		overflow: scroll;
+		width: 100%;
+		height: 60px;
+		margin: 5px 0;
+	
+		ul {
+			margin: 0;
+		}
+		
+		li, li > a {
+			display: inline-block;
+			width: 100%;
+			height: 60px;
+			
+			border-bottom: none;
+		
+			font-weight: bold;
+			line-height: 60px;	
+			text-align: center;
+			text-transform: uppercase;
+			
+			text-shadow: 0px 0px 10px #37201a;
+			filter: dropshadow(color=#ea8469, offx=0, offy=0);
+			
+			&:hover {
+				background-color: rgba(230, 130, 100, 0.1);
+			}
+
+		}
+
+	}
+	
+	article {
+		
+		ul#breadcrumbs {
+			margin: 5px;
+			
+			li {
+				display: block;
+				width: 100%;
+				padding: 0 0 5px;
+				list-style: none;
+				
+				&:before {
+					content: "» ";
+			    }
+			    
+			    &:first-of-type::before {
+					content: none;
+				}
+			}
+		}
+		
+		nav.officer {
+			margin: 5px 0;
+			background: rgba(230, 130, 100, 0.2);
+			border-bottom: solid 1px #00B4FF;
+			border-top: solid 1px #00B4FF;
+			color: #B39265;
+			-webkit-box-shadow: 0px 0px 10px 3px #00B4FF;
+			box-shadow: 0px 0px 10px 3px #00B4FF;
+			
+			ul {
+				margin: 0;
+				text-align: center;
+				
+				li {
+					display: block;
+					
+					a {
+						display: block;
+						margin: 0 5px;
+						border: none;
+					}
+					
+					&:hover {
+						background-color: rgba(230, 130, 100, 0.3);
+					}
+				
+				}
+			}
+		}
+		
+		* {
+			margin: 5px;
+		}
+		
+	}
+	
+	/* 3.4. Footer */
+	#footer-wrapper {
+		padding: 10px 0;
+		background: #010A0F;
+		
+		footer {
+			width: 100%;
+			margin: 0;
+			color: #433A2E;
+			
+			a {
+				color: #70523D;
+			}
+		}
+	}
+
+	strong, .bold {
+		font-weight: 700 !important;
+	}
+	
+	em, .italics {
+		font-style: italic !important;
+	}
+
+}

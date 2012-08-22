@@ -1,9 +1,9 @@
 /***************************************
- * Name: realms.screen.css
+ * Name: screen.css
  * Media: screens
  * Project: Ashkandari
  * Author: Ben Argo
- * Copyright: Premade (EU) Ltd. & Blizzard Entertainment Inc.
+ * Copyright: Ashkandari Web Services. & Blizzard Entertainment Inc.
  * Version: 4.0
  * Updated: 13 December 2011
  *
@@ -28,10 +28,6 @@
  *     3.2. Primary navigation
  *     3.3. Article
  *     3.4. Footer
- * 4. Media Queries
- *     4.1. Screens
- *     4.2. Tablets (e.g. iPad)
- *     4.3. Mobiles (e.g. iPhone)
  ***************************************/
 
 /* 1. Imports */
@@ -323,20 +319,6 @@ label.required p:after {
 	color: #FFA400;
 }
 
-label.error {
-	margin: 10px 0;
-	font-size: 0.9em;
-	color: #ff3333;
-}
-
-input.error, textarea.error {
-	background: #ffdddd;
-	border-radius: 1px;
-	-moz-box-shadow: 0px 0px 5px red;
-	-webkit-box-shadow: 0px 0px 5px red;
-	box-shadow: 0px 0px 5px red; 
-}
-
 select, input, textarea, button { font: 1.5em Helvetica, Arial, Verdana, sans-serif; }
 
 textarea {
@@ -358,9 +340,7 @@ select {
 	width: 882px;
 }
 
-select[size], textarea, input[type="radio"] { vertical-align: middle; }
- 
-input[type="checkbox"] { vertical-align: middle; }
+select[size], textarea, input[type="radio"], input[type="checkbox"] { vertical-align: middle; }
  
 label, input[type=button], input[type=submit], button, { cursor: pointer; }
 
@@ -413,36 +393,6 @@ input[type=button].text, input[type=submit].text {
 
 input[type=button].text:hover, input[type=submit].text:hover {
 	border-bottom-style: solid;
-}
-
-/* 2.7. Tooltips */
-.tooltip {
-	color: #FFA400;
-	cursor: help;
-}
-
-.tooltip > .tt-inner {
-	display: none;
-	position: absolute;
-	bottom: 1.8em; left: 0px;
-	padding: 5px;
-	
-	width: 200px;
-	height: 100px;
-	overflow: scroll;
-	
-	border: solid 0px transparent;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
-	border-radius: 5px;
-	
-	background: rgba(230, 130, 100, 0.6);
-	
-	color: #eeeeee;
-}
-
-.tooltip > .tt-inner {
-	display: block;
 }
 
 /* 2.8. Common classes */
@@ -635,7 +585,7 @@ background-image: url('../images/theme/error.png');
 /* 3.1. Header */
 #service {
 	float: right;
-	background-color: #272b2e;
+		background-color: #272b2e;
 	border: solid 0px #272b2e;
 	-webkit-border-radius: 0px 0px 5px 5px;
 	border-radius: 0px 0px 5px 5px;
@@ -665,14 +615,7 @@ a#wowlogo {
 	height: 17px; /* 145px */
 	margin: 0 auto;
 	padding: 128px 50px 0;
-	
-	line-height: 17px;
-	font-family: 'Times', 'Times New Roman', serif;
-	font-size: 1.3em;
-	font-weight: bold;
-	text-align: center;
-	text-transform: uppercase;
-	color: #000000;
+	visibility: hidden;
 }
 
 /* 3.2. Primary Navigation */

@@ -1,0 +1,471 @@
+@import url('reset.css');
+
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+/* 1. Imports */
+@charset "UTF-8";
+/* 2. Inline Styles */
+/* 2.1. Typography */
+body {
+  font-family: Helvetica, Arial, Verdana, sans-serif;
+  color: #B39265;
+  background-color: transparent;
+  background-image: url('body.png');
+  background-repeat: repeat-y;
+  background-position: top center;
+  background-size: 100%;
+  /* Class Colours */
+
+  /* 2.2. Links */
+
+  /* 2.3. Images */
+
+  /* 2.4. Tables */
+
+  /* 2.5. Lists */
+
+  /* 2.6. Forms */
+
+  /* 2.8. Common classes */
+
+  /* 3.2. Primary Navigation */
+
+  /* 3.4. Footer */
+
+}
+body p {
+  line-height: 1.8em;
+  margin: 10px 0;
+}
+body h1,
+body h2 {
+  font-family: Times, 'Times New Roman', serif;
+  color: #008467;
+}
+body h1 {
+  font-size: 3em;
+}
+body h2 {
+  font-size: 2.4em;
+}
+body h3 {
+  font-size: 2.0em;
+  font-weight: bold;
+}
+body h4 {
+  font-size: 1.8em;
+  font-weight: bold;
+}
+body .warrior {
+  color: #C69B6D;
+}
+body .paladin {
+  color: #F48CBA;
+}
+body .hunter {
+  color: #AAD372;
+}
+body .rogue {
+  color: #FFF468;
+}
+body .priest {
+  color: #F0EBE0;
+}
+body .dk {
+  color: #C41E3B;
+}
+body .shaman {
+  color: #2359FF;
+}
+body .mage {
+  color: #68CCEF;
+}
+body .warlock {
+  color: #9382C9;
+}
+body .druid {
+  color: #FF7C0A;
+}
+body a.warrior {
+  border-bottom-color: #C69B6D;
+}
+body a.paladin {
+  border-bottom-color: #F48CBA;
+}
+body a.hunter {
+  border-bottom-color: #AAD372;
+}
+body a.rogue {
+  border-bottom-color: #FFF468;
+}
+body a.priest {
+  border-bottom-color: #F0EBE0;
+}
+body a.dk {
+  border-bottom-color: #C41E3B;
+}
+body a.shaman {
+  border-bottom-color: #2359FF;
+}
+body a.mage {
+  border-bottom-color: #68CCEF;
+}
+body a.warlock {
+  border-bottom-color: #9382C9;
+}
+body a.druid {
+  border-bottom-color: #FF7C0A;
+}
+body a {
+  color: #FFA400;
+  text-decoration: underline;
+  border: none;
+}
+body a [href^="http"]:after,
+body a [href^="http"]:after:hover {
+  content: url('../images/theme/external-link-yellow.png');
+}
+body article img {
+  display: block;
+  padding: 5px 0;
+  max-width: 100%;
+  border: none;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+body article img .icon {
+  display: inline-block;
+  height: 18px;
+  width: auto;
+  vertical-align: middle;
+}
+body table {
+  margin: 10px 0;
+  width: 100%;
+}
+body table tr {
+  border-bottom: solid 1px #231207;
+}
+body table tr:nth-child(2n+1) {
+  background-color: rgba(43, 21, 7, 0.5);
+}
+body table th,
+body table td {
+  padding: 5px;
+  vertical-align: middle;
+  text-align: center;
+}
+body table th {
+  font-size: 1.2em;
+}
+body ul,
+body ol {
+  margin-left: 10px;
+}
+body ul li,
+body ol li {
+  line-height: 1.8em;
+}
+body ul > li {
+  list-style: disc;
+}
+body ol > li {
+  list-style: decimal;
+}
+body form {
+  display: block;
+}
+body form label {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+}
+body form label .required p:after {
+  content: " ★";
+  color: #FFA400;
+}
+body form p#required {
+  text-align: right;
+}
+body form p#required:before {
+  content: "★ ";
+  color: #FFA400;
+}
+body form select,
+body form input,
+body form textarea,
+body form button {
+  font: 1.5em Helvetica, Arial, Verdana, sans-serif;
+}
+body form textarea {
+  line-height: 1.4em;
+}
+body form input[type="text"],
+body form input[type="email"],
+body form input[type="tel"],
+body form input[type="password"],
+body form input[type="date"],
+body form input.ui-comboxbox-input,
+body form textarea {
+  display: block;
+  border: 1px solid #b1b4a9;
+  padding: 6px;
+  width: 866px;
+}
+body form select {
+  margin: 0px;
+  display: block;
+  border: 1px solid #b1b4a9;
+  padding: 6px;
+  width: 882px;
+}
+body form select[size],
+body form textarea,
+body form input[type="radio"],
+body form input[type="checkbox"] {
+  vertical-align: middle;
+}
+body form input[type=button],
+body form input[type=submit],
+body form button {
+  cursor: pointer;
+}
+body form input[type=button],
+body form input[type=submit],
+body form a.button {
+  display: inline-block;
+  margin: 0 auto;
+  padding: none;
+  width: 294px;
+  height: 32px;
+  line-height: 32px;
+  color: #FFA400;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 1.0em;
+  border: none;
+  background: transparent url('../images/theme/form-buttons.png') top left;
+}
+body form input[type=button][disabled=true],
+body form input[type=submit][disabled=true],
+body form a.button.disabled,
+body form input[type=button][disabled=true]:hover,
+body form input[type=submit][disabled=true]:hover,
+body form a.button.disabled:hover {
+  background-position: bottom left;
+  color: #8694A1;
+}
+body form input[type=button]:hover,
+body form input[type=submit]:hover,
+body form a.button:hover {
+  background-position: center left;
+  border: none;
+}
+body form input[type=button].text,
+body form input[type=submit].text {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: 1.0em;
+  margin: 0;
+  padding: 0;
+  background: none;
+  border-top: none;
+  border-right: none;
+  border-bottom: dotted 1px #FFA400;
+  border-left: none;
+}
+body form input[type=button].text:hover,
+body form input[type=submit].text:hover {
+  border-bottom-style: solid;
+}
+body .moderator {
+  color: #81B558;
+}
+body .moderator img {
+  -webkit-box-shadow: 0px 0px 10px 3px #81B558;
+  box-shadow: 0px 0px 10px 3px #81B558;
+  padding: 0px;
+}
+body .officer,
+body .moderator.officer {
+  color: #00B4FF;
+}
+body .officer img,
+body .moderator.officer img {
+  -webkit-box-shadow: 0px 0px 10px 3px #00B4FF;
+  box-shadow: 0px 0px 10px 3px #00B4FF;
+  padding: 0px;
+}
+body .text.center {
+  text-align: center;
+}
+body .text.right {
+  text-align: right;
+}
+body .jsshow,
+body .display.block {
+  display: block;
+}
+body .nojs .jsshow {
+  display: none;
+}
+body .jshide {
+  display: none;
+}
+body .nojs-show {
+  display: none;
+}
+body .nojs .nojs-show {
+  display: block;
+}
+body .nojs .nojs-hide {
+  display: none;
+}
+body .info,
+body .success,
+body .warning,
+body .error,
+body .validation {
+  border: 1px solid;
+  margin: 10px 0px;
+  padding: 15px 10px 15px 50px;
+  background-repeat: no-repeat;
+  background-position: 10px center;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+body .info {
+  color: #00529B;
+  background-color: #BDE5F8;
+  background-image: url('../images/theme/info.png');
+}
+body .success {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  background-image: url('../images/theme/success.png');
+}
+body .warning {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  background-image: url('../images/theme/warning.png');
+}
+body .error {
+  color: #D8000C;
+  background-color: #FFBABA;
+  background-image: url('../images/theme/error.png');
+}
+body .decision {
+  text-align: center;
+}
+body .decision input {
+  display: inline-block;
+}
+body .reply .character {
+  width: 100%;
+  margin: 10px 0;
+}
+body .reply .character p {
+  margin: 0;
+}
+body .reply .body {
+  margin: 10px 0;
+}
+body .reply .body .signature {
+  border-top: solid 1px #B39265;
+  margin: 5px 0 0;
+}
+body header a#wowlogo {
+  visibility: visible;
+  font-family: Times, 'Times New Roman', serif;
+  color: #008467;
+  font-size: 3.0em;
+}
+body nav#primary {
+  overflow: scroll;
+  width: 100%;
+  height: 60px;
+  margin: 5px 0;
+}
+body nav#primary ul {
+  margin: 0;
+}
+body nav#primary li,
+body nav#primary li > a {
+  display: inline-block;
+  width: 100%;
+  height: 60px;
+  border-bottom: none;
+  font-weight: bold;
+  line-height: 60px;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0px 0px 10px #37201a;
+  filter: dropshadow(color=#ea8469, offx=0, offy=0);
+}
+body nav#primary li:hover,
+body nav#primary li > a:hover {
+  background-color: rgba(230, 130, 100, 0.1);
+}
+body article ul#breadcrumbs {
+  margin: 5px;
+}
+body article ul#breadcrumbs li {
+  display: block;
+  width: 100%;
+  padding: 0 0 5px;
+  list-style: none;
+}
+body article ul#breadcrumbs li:before {
+  content: "» ";
+}
+body article ul#breadcrumbs li:first-of-type::before {
+  content: none;
+}
+body article nav.officer {
+  margin: 5px 0;
+  background: rgba(230, 130, 100, 0.2);
+  border-bottom: solid 1px #00B4FF;
+  border-top: solid 1px #00B4FF;
+  color: #B39265;
+  -webkit-box-shadow: 0px 0px 10px 3px #00B4FF;
+  box-shadow: 0px 0px 10px 3px #00B4FF;
+}
+body article nav.officer ul {
+  margin: 0;
+  text-align: center;
+}
+body article nav.officer ul li {
+  display: block;
+}
+body article nav.officer ul li a {
+  display: block;
+  margin: 0 5px;
+  border: none;
+}
+body article nav.officer ul li:hover {
+  background-color: rgba(230, 130, 100, 0.3);
+}
+body article * {
+  margin: 5px;
+}
+body #footer-wrapper {
+  padding: 10px 0;
+  background: #010A0F;
+}
+body #footer-wrapper footer {
+  width: 100%;
+  margin: 0;
+  color: #433A2E;
+}
+body #footer-wrapper footer a {
+  color: #70523D;
+}
+body strong,
+body .bold {
+  font-weight: 700 !important;
+}
+body em,
+body .italics {
+  font-style: italic !important;
+}
