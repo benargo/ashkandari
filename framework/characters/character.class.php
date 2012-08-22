@@ -367,24 +367,31 @@ class character {
 		
 	}
 	
-	public function getAverageItemLevel($equipped = false) {
+	/* Get their average item level */
+	public function getItemLevel() {
 		
-		/* This function gets the data regarding a users average item level and returns it */
-		if( $bnet_data = $this->getBattleNetData("items") ) {
-			
-			switch($equipped) {
-				
-				case true:
-					return $bnet_data->items->averageItemLevelEquipped;
-					break;
-					
-				case false:
-					return $bnet_data->items->averageItemLevel;
-					break;
-				
-			}
-			
-		}
+		/* Get their battle.net data */
+		$bnet_data = $this->getBattleNetData();
+		
+		/* Get their average item level */
+		$item_level = $bnet_data->items->averageItemLevel;
+		
+		/* And return it */
+		return $item_level;
+		
+	}
+	
+	/* Get their average equipped item level */
+	public function getEquippedItemLevel() {
+		
+		/* Get their battle.net data */
+		$bnet_data = $this->getBattleNetData();
+		
+		/* Get their average equipped item level */
+		$item_level = $bnet_data->items->averageItemLevelEquipped;
+		
+		/* And return it */
+		return $item_level;
 		
 	}
 
