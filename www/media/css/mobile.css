@@ -6,7 +6,8 @@
 /* 2. Inline Styles */
 /* 2.1. Typography */
 body {
-  padding: : 0 5px;
+  padding: 0 5px;
+  max-width: 630px;
   font-family: Helvetica, Arial, Verdana, sans-serif;
   color: #B39265;
   background-color: transparent;
