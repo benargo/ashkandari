@@ -209,14 +209,12 @@ body form textarea {
   display: block;
   border: 1px solid #b1b4a9;
   padding: 6px;
-  width: 100%;
 }
 body form select {
   margin: 0px;
   display: block;
   border: 1px solid #b1b4a9;
   padding: 6px;
-  width: 100%;
 }
 body form select[size],
 body form textarea,
