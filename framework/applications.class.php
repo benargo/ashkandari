@@ -89,10 +89,7 @@ class application {
 		
 		/* Now get their realm */
 		$realm = $this->getRealm();
-		
-		/* Get the battle.net data for this character */
-		$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions");
-		
+				
 		/* Continue setting basic variables for this instance */
 		$this->email = $application->email;
 		$this->english = $application->english;
@@ -132,6 +129,13 @@ class application {
 	
 	/* Decode their battle.net data */
 	public function getBattleNetData() {
+	
+		if(empty($this->bnet_json)) {
+			
+			/* Get the battle.net data for this character */
+			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions");
+			
+		}
 		
 		/* Using the JSON Decode function, get their battle.net data from this instance */
 		$bnet_decoded = json_decode($this->bnet_json);
