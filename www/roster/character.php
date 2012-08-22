@@ -23,8 +23,6 @@ if( $character = new character($character_id) ) {
 	$race = $character->getRace();
 	$gender = $character->getGender();
 	$rank = $character->getRank();
-	$spec = $character->getPrimarySpec();
-	$off_spec = $character->getOffSpec();
 	$profession1 = $character->getProfession(0);
 	$profession2 = $character->getProfession(1);
 	$first_aid = $character->getFirstAid();
@@ -119,7 +117,7 @@ if( $character = new character($character_id) ) {
 	<tbody>
 		<tr>
 			<td class="bold">Primary Spec:</td>
-			<td><?php echo $spec->name; ?></td>
+			<td><?php echo $character->getPrimarySpec(); ?></td>
 			
 			<td class="bold">Average Item Level:</td>
 			<td><?php echo $character->getItemLevel(); ?></td>
@@ -130,7 +128,7 @@ if( $character = new character($character_id) ) {
 		
 		<tr>
 			<td class="bold">Secondary Spec:</td>
-			<td><?php echo $off_spec->name; ?></td>
+			<td><?php echo $character->getOffSpec(); ?></td>
 			
 			<td class="bold">Equipped Item Level:</td>
 			<td><?php echo $character->getEquippedItemLevel(); ?></td>
