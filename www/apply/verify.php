@@ -100,7 +100,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 			
 			/* Declare the two slots we're going to use for the verification */
 			$slot1 = getRandomItemSlot();
-			$slot2 = getRandomItemSlot($slot1->name);
+			$slot2 = getRandomItemSlot($slot1->id);
 			
 			?><input type="hidden" name="realm" value="<?php echo $realm->id; ?>" />
 			<input type="hidden" name="character" value="<?php echo $character->name; ?>" />
