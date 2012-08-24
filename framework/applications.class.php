@@ -131,6 +131,9 @@ class application {
 	public function getBattleNetData() {
 	
 		if(empty($this->bnet_json)) {
+		
+			/* Get the realm we need */
+			$realm = getRealm($this->realm);
 			
 			/* Get the battle.net data for this character */
 			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions");

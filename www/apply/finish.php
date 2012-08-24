@@ -79,8 +79,6 @@ if($_POST['code'] == decrypt($_POST['code_verify']) && application::verify($_POS
 		<input type="hidden" name="realm" value="<?php echo $_POST['realm']; ?>" />
 		<input type="hidden" name="character" value="<?php echo $_POST['character']; ?>" />
 		<input type="hidden" name="email" value="<?php echo encrypt($email); ?>" />
-		<input type="hidden" name="dob" value="<?php echo $_POST['dob']; ?>" />
-		<input type="hidden" name="country" value="<?php echo $_POST['country']; ?>" />
 		<input type="hidden" name="english" value="<?php echo $_POST['english']; ?>" />
 		<input type="hidden" name="teamspeak" value="<?php echo $_POST['teamspeak']; ?>" />
 		<input type="hidden" name="microphone" value="<?php echo $_POST['microphone']; ?>" />
