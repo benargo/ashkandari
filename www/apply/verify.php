@@ -95,86 +95,8 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 		 * send out an email to the user, and we can now continue rendering the page */
 		 
 		?><h1>Verify your Application</h1>
-			
-		<p><img src="<?php echo $protocol; ?>://eu.battle.net/static-render/eu/<?php echo $character->thumbnail; ?>" alt="Character Thumbnail" id="character_thumbnail" class="float right" />Thank you, <?php echo $character->name; ?>.</p>
 		
-		<p>Please review the information we've been able to source below about your character. If the character we've been able to find is yours, then please select your active spec then follow the instructions below to verify your email address.</p>
-		
-		<table id="form2">
-			<!-- Realm -->
-			<tr>
-				<td class="bold">Realm:</td>
-				<td><?php echo $character->realm; ?></td>
-			</tr>
-			
-			<!-- Race -->
-			<tr>
-				<td class="bold">Race:</td>
-				<td><?php 
-				
-					/* This conditional gets the race from the database, based on the ID number given. */
-					if( $race = getRace($character->race) ) {
-					
-						/* We now have to switch through the two possible genders (male and female) provided by battle.net */
-						switch ( $character->gender ) {
-							
-							/* Male */
-							case 0:
-								?><img src="<?php echo $race->male_icon; ?>" alt="Male Icon" /><?php
-							break;
-							
-							/* Female */
-							case 1:
-								?><img src="<?php echo $race->female_icon; ?>" alt="Female Icon" /><?php
-							break;
-							
-						} /* End Gender Switch */ ?> <?php 
-						
-						/* Print out the race's full name */
-						echo $race->name;
-					
-				} else { 
-					
-					/* This means we've been unable to determine their race */
-					echo 'Unknown'; 
-				
-				} ?></td>
-			</tr>
-			
-			<!-- Class -->
-			<tr>
-				<td class="bold">Class:</td>
-				<td><?php 
-				
-					/* This condition gets the class from the database, based on the ID number given */
-					if( $class = getClass($character->class) ) {
-					
-					/* Print out the icon for their class */
-					?><img src="<?php echo $class->icon_url; ?>" alt="Icon" /> <?php 
-					
-					/* Print out the class' full name */
-					echo $class->name;
-					
-				} else { 
-				
-					/* This means we've been unable to determine their class */
-					echo 'Unknown'; 
-				} ?></td>
-			</tr>
-			
-			<!-- Talents -->
-			<tr>
-				<td class="bold">Primary Spec:</td>
-				<td><select name="active_spec">
-					<option value="0"><?php echo $character->talents[0]->name; ?></option><?php
-					if( isset($character->talents[1]->name) ) {
-					?><option value="1"><?php echo  $character->talents[1]->name; ?></option><?php	
-					}
-				?></td>
-			</tr>
-		</table>
-		
-			<form action="/apply/finish" method="post"><?php
+		<form action="/apply/finish" method="post"><?php
 			
 			/* Declare the two slots we're going to use for the verification */
 			$slot1 = getRandomItemSlot();
@@ -194,7 +116,84 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 			<input type="hidden" name="code_verify" value="<?php echo encrypt($code); ?>" />
 			<input type="hidden" name="slot1" value="<?php echo $slot1->id; ?>" />
 			<input type="hidden" name="slot2" value="<?php echo $slot2->id; ?>" />
-	
+			
+			<p><img src="https://eu.battle.net/static-render/eu/<?php echo $character->thumbnail; ?>" alt="Character Thumbnail" id="character_thumbnail" class="float right" />Thank you, <?php echo $character->name; ?>.</p>
+			
+			<p>Please review the information we've been able to source below about your character. If the character we've been able to find is yours, then please select your active spec then follow the instructions below to verify your email address.</p>
+			
+			<table id="form2">
+				<!-- Realm -->
+				<tr>
+					<td class="bold">Realm:</td>
+					<td><?php echo $character->realm; ?></td>
+				</tr>
+				
+				<!-- Race -->
+				<tr>
+					<td class="bold">Race:</td>
+					<td><?php 
+					
+						/* This conditional gets the race from the database, based on the ID number given. */
+						if( $race = getRace($character->race) ) {
+						
+							/* We now have to switch through the two possible genders (male and female) provided by battle.net */
+							switch ( $character->gender ) {
+								
+								/* Male */
+								case 0:
+									?><img src="<?php echo $race->male_icon; ?>" alt="Male Icon" /><?php
+								break;
+								
+								/* Female */
+								case 1:
+									?><img src="<?php echo $race->female_icon; ?>" alt="Female Icon" /><?php
+								break;
+								
+							} /* End Gender Switch */ ?> <?php 
+							
+							/* Print out the race's full name */
+							echo $race->name;
+						
+					} else { 
+						
+						/* This means we've been unable to determine their race */
+						echo 'Unknown'; 
+					
+					} ?></td>
+				</tr>
+				
+				<!-- Class -->
+				<tr>
+					<td class="bold">Class:</td>
+					<td><?php 
+					
+						/* This condition gets the class from the database, based on the ID number given */
+						if( $class = getClass($character->class) ) {
+						
+						/* Print out the icon for their class */
+						?><img src="<?php echo $class->icon_url; ?>" alt="Icon" /> <?php 
+						
+						/* Print out the class' full name */
+						echo $class->name;
+						
+					} else { 
+					
+						/* This means we've been unable to determine their class */
+						echo 'Unknown'; 
+					} ?></td>
+				</tr>
+				
+				<!-- Talents -->
+				<tr>
+					<td class="bold">Primary Spec:</td>
+					<td><select name="active_spec">
+						<option value="0"><?php echo $character->talents[0]->name; ?></option><?php
+						if( isset($character->talents[1]->name) ) {
+						?><option value="1"><?php echo  $character->talents[1]->name; ?></option><?php	
+						}
+					?></td>
+				</tr>
+			</table>
 			
 			<p>In order to prove that you own the character listed above, we need you to remove the following two pieces of gear from your character and check that you have removed those two pieces. To do this you will need access to your World of Warcraft installation and be able to log in and out.</p>
 			
