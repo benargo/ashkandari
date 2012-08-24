@@ -52,7 +52,7 @@ if($_POST['code'] == decrypt($_POST['code_verify']) && application::verify($_POS
 	$spec = $application->getPrimarySpec();
 	
 	/* Generate the thread title */
-	$thread_title = $application->name .": ". $spec->name ." ". $class->name ." - ". $application->getItemLevel() ." item level (". $application->getEquippedItemLevel() ." equipped)";  
+	$thread_title = $application->name .": ". $spec->name ." ". $class->name;  
 	
 	/* Run the query to create the forum thread */
 	$db->query("INSERT INTO `forum_threads` (`board_id`, `application_id`, `title`, `most_recent_post_time`) VALUES (1, ". $application->id .", '$thread_title', ". time() .")") or die($db->error);
