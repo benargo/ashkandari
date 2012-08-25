@@ -101,7 +101,7 @@ if($race->faction == "alliance") {
 	
 } ?>
 
-<table class="fill application">
+<table class="fill application col4">
 	<thead>
 		<tr>
 			<th colspan="2">Basic Details</th>
