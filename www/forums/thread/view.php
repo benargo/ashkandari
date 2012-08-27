@@ -230,38 +230,6 @@ if(isset($account)) {
 					<p><input type="submit" value="Post Reply" /></p>
 				
 				</form>
-				<script type="text/javascript"><!--
-				$().ready(function() {
-					$('textarea.tinymce').tinymce({
-						// Location of TinyMCE script
-						script_url : '/media/scripts/tiny_mce/tiny_mce.js',
-				
-						// General options
-						theme : "advanced",
-						plugins : "autolink,emotions,lists,style,directionality,media,table,advlist",
-						
-						// Theme options
-						theme_advanced_buttons1 : "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,styleselect,formatselect,fontselect,fontsizeselect,|,help",
-						theme_advanced_buttons2 : "bullist,numlist,|,tablecontrols,|,outdent,indent,blockquote,|,link,unlink,anchor,image,emotions,|,code",
-						theme_advanced_toolbar_location : "top",
-						theme_advanced_toolbar_align : "left",
-						height: "380px",
-				
-						// Example content CSS (should be your site CSS)
-						content_css : "/media/css/tinymce.css",
-				
-						// Drop lists for link/image/media/template dialogs
-						template_external_list_url : "lists/template_list.js",
-						external_link_list_url : "lists/link_list.js",
-						external_image_list_url : "lists/image_list.js",
-						media_external_list_url : "lists/media_list.js",
-						
-						mode : "exact",
-				        elements : "body"
-				
-					});
-				});
-				--></script>
 			</div>
 		</section><?php
 		
