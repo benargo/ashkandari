@@ -147,7 +147,7 @@ class application {
 			} else {
 				
 				/* Get the cached bnet data from the database */
-				$result = $db->query("SELECT `bnet` FROM `applications` WHERE `id` =". $this->id);
+				$result = $db->query("SELECT `bnet` FROM `applications` WHERE `id` = ". $this->id);
 				
 				/* Fetch the object */
 				$obj = $result->fetch_object();
@@ -157,10 +157,13 @@ class application {
 				
 			}
 			
+			/* Update the JSON */
+			$this->bnet_json = $bnet_json;
+			
+			/* Close the database connection */
+			$db->close();
+			
 		}
-		
-		/* Update the JSON */
-		$this->bnet_json = $bnet_json;
 
 		/* Using the JSON Decode function, get their battle.net data from this instance */
 		$bnet_decoded = json_decode($this->bnet_json);
