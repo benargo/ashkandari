@@ -283,7 +283,7 @@ $fl = $application->getProgression(25);
 			<th>Speaks English</th>
 			<th>TeamSpeak</th>
 			<th>Microphone</th>
-			<th>Placed Since</th>
+			<th>Played Since</th>
 		</tr>
 	</thead>
 	<tbody>
