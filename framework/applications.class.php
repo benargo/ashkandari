@@ -132,14 +132,33 @@ class application {
 	
 		if(empty($this->bnet_json)) {
 		
+			/* Open a database connection */
+			$db = db();
+		
 			/* Get the realm we need */
 			$realm = getRealm($this->realm);
 			
 			/* Get the battle.net data for this character */
-			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions,titles");
+			if($bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions,titles")) {
+				
+				/* Cache it into the database */
+				$db->query("UPDATE `applications` SET `bnet` = '". $bnet_json ."' WHERE `id` = ". $this->id);
+				
+			} else {
+				
+				/* Get the cached bnet data from the database */
+				$result = $db->query("SELECT `bnet` FROM `applications` WHERE `id` =". $this->id);
+				
+				/* Fetch the object */
+				$bnet_json = $result->fetch_object();
+				
+			}
 			
 		}
 		
+		/* Update the JSON */
+		$this->bnet_json = $bnet_json;
+
 		/* Using the JSON Decode function, get their battle.net data from this instance */
 		$bnet_decoded = json_decode($this->bnet_json);
 		
