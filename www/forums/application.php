@@ -42,7 +42,7 @@ $first_aid = $application->getFirstAid();
 $fishing = $application->getFishing();
 $cooking = $application->getCooking();
 
-?><h1><?php echo $application->name; ?> - Application</h1>
+?><h1><?php echo $application->getCurrentTitle(); ?></h1>
 
 <ul id="breadcrumbs">
 	<li><a href="/">Home</a></li>

@@ -136,7 +136,7 @@ class application {
 			$realm = getRealm($this->realm);
 			
 			/* Get the battle.net data for this character */
-			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions");
+			$this->bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions,titles");
 			
 		}
 		
@@ -167,6 +167,38 @@ class application {
 			return false;
 			
 		}
+		
+	}
+	
+	public function getCurrentTitle() {
+		
+		/* This function fetches a list of titles owned by a character from battle.net
+		 * Decodes it, and then displays the characters name alongside their currently
+		 * selected title */
+		 
+		/* Get the data from battle.net */
+		$bnet_data = $this->getBattleNetData();
+		
+		/* Loop through each of the titles until we find the one we want */
+		foreach($bnet_data->titles as $title) {
+			
+			if($title->selected) {
+				
+				/* If it's dropped into here it means we've found it!
+				 * Calcualte the name by replacing %s with the actual name */
+				$full_title = str_replace("%s", $this->name, $title->name);
+				
+				/* And return the full title */
+				return $full_title;
+				
+				/* And that's it! Nothing else to do, as it will return false everywhere else */
+				
+			} 
+			
+		}
+		
+		/* Well maybe we haven't found a title, so let's just return their name */
+		return $this->name;
 		
 	}
 	
