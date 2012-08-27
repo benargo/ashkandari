@@ -226,7 +226,7 @@ if(isset($account)) {
 				
 					<input type="hidden" name="thread" value="<?php echo $thread->id; ?>" />
 					
-					<p><textarea name="body" class="tinymce" rows="10" required="true"></textarea></p>
+					<p><textarea name="body" class="tinymce" rows="10"></textarea></p>
 					<p><input type="submit" value="Post Reply" /></p>
 				
 				</form>
