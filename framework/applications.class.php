@@ -150,7 +150,10 @@ class application {
 				$result = $db->query("SELECT `bnet` FROM `applications` WHERE `id` =". $this->id);
 				
 				/* Fetch the object */
-				$bnet_json = $result->fetch_object();
+				$obj = $result->fetch_object();
+				
+				/* Set the bnet JSON */
+				$bnet_json = $obj->bnet;
 				
 			}
 			
