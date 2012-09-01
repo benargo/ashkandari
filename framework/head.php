@@ -96,7 +96,7 @@ if( isset($_COOKIE['account']) ) {
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/account.css" />';
 					break;
 					
-				case '/forums/application.php':
+				case '/applications/view.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';	
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/tinymce.css" />';
 					break;
