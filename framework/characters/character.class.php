@@ -514,30 +514,16 @@ class character {
 		/* Get the account */
 		$account = $this->getAccount();
 		
-		/* Check if they're an officer */
-		if($account->isOfficer()) {
-			
-			return true;
-			
-		}
-	
-		return false;
+		return $account->isOfficer()
 		 
 	}
 	
 	public function isModerator() {
 		
-		if($account = $this->getAccount()) {
-			
-			if($account->isModerator()) {
-				
-				return true;
-				
-			}
-			
-		}
+		/* Get the account */
+		$account = $this->getAccount();
 		
-		return false;
+		return $account->isModerator();
 		
 	}
 	

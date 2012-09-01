@@ -51,6 +51,7 @@ class application {
 	private $realm;
 	protected $bnet_json;
 	private $email;
+	private $social;
 	public $english;
 	public $teamspeak;
 	public $microphone;
@@ -86,12 +87,8 @@ class application {
 		$this->id = $application->id;
 		$this->name = $application->character;
 		$this->realm = $application->realm;
-		
-		/* Now get their realm */
-		$realm = $this->getRealm();
-				
-		/* Continue setting basic variables for this instance */
 		$this->email = $application->email;
+		$this->social = $application->social;
 		$this->english = $application->english;
 		$this->teamspeak = $application->teamspeak;
 		$this->microphone = $application->microphone;
@@ -170,6 +167,19 @@ class application {
 		
 		/* And return it */
 		return $bnet_decoded;
+		
+	}
+	
+	/* Check if they're a social application */
+	public function isSocial() {
+		
+		if($this->social == 1) {
+			
+			return true;
+			
+		}
+			
+		return false;	
 		
 	}
 	

@@ -365,11 +365,11 @@ switch($application->getGender()) {
 	
 	?>
 		
-		<div class="text center"><form action="https://ashkandari.com/officers/applications/decide.php" method="post" class="decision">
+		<div class="text center"><form action="https://www.ashkandari.com/officers/applications/decide.php" method="post" class="decision">
 				<input type="hidden" name="id" value="<?php echo $application->id; ?>" />
 				<input type="submit" name="decision" value="Accept" />
 			</form>
-			<form action="https://ashkandari.com/officers/applications/decide.php" method="post" class="decision">
+			<form action="https://www.ashkandari.com/officers/applications/decide.php" method="post" class="decision">
 				<input type="hidden" name="id" value="<?php echo $application->id; ?>" />
 				<input type="submit" name="decision" value="Decline" />
 			</form></div><?php

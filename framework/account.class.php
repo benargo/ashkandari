@@ -58,8 +58,38 @@ class account {
 		$this->activation_code = $account->activation_code;
 		$this->active = $account->active;
 		$this->forum_signature = $account->forum_signature;
-		$this->forum_moderator = $account->forum_moderator;
-		$this->officer = $account->officer;
+
+		// Check if they are a forum moderator
+		switch($account->forum_moderator) {
+			
+			// No they are not
+			case 0:
+				$this->forum_moderator = false;
+				break;
+				
+			// Yes they are
+			case 1:
+				$this->forum_moderator = true;
+				break;
+			
+		}
+		
+		// Check if they are a website officer
+		switch($account->officer) {
+			
+			// No they are not
+			case 0:
+				$this->officer = false;
+				break;
+				
+			// Yes they are
+			case 1:
+				$this->officer = true;
+				break;
+			
+		}
+
+		// Continue setting variables
 		$this->primary_character = $account->primary_character;
 		$this->news = $account->news;
 		$this->digest = $account->digest;
@@ -284,21 +314,6 @@ class account {
 		
 	}
 	
-	 /* Officer check */
-	 public function isOfficer() {
-	 
-	 	/* This function will check against the current account object to see if they are an officer or not
-	  	 * This helps in user permissions and enables us to display certain content to officers of the guild */
-    	if(isset($this->officer)) {
-	    	
-	    	return true;
-	    	
-    	}
-    	
-    	return false;
-    	
-	}
-	
 	 /* Moderator check */
 	 public function isModerator() {
 		 
@@ -306,16 +321,19 @@ class account {
 	  	 * Note that for the purposes of this function, and the seniority of officer status over moderator status, it will match
 	 	 * both officer status or moderator status and return true. */
 		 
-		 if($this->forum_moderator) {
-			 
-			 // If we've dropped into here then it means that the user is either an officer or a moderator
-			 return true;
-			 
-		 }
-		 
-		 return false;
+		 return $this->forum_moderator;
 		 
 	 }
+	 
+	  /* Officer check */
+	 public function isOfficer() {
+	 
+	 	/* This function will check against the current account object to see if they are an officer or not
+	  	 * This helps in user permissions and enables us to display certain content to officers of the guild */
+    	
+    	return $this->officer;
+    	
+	}
 	 
 	 public function getPrimaryCharacter() {
 		 
