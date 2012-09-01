@@ -43,6 +43,9 @@ RewriteRule ^roster/class/([a-zA-Z\-]+)$ roster/class.php?slug=$1 [L]
 RewriteRule ^roster/rank/([a-zA-Z\-\/]+)$ roster/rank.php?slug=$1 [L]
 
 RewriteRule ^applications/([0-9]+)$ applications/view.php?id=$1 [L]
+RewriteRule ^applications/undecided$ applications/index.php?decision=undecided [L]
+RewriteRule ^applications/accepted$ applications/index.php?decision=accepted [L]
+RewriteRule ^applications/declined$ applications/index.php?decision=declined [L]
 
 RewriteRule ^rules$ rules/ [R]
 RewriteRule ^forums/thread/12$ rules/ [R]

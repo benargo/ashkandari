@@ -56,13 +56,16 @@ require(PATH.'framework/head.php');
 		
 		/* Work out what application we're getting */
 		if(isset($_GET['decision'])) {	
-			$decision = $_GET['decision'];
-		} else {			
-			$decision = NULL;			
-		}
 		
-		/* Get the outstanding applications */
-		$applications = getApplications($decision);
+			/* Get the applications */
+			$applications = getApplications($decision);
+		
+		} else {			
+				
+			/* Get the outstanding applications */
+			$applications = getApplications();
+						
+		}
 		
 		/* Loop through each of the applications */
 		while($application = $applications->fetch_object()) {
