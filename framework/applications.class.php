@@ -19,15 +19,15 @@ function getApplications($type = NULL) {
 		
 		/* Outstanding applications */
 		case "undecided":
-			$result = $db->query("SELECT `id` FROM `applications` WHERE `decision` IS NULL ORDER BY `received_date` DESC");
+			$result = $db->query("SELECT `id` FROM `applications` WHERE `decision` = 0 ORDER BY `received_date` DESC");
 			break;
 			
 		case "accepted":
-			$result = $db->query("SELECT `id` FROM `applications` WHERE `decision` = 1 ORDER BY `received_date` DESC");
+			$result = $db->query("SELECT `id` FROM `applications` WHERE `decision` = 2 ORDER BY `received_date` DESC");
 			break;
 			
 		case "declined":
-			$result = $db->query("SELECT `id` FROM `applications` WHERE `decision` = 0 ORDER BY `received_date` DESC");
+			$result = $db->query("SELECT `id` FROM `applications` WHERE `decision` = 1 ORDER BY `received_date` DESC");
 			break;
 			
 		default:
