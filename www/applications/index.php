@@ -57,7 +57,7 @@ require(PATH.'framework/head.php');
 		if(isset($_GET['decision'])) {	
 		
 			/* Get the applications */
-			$applications = getApplications($decision);
+			$applications = getApplications($_GET['decision']);
 		
 		} else {			
 				
