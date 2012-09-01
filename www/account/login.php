@@ -15,8 +15,14 @@ if( empty($_SERVER['HTTPS']) ) {
 // Require the framework files
 require_once('../../framework/config.php');
 
+// Set the page title
+$page_title = "Login";
+
+// Require the head of the document
+require(PATH.'framework/head.php');
+
 // Check if we're already logged in
-if(isset($_SESSION['account'])) {
+if(isset($account)) {
 	
 	if(isset($_GET['ref'])) {
 		
@@ -29,12 +35,6 @@ if(isset($_SESSION['account'])) {
 	}	
 	
 }
-
-// Set the page title
-$page_title = "Login";
-
-// Require the head of the document
-require(PATH.'framework/head.php');
 
 // Check if we have post variables.
 if( isset($_POST['email']) && isset($_POST['password']) ) {

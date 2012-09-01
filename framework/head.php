@@ -13,6 +13,9 @@ if( isset($_COOKIE['account']) ) {
 	// Now we can update the expiration date of that cookie
 	setcookie('account', encrypt($account->id), time()+60*60*24, '/', 'ashkandari.com', false, true);
 	
+	// Set a local session for the account
+	$_SESSION['account'] = $account->id;
+	
 }
 
 ?>
