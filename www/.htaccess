@@ -4,7 +4,7 @@ RewriteBase /
 # Make URLs lower
 RewriteMap  lc int:tolower
 RewriteCond %{REQUEST_URI} [A-Z]
-RewriteRule (.*) ${lc:$1} [R=301,L]
+RewriteRule (.*) ${lc:$1} [R=301]
 
 RewriteRule ^account/login account/login.php [L,QSA]
 RewriteRule ^account/logout account/logout.php [L,QSA]
