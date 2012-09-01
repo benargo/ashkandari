@@ -8,7 +8,7 @@
 require_once('../../framework/config.php');
 
 unset($_SESSION['account']);
-setcookie('account', FALSE);
+setcookie('account', FALSE, 1);
 
 if(isset($_GET['ref'])) {
 		
@@ -18,4 +18,4 @@ if(isset($_GET['ref'])) {
 
 	header("Location: ". BASE_URL);
 	
-}	
+}
