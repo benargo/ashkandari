@@ -50,7 +50,6 @@ if( $roster = $db->query("SELECT `id` FROM `characters` WHERE `race` = ". $race-
 				<th class="sortable">Guild Rank</th>
 				<th class="sortable">EP</th>
 				<th class="sortable">GP</th>
-				<th class="sortable">Achievement Points</th>
 				<?php if( isset($account) ) {
 					?><th>Claimed</th><?php
 				} ?>
@@ -76,7 +75,6 @@ if( $roster = $db->query("SELECT `id` FROM `characters` WHERE `race` = ". $race-
 				<td class="<?php echo $rank->id; ?>"><a href="/roster/rank/<?php echo $rank->slug; ?>" title="Click to view all the <?php echo $rank->long_name; ?>s"><?php echo $rank->long_name; ?></a></td>
 				<td><?php echo $character->ep; ?></td>
 				<td><?php echo $character->gp; ?></td>
-				<td><?php echo $character->achievements; ?></td>
 				<?php if( isset($account) ) {
 					
 					if($character->isClaimed()) {

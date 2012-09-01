@@ -65,7 +65,6 @@ if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters`
 				<td class="<?php echo $rank->id; ?>"><a href="/roster/rank/<?php echo $rank->slug; ?>" title="Click to view all the <?php echo $rank->long_name; ?>s"><?php echo $rank->long_name; ?></a></td>
 				<td><?php echo $character->ep; ?></td>
 				<td><?php echo $character->gp; ?></td>
-				<td><?php echo $character->achievements; ?></td>
 				<?php if( isset($account) ) {
 					
 					if($character->isClaimed()) {
