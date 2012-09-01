@@ -94,7 +94,7 @@ if( isset($_POST['email']) && isset($_POST['password']) ) {
 		default:
 		
 			// Set a cookie variable containing their account ID
-			setcookie('account', encrypt($result), time()+60*60*24, '/', 'ashkandari.com', false, true);
+			setcookie('account', encrypt($result), time()+60*60*24);
 			
 			// Check if there is a $_REQUEST['REF']
 			if(isset($_GET['ref'])) {
