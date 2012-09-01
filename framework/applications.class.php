@@ -112,23 +112,7 @@ class application {
 		
 		/* Continue setting basic variables for this instance */
 		$this->received_date = $application->received_date;
-		
-		switch($application->decision) {
-			
-			case 0:
-				$this->decision = "declined";
-				break;
-				
-			case 1:
-				$this->decision = "accepted";
-				break;
-				
-			case NULL:
-				$this->decision = "undecided";
-				break;
-			
-		}
-		
+		$this->decision = $application->decision;
 		$this->decision_date = $application->decision_date;
 		$this->officer = $application->officer_account_id;
 		$this->forum_thread = $application->forum_thread_id;
@@ -493,7 +477,21 @@ class application {
 	/* Get the decision */
 	public function getDecision() {
 		
-		return ucfirst($this->decision);
+		switch ($this->decision) {
+			
+			case 0:
+				return "Undecided";
+				break;
+				
+			case 1:
+				return "Declined";
+				break;
+				
+			case 2:
+				return "Accepted";
+				break;
+			
+		}
 		
 	}
 	
@@ -541,7 +539,7 @@ class application {
 		$officer_rank = $officer_char->getRank();
 		
 		/* Update the database to set accepted to true */
-		$db->query("UPDATE `applications` SET `decision` = 1, `decision_date` = ". time() .", `officer_account_id` = ". $officer->id ." WHERE `id` = ". $this->id) or die($db->error);
+		$db->query("UPDATE `applications` SET `decision` = 2, `decision_date` = ". time() .", `officer_account_id` = ". $officer->id ." WHERE `id` = ". $this->id) or die($db->error);
 		
 		/* Get the battle.net data */
 		$bnet_data = $this->getBattleNetData();
@@ -659,7 +657,7 @@ class application {
 		$officer_rank = $officer_char->getRank();
 		
 		/* Update the database to set accepted to true */
-		$db->query("UPDATE `applications` SET `decision` = 0, `decision_date` = ". time() .", `officer_account_id` = ". $officer->id ." WHERE `id` = ". $this->id) or die($db->error);
+		$db->query("UPDATE `applications` SET `decision` = 2, `decision_date` = ". time() .", `officer_account_id` = ". $officer->id ." WHERE `id` = ". $this->id) or die($db->error);
 		
 		/* Prepare the email subject */
 		$subject = "Your Application was Unsuccessful";
