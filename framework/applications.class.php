@@ -479,13 +479,13 @@ class application {
 		
 		/* Switch through the existing status */
 		switch($this->decision) {
-			
-			case 0:
-				return "Declined";
-				break;
 				
 			case 1:
 				return "Accepted";
+				break;
+				
+			case 0:
+				return "Declined";
 				break;
 				
 			default:
