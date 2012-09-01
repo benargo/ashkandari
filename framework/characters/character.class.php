@@ -256,20 +256,21 @@ class character {
 	public function getPrimarySpec() {
 		
 		/* Decode this data */
-		$bnet_data = $this->getBattleNetData("talents");
+		$bnet_data = $this->getBattleNetData();
 		
 		/* Run a conditional */
 		if( $bnet_data->talents[0]->selected ) {
 			
 			/* The first spec is selected
 			 * Return the name of the first spec */
-			return $bnet_data->talents[0]->name;
+			return $bnet_data->talents[0]->spec->name;
 			
 		} elseif( $bnet_data->talents[1]->selected ) {
 			
 			/* The second spec is selected
 			 * Return the name of the second spec */
-			return $bnet_data->talents[1]->name;
+			return $bnet_data->talents[1]->spec->name;
+			
 		} else {
 			
 			/* Oh dear something's gone wrong */
@@ -282,20 +283,20 @@ class character {
 	public function getOffSpec() {
 		
 		/* Decode this data */
-		$bnet_data = $this->getBattleNetData("talents");
+		$bnet_data = $this->getBattleNetData();
 		
 		/* Run a conditional */
 		if( $bnet_data->talents[0]->selected ) {
 			
 			/* The first spec is selected
 			 * Return the name of the second spec */
-			return $bnet_data->talents[1]->name;
+			return $bnet_data->talents[1]->spec->name;
 			
 		} elseif( $bnet_data->talents[1]->selected ) {
 			
 			/* The second spec is selected
 			 * Return the name of the first spec */
-			return $bnet_data->talents[0]->name;
+			return $bnet_data->talents[0]->spec->name;
 		} else {
 			
 			/* Oh dear something's gone wrong */
