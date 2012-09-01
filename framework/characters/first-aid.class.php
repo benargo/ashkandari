@@ -53,7 +53,7 @@ class char_first_aid extends character {
 	/* Variables */
 	public $skill;
 	private $icon;
-	privte $max;
+	private $max;
 	
 	/* Construction function */
 	public function __construct($character_id) {
