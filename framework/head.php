@@ -178,7 +178,7 @@ if( isset($_COOKIE['account']) ) {
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
 					
-				case '/forums/application.php':
+				case '/applications/view.php':
 					echo '<script type="text/javascript" src="/media/scripts/tiny_mce/jquery.tinymce.js"></script>';
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
 					break;
