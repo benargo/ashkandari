@@ -690,7 +690,7 @@ article nav li {
 	border-radius: 3px;
 }
 
-nav.officer a {
+article nav a {
 	display: inline-block;
 	margin: 0 5px;
 	padding: 0 5px;
@@ -699,7 +699,7 @@ nav.officer a {
 	border: none;
 }
 
-nav.officer li:hover {
+article nav li:hover {
 	background-color: rgba(230, 130, 100, 0.3);
 }
 
