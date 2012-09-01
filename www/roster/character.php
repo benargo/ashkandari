@@ -56,7 +56,7 @@ if( $character = new character($character_id) ) {
 			<td class="bold">Level:</td>
 			<td><?php echo $character->level; ?></td>
 			
-			<td class="bold"><img src="<?php echo $profession1->getIcon(); ?>" alt="<?php echo $profession1->name; ?> icon" class="icon" /> <a href="/roster/character/<?php echo $character->name; ?>/<?php echo $profession1->name; ?>"><?php echo $profession1->name; ?></a></td>
+			<td class="bold"><img src="<?php echo $profession1->getIcon(); ?>" alt="<?php echo $profession1->name; ?> icon" class="icon" /> <a href="/roster/character/<?php echo $character->name; ?>/<?php echo strtolower($profession1->name); ?>"><?php echo $profession1->name; ?></a></td>
 			<td><div class="ui-progress-bar ui-container" id="prof1_bar">
 				<div class="ui-progress" style="width: <?php echo $profession1->getPercentage(); ?>%;">
 					<span class="ui-label"><?php echo $profession1->skill; ?></span>
@@ -67,7 +67,7 @@ if( $character = new character($character_id) ) {
 			<td class="bold">Race:</td>
 			<td><img src="<?php echo $character->getRaceIcon(); ?>" alt="<?php echo $race->name; ?> icon" class="icon" /> <?php echo $race->name; ?></td>
 			
-			<td class="bold"><img src="<?php echo $profession2->getIcon(); ?>" alt="<?php echo $profession2->name; ?> icon" class="icon" /> <a href="/roster/character/<?php echo $character->name; ?>/<?php echo $profession2->name; ?>"><?php echo $profession2->name; ?></a></td>
+			<td class="bold"><img src="<?php echo $profession2->getIcon(); ?>" alt="<?php echo $profession2->name; ?> icon" class="icon" /> <a href="/roster/character/<?php echo $character->name; ?>/<?php echo strtolower($profession2->name); ?>"><?php echo $profession2->name; ?></a></td>
 			<td><div class="ui-progress-bar ui-container" id="prof2_bar">
 				<div class="ui-progress" style="width: <?php echo $profession2->getPercentage(); ?>%;">
 					<span class="ui-label"><?php echo $profession2->skill; ?></span>
@@ -100,7 +100,7 @@ if( $character = new character($character_id) ) {
 			<td class="bold">Achievement Points:</td>
 			<td><?php echo $character->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement points icon" class="noborder" /></td>
 			
-			<td class="bold"><img src="<?php echo $cooking->getIcon(); ?>" alt="Cooking icon" class="icon" /> Cooking</td>
+			<td class="bold"><img src="<?php echo $cooking->getIcon(); ?>" alt="Cooking icon" class="icon" /> <a href="/roster/character/<?php echo $character->name; ?>/cooking">Cooking</a></td>
 			<td><div class="ui-progress-bar ui-container" id="cooking_bar">
 				<div class="ui-progress" style="width: <?php echo $cooking->getPercentage(); ?>%;">
 					<span class="ui-label"><?php echo $cooking->skill; ?></span>
