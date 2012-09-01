@@ -8,7 +8,7 @@
 require_once('../../framework/config.php');
 
 unset($_SESSION['account']);
-setcookie('account', "", 1);
+setcookie('account', "", 1, '/', 'ashkandari.com', false, true);
 
 if(isset($_GET['ref'])) {
 		
