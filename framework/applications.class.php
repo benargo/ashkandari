@@ -112,7 +112,23 @@ class application {
 		
 		/* Continue setting basic variables for this instance */
 		$this->received_date = $application->received_date;
-		$this->decision = $application->decision;
+		
+		switch($application->decision) {
+			
+			case 0:
+				$this->decision = "declined";
+				break;
+				
+			case 1:
+				$this->decision = "accepted";
+				break;
+				
+			case NULL:
+				$this->decision = "undecided";
+				break;
+			
+		}
+		
 		$this->decision_date = $application->decision_date;
 		$this->officer = $application->officer_account_id;
 		$this->forum_thread = $application->forum_thread_id;
@@ -477,22 +493,7 @@ class application {
 	/* Get the decision */
 	public function getDecision() {
 		
-		/* Switch through the existing status */
-		switch($this->decision) {
-				
-			case 1:
-				return "Accepted";
-				break;
-				
-			case 0:
-				return "Declined";
-				break;
-				
-			default:
-				return "Awaiting Decision";
-				break;
-			
-		}
+		return ucfirst($this->decision);
 		
 	}
 	
