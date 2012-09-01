@@ -4,6 +4,7 @@ class app_fishing extends application {
 	/* Variables */
 	public $skill;
 	private $icon;
+	private $max;
 	
 	/* Construction function */
 	public function __construct($application_id) {
@@ -16,6 +17,7 @@ class app_fishing extends application {
 		
 		/* Set the fishing skill */
 		$this->skill = $bnet_data->professions->secondary[2]->rank;
+		$this->max = $bnet_data->professions->secondary[2]->max;
 		
 		/* Set the icon data */
 		$this->icon = $bnet_data->professions->secondary[2]->icon;
@@ -37,7 +39,7 @@ class app_fishing extends application {
 	public function getPercentage() {
 		
 		/* Calculate the percentage */
-		$percentage = ($this->skill / 600)*100;
+		$percentage = ($this->skill / $this->max)*100;
 		
 		/* Return the percentage */
 		return $percentage;
@@ -51,6 +53,7 @@ class char_fishing extends character {
 	/* Variables */
 	public $skill;
 	private $icon;
+	private $max;
 	
 	/* Construction function */
 	public function __construct($character_id) {
@@ -63,6 +66,7 @@ class char_fishing extends character {
 		
 		/* Set the fishing skill */
 		$this->skill = $bnet_data->professions->secondary[2]->rank;
+		$this->max = $bnet_data->professions->secondary->max;
 		
 		/* Set the icon data */
 		$this->icon = $bnet_data->professions->secondary[2]->icon;
@@ -84,7 +88,7 @@ class char_fishing extends character {
 	public function getPercentage() {
 		
 		/* Calculate the percentage */
-		$percentage = ($this->skill / 600)*100;
+		$percentage = ($this->skill / $this->max)*100;
 		
 		/* Return the percentage */
 		return $percentage;

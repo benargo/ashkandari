@@ -59,6 +59,7 @@ class char_profession extends character {
 	private $icon;
 	public $skill;
 	private $max;
+	private $recipes;
 	
 	/* Construction function */
 	public function __construct($character_id, $position = 0) {
@@ -77,6 +78,7 @@ class char_profession extends character {
 		$this->icon = $profession->icon;
 		$this->skill = $profession->rank;
 		$this->max = $profession->max;
+		$this->recipes = $profession->recipes;
 		
 		/* And return true */
 		return true;
@@ -100,6 +102,13 @@ class char_profession extends character {
 		
 		/* Return the percentage */
 		return $percentage;
+		
+	}
+	
+	/* Get the recipes */
+	public function getRecipies() {
+		
+		return $this->recipes;
 		
 	}
 	
