@@ -162,7 +162,7 @@ if( $character = new character($character_id) ) {
 					<p class="<?php echo $class->slug; ?>"><img src="<?php echo $alt->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
 				</a><?php
 			
-		} ?></section>
+		} ?></section><?php
 		
 	}
 
