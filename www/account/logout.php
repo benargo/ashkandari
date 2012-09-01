@@ -11,7 +11,7 @@ require_once('../../framework/config.php');
 if(isset($_SESSION['account'])) {
 	
 	unset($_SESSION['account']);
-	setcookie('account', NULL, time()-1);
+	setcookie('account', FALSE);
 	
 }
 
