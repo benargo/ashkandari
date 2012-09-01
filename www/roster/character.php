@@ -119,8 +119,8 @@ if( $character = new character($character_id) ) {
 	</thead>
 	<tbody>
 		<tr>
-			<td class="bold">Primary Spec:</td>
-			<td><?php echo $character->getPrimarySpec(); ?></td>
+			<td class="bold">Active Spec:</td>
+			<td><?php echo $character->getActiveSpec(); ?></td>
 			
 			<td class="bold">Average Item Level:</td>
 			<td><?php echo $character->getItemLevel(); ?></td>

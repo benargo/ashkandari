@@ -15,7 +15,7 @@ class spec extends application {
 		$bnet_data = $application->getBattleNetData();
 		
 		/* Get the spec we're after */
-		$spec = $bnet_data->talents[$spec_id];
+		$spec = $bnet_data->talents[$spec_id]->spec;
 		
 		/* Start setting variables */
 		$this->name = $spec->name;

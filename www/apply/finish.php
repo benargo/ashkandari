@@ -37,7 +37,7 @@ $followup = date('jS F', time()+(3*24*60*60));
 if($_POST['code'] == decrypt($_POST['code_verify']) && application::verify($_POST['realm'], $_POST['character'], $_POST['slot1'], $_POST['slot2'])) {
 
 	/* Run the database query to insert this all into the applications database */
-	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `english`, `teamspeak`, `microphone`, `played_since`, `q1`, `q2`, `q3`, `q4`, `active_spec`, `received_date`) VALUES ( '". $db->real_escape_string($_POST['character']) ."', ". $_POST['realm'] .", '". $db->real_escape_string($email) ."', $english, $ts, $microphone, ". $_POST['played_since'] .", '". $db->real_escape_string($_POST['q1']) ."', '". $db->real_escape_string($_POST['q2']) ."', '". $db->real_escape_string($_POST['q3']) ."', '". $db->real_escape_string($_POST['q4']) ."', ". $_POST['active_spec'] .", $date )") or die($db->error);
+	$db->query("INSERT INTO `applications` (`character`, `realm`, `email`, `english`, `teamspeak`, `microphone`, `played_since`, `q1`, `q2`, `q3`, `q4`, `primary_spec`, `received_date`) VALUES ( '". $db->real_escape_string($_POST['character']) ."', ". $_POST['realm'] .", '". $db->real_escape_string($email) ."', $english, $ts, $microphone, ". $_POST['played_since'] .", '". $db->real_escape_string($_POST['q1']) ."', '". $db->real_escape_string($_POST['q2']) ."', '". $db->real_escape_string($_POST['q3']) ."', '". $db->real_escape_string($_POST['q4']) ."', ". $_POST['active_spec'] .", $date )") or die($db->error);
 	
 	/* Get the application ID */
 	$app_id = $db->insert_id;

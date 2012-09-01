@@ -60,7 +60,7 @@ class application {
 	public $q2;
 	public $q3;
 	public $q4;
-	private $active_spec;
+	private $primary_spec;
 	private $off_spec;
 	public $received_date;
 	private $decision;
@@ -97,10 +97,10 @@ class application {
 		$this->q2 = $application->q2;
 		$this->q3 = $application->q3;
 		$this->q4 = $application->q4;
-		$this->active_spec = $application->active_spec;
+		$this->primary_spec = $application->primary_spec;
 		
 		/* Work out their off spec */
-		if($application->active_spec == 0) {
+		if($application->primary_spec == 0) {
 			
 			$this->off_spec = 1;
 			
@@ -430,8 +430,8 @@ class application {
 	/* Get their active spec */
 	public function getPrimarySpec() {
 		
-		/* Create an instance of the spec based on their active spec */
-		$spec = new spec($this->id, $this->active_spec);
+		/* Create an instance of the spec based on their primary spec */
+		$spec = new spec($this->id, $this->primary_spec);
 		
 		/* And return it */
 		return $spec;

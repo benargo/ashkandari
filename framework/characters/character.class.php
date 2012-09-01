@@ -253,7 +253,7 @@ class character {
 		
 	}
 	
-	public function getPrimarySpec() {
+	public function getActiveSpec() {
 		
 		/* Decode this data */
 		$bnet_data = $this->getBattleNetData();
