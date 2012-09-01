@@ -30,11 +30,10 @@ require(PATH.'framework/head.php');
 
 <nav>
 	<ul>
-		Applications:
-		<li><a href="/officers/applications/">All</a></li>
-		<li><a href="/officers/applications/undecided">Awaiting Decision</a></li>
-		<li><a href="/officers/applications/accepted">Accepted</a></li>
-		<li><a href="/officers/applications/declined">Declined</a></li>
+		<li><a href="/applications/">All</a></li>
+		<li><a href="/applications/undecided">Awaiting Decision</a></li>
+		<li><a href="/applications/accepted">Accepted</a></li>
+		<li><a href="/applications/declined">Declined</a></li>
 	</ul>
 </nav>
 
