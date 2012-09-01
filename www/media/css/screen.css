@@ -703,6 +703,10 @@ article nav li:hover {
 	background-color: rgba(230, 130, 100, 0.3);
 }
 
+article nav a:hover {
+	border: none;
+}
+
 #breadcrumbs li {
 	display: inline-block;
 	height: 30px;
