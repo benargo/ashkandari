@@ -1,9 +1,6 @@
 RewriteEngine on
 RewriteBase /
 
-# Make URLs lower
-RewriteMap  lc int:tolower
-
 RewriteRule ^account/login account/login.php [L,QSA]
 RewriteRule ^account/logout account/logout.php [L,QSA]
 
