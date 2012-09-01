@@ -670,19 +670,19 @@ article nav {
 	margin: 10px 0;
 	padding: 5px;
 	background: rgba(230, 130, 100, 0.2);
-	border: solid 2px #00B4FF;
+	border: solid 0px transparent;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
 	color: #B39265;
 }
 
-nav.officer ul {
+article nav ul {
 	margin: 0;
 	text-align: center;
 }
 
-nav.officer li {
+article nav li {
 	display: inline-block;
 	border: solid 0px transparent;
 	-webkit-border-radius: 3px;
