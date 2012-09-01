@@ -100,7 +100,7 @@ if( $character = new character($character_id) ) {
 			<td class="bold">Achievement Points:</td>
 			<td><?php echo $character->achievements; ?> <img src="/media/images/icons/achievements.gif" alt="Achievement points icon" class="noborder" /></td>
 			
-			<td class="bold"><img src="<?php echo $cooking->getIcon(); ?>" alt="Cooking icon" class="icon" /> <a href="/roster/character/<?php echo $character->name; ?>/cooking">Cooking</a></td>
+			<td class="bold"><img src="<?php echo $cooking->getIcon(); ?>" alt="Cooking icon" class="icon" /> <a href="/roster/character/<?php echo $character-name; ?>/cooking">Cooking</a></td>
 			<td><div class="ui-progress-bar ui-container" id="cooking_bar">
 				<div class="ui-progress" style="width: <?php echo $cooking->getPercentage(); ?>%;">
 					<span class="ui-label"><?php echo $cooking->skill; ?></span>
