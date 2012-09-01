@@ -5,6 +5,7 @@ class app_profession extends application {
 	public $name;
 	private $icon;
 	public $skill;
+	private $max;
 	
 	/* Construction function */
 	public function __construct($application_id, $position = 0) {
@@ -22,6 +23,7 @@ class app_profession extends application {
 		$this->name = $profession->name;
 		$this->icon = $profession->icon;
 		$this->skill = $profession->rank;
+		$this->max = $profession->max;
 		
 		/* And return true */
 		return true;
@@ -41,7 +43,7 @@ class app_profession extends application {
 	public function getPercentage() {
 		
 		/* Calculate the percentage */
-		$percentage = ($this->skill / 600)*100;
+		$percentage = ($this->skill / $this->max)*100;
 		
 		/* Return the percentage */
 		return $percentage;
@@ -56,6 +58,7 @@ class char_profession extends character {
 	public $name;
 	private $icon;
 	public $skill;
+	private $max;
 	
 	/* Construction function */
 	public function __construct($character_id, $position = 0) {
@@ -73,6 +76,7 @@ class char_profession extends character {
 		$this->name = $profession->name;
 		$this->icon = $profession->icon;
 		$this->skill = $profession->rank;
+		$this->max = $profession->max;
 		
 		/* And return true */
 		return true;
@@ -92,7 +96,7 @@ class char_profession extends character {
 	public function getPercentage() {
 		
 		/* Calculate the percentage */
-		$percentage = ($this->skill / 600)*100;
+		$percentage = ($this->skill / $this->max)*100;
 		
 		/* Return the percentage */
 		return $percentage;
