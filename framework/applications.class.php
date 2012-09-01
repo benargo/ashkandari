@@ -462,7 +462,7 @@ class application {
 	/* Check if a decision has been made */
 	public function decided() {
 		
-		if(isset($this->decision)) {
+		if($this->decision == 1 || $this->decision == 2) {
 			
 			return true;
 			
