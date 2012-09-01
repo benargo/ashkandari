@@ -514,7 +514,7 @@ class character {
 		/* Get the account */
 		$account = $this->getAccount();
 		
-		return $account->isOfficer()
+		return $account->isOfficer();
 		 
 	}
 	
