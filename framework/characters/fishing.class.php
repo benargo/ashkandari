@@ -66,7 +66,7 @@ class char_fishing extends character {
 		
 		/* Set the fishing skill */
 		$this->skill = $bnet_data->professions->secondary[2]->rank;
-		$this->max = $bnet_data->professions->secondary->max;
+		$this->max = $bnet_data->professions->secondary[2]->max;
 		
 		/* Set the icon data */
 		$this->icon = $bnet_data->professions->secondary[2]->icon;
