@@ -158,7 +158,7 @@ if( $character = new character($character_id) ) {
 				
 				?><a href="/roster/character/<?php echo $alt->name; ?>" class="display block clear both">
 					<img src="<?php echo $alt->getThumbnail(); ?>" alt="Character Thumbnail" class="float right" />
-					<p class="bold"><?php echo $alt->name; ?></p>
+					<h4 class="bold"><?php echo $alt->name; ?></h4>
 					<p class="<?php echo $class->slug; ?>"><img src="<?php echo $alt->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
 				</a><?php
 			
