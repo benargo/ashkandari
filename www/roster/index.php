@@ -25,7 +25,7 @@ require(PATH.'framework/head.php');
 /* Set up the database */
 $db = db();
 
-if( $roster = $db->query("SELECT `id` FROM `characters` ORDER BY `rank`, `name`") ) {
+if( $roster = $db->query("SELECT `id`, (`ep` - `gp`) AS `epgp` FROM `characters` WHERE `level` >= 10 ORDER BY `rank`, `name`") ) {
 
 	/* If it's dropped into here it means that we've succesfully received the guild roster from Battle.net */
 	
@@ -40,7 +40,6 @@ if( $roster = $db->query("SELECT `id` FROM `characters` ORDER BY `rank`, `name`"
 				<th class="sortable">Guild Rank</th>
 				<th class="sortable">EP</th>
 				<th class="sortable">GP</th>
-				<th class="sortable">Achievement Points</th>
 				<?php if( isset($account) ) {
 					?><th>Claimed</th><?php
 				} ?>

@@ -4,11 +4,14 @@
  * and runs a number of pre-flight checks to ensure everything is in order. */
 
 // Check if there is an account session
-if( isset($_SESSION['account']) ) {
+if( isset($_COOKIE['account']) ) {
 	
-	// If there is one, then we can set $account to the id number of that session
-	$account = new account($_SESSION['account']);
+	// If there is one, then we can set $account to the id number of that cookie
+	$account = new account(decrypt($_COOKIE['account']));
 	$primary_character = $account->getPrimaryCharacter();
+	
+	// Now we can update the expiration date of that cookie
+	setcookie('account', encrypt($account->id), time()+60*60*24, '/', 'ashkandari.com', false, true);
 	
 }
 
@@ -198,7 +201,7 @@ if( isset($_SESSION['account']) ) {
 						<nav id="primary">
 							<ul><?php
 							echo '<li><a href="/" title="Home">Home</a></li>';
-							echo '<li><a href="/roster/epgp" title="EPGP Standings">EPGP</a></li>';
+							echo '<li><a href="/progress/" title="Guild Progression Standings">Progression</a></li>';
 							echo '<li><a href="/roster/" title="Guild Roster">Guild Roster</a></li>';
 							echo '<li><a href="/forums/" title="Forums">Forums</a></li>';
 							echo '<li><a href="/teamspeak/" title="TeamSpeak">TeamSpeak</a></li>';

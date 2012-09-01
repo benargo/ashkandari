@@ -93,8 +93,8 @@ if( isset($_POST['email']) && isset($_POST['password']) ) {
 		// What to do in the case we have been able to find a user and authenticate them	
 		default:
 		
-			// Set a session variable containing their account ID
-			$_SESSION['account'] = $result;
+			// Set a cookie variable containing their account ID
+			setcookie('account', encrypt($result), time()+60*60*24, '/', 'ashkandari.com', false, true);
 			
 			// Check if there is a $_REQUEST['REF']
 			if(isset($_GET['ref'])) {
