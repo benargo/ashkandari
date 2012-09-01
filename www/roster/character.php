@@ -143,24 +143,26 @@ if( $character = new character($character_id) ) {
 </table>
 	<?php if($character->isClaimed()) {
 		
-		?><h2>Other Characters</h2><?php
+		?>
+		<section id="alts">
+			<h2>Other Characters</h2><?php
 		
-		$alts = $character->getAlts();
-		
-		while($obj = $alts->fetch_object()) {
-		
-			$alt = new character($obj->id);
-		
-			$class = $alt->getClass();
-			$race = $alt->getRace();
+			$alts = $character->getAlts();
 			
-			?><a href="/roster/character/<?php echo $alt->name; ?>" class="display block clear both">
-				<img src="<?php echo $alt->getThumbnail(); ?>" alt="Character Thumbnail" class="float right" />
-				<p class="bold"><?php echo $alt->name; ?></p>
-				<p class="<?php echo $class->slug; ?>"><img src="<?php echo $alt->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
-			</a><?php
+			while($obj = $alts->fetch_object()) {
 			
-		}
+				$alt = new character($obj->id);
+			
+				$class = $alt->getClass();
+				$race = $alt->getRace();
+				
+				?><a href="/roster/character/<?php echo $alt->name; ?>" class="display block clear both">
+					<img src="<?php echo $alt->getThumbnail(); ?>" alt="Character Thumbnail" class="float right" />
+					<p class="bold"><?php echo $alt->name; ?></p>
+					<p class="<?php echo $class->slug; ?>"><img src="<?php echo $alt->getRaceIcon(); ?>" alt="Race Icon" /> <img src="<?php echo $class->icon_url; ?>" alt="Class Icon" /> Level <?php echo $alt->level; ?> <?php echo $race->name; ?> <?php echo $class->name; ?></p>
+				</a><?php
+			
+		} ?></section>
 		
 	}
 

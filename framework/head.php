@@ -80,6 +80,7 @@ if( isset($_COOKIE['account']) ) {
 					
 				case '/roster/character.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/roster.css" />';
 					break;
 					
 				case '/account/register/index.php':
