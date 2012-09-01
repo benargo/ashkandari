@@ -187,9 +187,9 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm-
 				<tr>
 					<td class="bold">Primary Spec:</td>
 					<td><select name="active_spec">
-						<option value="0"><?php echo $character->talents[0]->name; ?></option><?php
+						<option value="0"><?php echo $character->talents[0]->spec->name; ?></option><?php
 						if( isset($character->talents[1]->name) ) {
-						?><option value="1"><?php echo  $character->talents[1]->name; ?></option><?php	
+						?><option value="1"><?php echo  $character->talents[1]->spec->name; ?></option><?php	
 						}
 					?></td>
 				</tr>
