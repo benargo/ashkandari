@@ -509,6 +509,12 @@ class application {
 			
 		}
 		
+		/* Get the forum thread */
+		$thread = $this->getThread();
+		
+		/* Lock the forum thread */
+		$thread->lock();
+		
 		/* Return true */
 		return true;
 		

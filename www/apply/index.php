@@ -56,9 +56,6 @@ require(PATH.'framework/head.php');
 	
 	<p><small>Your email address is required so that we can contact you with the progress of your application and will be validated during the next step. Your email address is stored in our databases and officers cannot see it directly. For further information please read our <a href="/legal/privacy">privacy policy</a>.</small></p>
 	
-	<p>Do you intend to raid with us, or simply join us on a social/PvP basis?</p>
-	<p><a href="#" class="button" id="btn_raid">I want to raid</a> <a href="#" class="button" id="btn_social">I just want to be social</a></p>
-	
 	<p id="q_english"><input type="checkbox" name="english" /> Do you speak English?</p>
 	
 	<p id="q_ts3"><input type="checkbox" name="teamspeak" /> Do you have <a href="/teamspeak/" target="_blank">Teamspeak 3</a> installed?</p>
@@ -76,15 +73,22 @@ require(PATH.'framework/head.php');
 	
 	<label id="q1" for="q1" class="required"><p>How old are you and where are you from?</p>
 	<textarea name="q1" rows="2" required="true"></textarea></label>
-	
-	<label id="q2" for="q2" class="required"><p>Why do you want to join Ashkandari?</p>
-	<textarea name="q2" rows="5" required="true"></textarea></label>
-	
-	<label id="q3" for="q3" class="required"><p>Tell us a bit about yourself, a bit of your background, what kind of person you are, etc.</p>
-	<textarea name="q3" rows="5" required="true"></textarea></label>
-	
-	<label id="q4" for="q4" class="required"><p>What makes you a good player?</p>
-	<textarea name="q4" rows="5" required="true"></textarea></label>
+		
+	<p>Do you intend to raid with us, or simply join us on a social/PvP basis?</p>
+	<p><a href="#" class="button" id="btn_raid">I want to raid</a> <a href="#" class="button" id="btn_social">I just want to be social</a></p>
+		
+	<section id="raid_only">	
+		
+		<label id="q2" for="q2" class="required"><p>Why do you want to join Ashkandari?</p>
+		<textarea name="q2" rows="5" required="true"></textarea></label>
+		
+		<label id="q3" for="q3" class="required"><p>Tell us a bit about yourself, a bit of your background, what kind of person you are, etc.</p>
+		<textarea name="q3" rows="5" required="true"></textarea></label>
+		
+		<label id="q4" for="q4" class="required"><p>What makes you a good player?</p>
+		<textarea name="q4" rows="5" required="true"></textarea></label>
+		
+	</section>
 	
 	<label id="q_acceptance" for="acceptance" class="required"><p><input type="checkbox" name="acceptance" required="true" /> I agree to follow the <a href="/rules/" target="_blank">guild rules</a> and accept the <a href="/legal/terms" target="_blank">terms &amp; conditions</a> of this website.</p></label>
 	

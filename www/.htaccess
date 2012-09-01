@@ -31,6 +31,8 @@ RewriteRule ^officers/forums/add$ officers/forums/add.php [L]
 RewriteRule ^officers/forums/delete$ officers/forums/delete.php [L]
 RewriteRule ^officers/forums/edit$ officers/forums/edit.php [L]
 
+RewriteRule ^officers/applications/$ applications/ [R]
+
 RewriteRule ^epgp(\/)?$ roster/ [R]
 RewriteRule ^roster/epgp$ roster/ [R]
 
@@ -40,8 +42,7 @@ RewriteRule ^roster/race/([a-zA-Z\-]+)$ roster/race.php?slug=$1 [L]
 RewriteRule ^roster/class/([a-zA-Z\-]+)$ roster/class.php?slug=$1 [L]
 RewriteRule ^roster/rank/([a-zA-Z\-\/]+)$ roster/rank.php?slug=$1 [L]
 
-RewriteRule ^applications/$ forums/board.php?id=1 [L]
-RewriteRule ^applications/([0-9]+)$ forums/application.php?id=$1 [L]
+RewriteRule ^applications/([0-9]+)$ applications/view.php?id=$1 [L]
 
 RewriteRule ^rules$ rules/ [R]
 RewriteRule ^forums/thread/12$ rules/ [R]

@@ -3,9 +3,6 @@
 // Require the head of the page
 require_once('../../../framework/config.php');
 
-print_r($_POST);
-exit;
-
 /* Get the new forum thread */
 $application = new application($_POST['id']);
 
