@@ -487,6 +487,10 @@ class application {
 			case 1:
 				return "Accepted";
 				break;
+				
+			case NULL:
+				return "Awaiting Decision";
+				break;
 			
 		}
 		

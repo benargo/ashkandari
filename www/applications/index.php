@@ -88,21 +88,7 @@ require(PATH.'framework/head.php');
 				<td><?php echo $spec->name; ?></td>
 				<td><?php echo $off_spec->name; ?></td>
 				<td><?php echo date('j F Y', $app->received_date); ?></td>
-				<td><?php switch($app->decision) {
-					
-					case NULL:
-						echo "Awaiting Decision";
-						break;
-						
-					case 0:
-						echo "Declined";
-						break;
-						
-					case 1:
-						echo "Accepted";
-						break;
-					
-				} ?>
+				<td><?php echo $app->getDecision(); ?></td>
 			</tr>
 			<?php
 			
