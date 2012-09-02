@@ -28,6 +28,11 @@ require(PATH.'framework/head.php');
 
 ?><h1>Guild Applications</h1>
 
+<ul id="breadcrumbs">
+	<li><a href="/">Home</a></li>
+	<li>Applications</li>
+</ul>
+
 <nav>
 	<ul>
 		<li><a href="/applications/">All</a></li>

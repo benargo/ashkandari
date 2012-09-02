@@ -121,7 +121,7 @@ while($p = $posts->fetch_object()) {
 	
 	?><section class="reply" id="<?php echo $post->id; ?>"><hr />
 		<div class="character">
-			<p class="thumb<?php if(isset($account)) { if($account->isModerator()) { echo " moderator"; } if($account->isOfficer()) { echo " officer"; } } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
+			<p class="thumb<?php if($author->isModerator()) { echo " moderator"; } if($author->isOfficer()) { echo " officer"; } } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
 			
 			<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $character->name; ?>" class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></a></p>
 			
