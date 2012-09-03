@@ -74,10 +74,10 @@ require(PATH.'framework/head.php');
 	<label id="q1" for="q1" class="required"><p>How old are you and where are you from?</p>
 	<textarea name="q1" rows="2" required="true"></textarea></label>
 		
-	<p>Do you intend to raid with us, or simply join us on a social/PvP basis?</p>
-	<p><a href="#" class="button" id="btn_raid">I want to raid</a> <a href="#" class="button" id="btn_social">I just want to be social</a></p>
+<!--	<p>Do you intend to raid with us, or simply join us on a social/PvP basis?</p>
+	<p><a href="#" class="button" id="btn_raid">I want to raid</a> <a href="#" class="button" id="btn_social">I just want to be social</a></p> -->
 		
-	<section id="raid_only">	
+	<section>	
 		
 		<label id="q2" for="q2" class="required"><p>Why do you want to join Ashkandari?</p>
 		<textarea name="q2" rows="5" required="true"></textarea></label>
