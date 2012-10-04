@@ -1,0 +1,1410 @@
+<?xml version="1.0"?>
+
+<!--
+-
+- Sequel Pro XML dump
+- Version 3408
+-
+- http://www.sequelpro.com/
+- http://code.google.com/p/sequel-pro/
+-
+- Host: ashkandari.com (MySQL 5.1.63-0ubuntu0.10.04.1)
+- Database: ashkandari
+- Generation Time Time: 2012-10-03 17:04:48 +0000
+-
+-->
+
+<realms>
+	<row>
+		<id>1</id>
+		<name>Aegwynn</name>
+		<slug>aegwynn</slug>
+	</row>
+
+	<row>
+		<id>2</id>
+		<name>Aerie Peak</name>
+		<slug>aerie-peak</slug>
+	</row>
+
+	<row>
+		<id>3</id>
+		<name>Agamaggan</name>
+		<slug>agamaggan</slug>
+	</row>
+
+	<row>
+		<id>4</id>
+		<name>Aggra (PortuguÃªs)</name>
+		<slug>aggra-portugues</slug>
+	</row>
+
+	<row>
+		<id>5</id>
+		<name>Aggramar</name>
+		<slug>aggramar</slug>
+	</row>
+
+	<row>
+		<id>6</id>
+		<name>Alexstrasza</name>
+		<slug>alexstrasza</slug>
+	</row>
+
+	<row>
+		<id>7</id>
+		<name>Alleria</name>
+		<slug>alleria</slug>
+	</row>
+
+	<row>
+		<id>8</id>
+		<name>Alonsus</name>
+		<slug>alonsus</slug>
+	</row>
+
+	<row>
+		<id>9</id>
+		<name>Ambossar</name>
+		<slug>ambossar</slug>
+	</row>
+
+	<row>
+		<id>10</id>
+		<name>Anachronos</name>
+		<slug>anachronos</slug>
+	</row>
+
+	<row>
+		<id>11</id>
+		<name>Anetheron</name>
+		<slug>anetheron</slug>
+	</row>
+
+	<row>
+		<id>12</id>
+		<name>Antonidas</name>
+		<slug>antonidas</slug>
+	</row>
+
+	<row>
+		<id>13</id>
+		<name>Arak-arahm</name>
+		<slug>arakarahm</slug>
+	</row>
+
+	<row>
+		<id>14</id>
+		<name>Arathi</name>
+		<slug>arathi</slug>
+	</row>
+
+	<row>
+		<id>15</id>
+		<name>Arathor</name>
+		<slug>arathor</slug>
+	</row>
+
+	<row>
+		<id>16</id>
+		<name>Archimonde</name>
+		<slug>archimonde</slug>
+	</row>
+
+	<row>
+		<id>17</id>
+		<name>Area 52</name>
+		<slug>area-52</slug>
+	</row>
+
+	<row>
+		<id>18</id>
+		<name>Argent Dawn</name>
+		<slug>argent-dawn</slug>
+	</row>
+
+	<row>
+		<id>19</id>
+		<name>Arthas</name>
+		<slug>arthas</slug>
+	</row>
+
+	<row>
+		<id>20</id>
+		<name>Arygos</name>
+		<slug>arygos</slug>
+	</row>
+
+	<row>
+		<id>21</id>
+		<name>Ashenvale</name>
+		<slug>ashenvale</slug>
+	</row>
+
+	<row>
+		<id>22</id>
+		<name>Aszune</name>
+		<slug>aszune</slug>
+	</row>
+
+	<row>
+		<id>23</id>
+		<name>Auchindoun</name>
+		<slug>auchindoun</slug>
+	</row>
+
+	<row>
+		<id>24</id>
+		<name>Azjol-Nerub</name>
+		<slug>azjolnerub</slug>
+	</row>
+
+	<row>
+		<id>25</id>
+		<name>Azshara</name>
+		<slug>azshara</slug>
+	</row>
+
+	<row>
+		<id>26</id>
+		<name>Azuregos</name>
+		<slug>azuregos</slug>
+	</row>
+
+	<row>
+		<id>27</id>
+		<name>Azuremyst</name>
+		<slug>azuremyst</slug>
+	</row>
+
+	<row>
+		<id>28</id>
+		<name>Baelgun</name>
+		<slug>baelgun</slug>
+	</row>
+
+	<row>
+		<id>29</id>
+		<name>Balnazzar</name>
+		<slug>balnazzar</slug>
+	</row>
+
+	<row>
+		<id>30</id>
+		<name>Blackhand</name>
+		<slug>blackhand</slug>
+	</row>
+
+	<row>
+		<id>31</id>
+		<name>Blackmoore</name>
+		<slug>blackmoore</slug>
+	</row>
+
+	<row>
+		<id>32</id>
+		<name>Blackrock</name>
+		<slug>blackrock</slug>
+	</row>
+
+	<row>
+		<id>33</id>
+		<name>Blackscar</name>
+		<slug>blackscar</slug>
+	</row>
+
+	<row>
+		<id>34</id>
+		<name>Bladefist</name>
+		<slug>bladefist</slug>
+	</row>
+
+	<row>
+		<id>35</id>
+		<name>Bloodfeather</name>
+		<slug>bloodfeather</slug>
+	</row>
+
+	<row>
+		<id>36</id>
+		<name>Bloodhoof</name>
+		<slug>bloodhoof</slug>
+	</row>
+
+	<row>
+		<id>37</id>
+		<name>Bloodscalp</name>
+		<slug>bloodscalp</slug>
+	</row>
+
+	<row>
+		<id>38</id>
+		<name>Blutkessel</name>
+		<slug>blutkessel</slug>
+	</row>
+
+	<row>
+		<id>39</id>
+		<name>Booty Bay</name>
+		<slug>booty-bay</slug>
+	</row>
+
+	<row>
+		<id>40</id>
+		<name>Borean Tundra</name>
+		<slug>borean-tundra</slug>
+	</row>
+
+	<row>
+		<id>41</id>
+		<name>Boulderfist</name>
+		<slug>boulderfist</slug>
+	</row>
+
+	<row>
+		<id>42</id>
+		<name>Bronze Dragonflight</name>
+		<slug>bronze-dragonflight</slug>
+	</row>
+
+	<row>
+		<id>43</id>
+		<name>Bronzebeard</name>
+		<slug>bronzebeard</slug>
+	</row>
+
+	<row>
+		<id>44</id>
+		<name>Burning Blade</name>
+		<slug>burning-blade</slug>
+	</row>
+
+	<row>
+		<id>45</id>
+		<name>Burning Legion</name>
+		<slug>burning-legion</slug>
+	</row>
+
+	<row>
+		<id>46</id>
+		<name>Burning Steppes</name>
+		<slug>burning-steppes</slug>
+	</row>
+
+	<row>
+		<id>47</id>
+		<name>Chamber of Aspects</name>
+		<slug>chamber-of-aspects</slug>
+	</row>
+
+	<row>
+		<id>48</id>
+		<name>Chants Ã©ternels</name>
+		<slug>chants-eternels</slug>
+	</row>
+
+	<row>
+		<id>49</id>
+		<name>Chromaggus</name>
+		<slug>chromaggus</slug>
+	</row>
+
+	<row>
+		<id>50</id>
+		<name>Colinas Pardas</name>
+		<slug>colinas-pardas</slug>
+	</row>
+
+	<row>
+		<id>51</id>
+		<name>ConfrÃ©rie du Thorium</name>
+		<slug>confrerie-du-thorium</slug>
+	</row>
+
+	<row>
+		<id>52</id>
+		<name>Conseil des Ombres</name>
+		<slug>conseil-des-ombres</slug>
+	</row>
+
+	<row>
+		<id>53</id>
+		<name>Crushridge</name>
+		<slug>crushridge</slug>
+	</row>
+
+	<row>
+		<id>54</id>
+		<name>Culte de la Rive noire</name>
+		<slug>culte-de-la-rive-noire</slug>
+	</row>
+
+	<row>
+		<id>55</id>
+		<name>Daggerspine</name>
+		<slug>daggerspine</slug>
+	</row>
+
+	<row>
+		<id>56</id>
+		<name>Dalaran</name>
+		<slug>dalaran</slug>
+	</row>
+
+	<row>
+		<id>57</id>
+		<name>Dalvengyr</name>
+		<slug>dalvengyr</slug>
+	</row>
+
+	<row>
+		<id>58</id>
+		<name>Darkmoon Faire</name>
+		<slug>darkmoon-faire</slug>
+	</row>
+
+	<row>
+		<id>59</id>
+		<name>Darksorrow</name>
+		<slug>darksorrow</slug>
+	</row>
+
+	<row>
+		<id>60</id>
+		<name>Darkspear</name>
+		<slug>darkspear</slug>
+	</row>
+
+	<row>
+		<id>61</id>
+		<name>Das Konsortium</name>
+		<slug>das-konsortium</slug>
+	</row>
+
+	<row>
+		<id>62</id>
+		<name>Das Syndikat</name>
+		<slug>das-syndikat</slug>
+	</row>
+
+	<row>
+		<id>63</id>
+		<name>Deathguard</name>
+		<slug>deathguard</slug>
+	</row>
+
+	<row>
+		<id>64</id>
+		<name>Deathweaver</name>
+		<slug>deathweaver</slug>
+	</row>
+
+	<row>
+		<id>65</id>
+		<name>Deathwing</name>
+		<slug>deathwing</slug>
+	</row>
+
+	<row>
+		<id>66</id>
+		<name>Deepholm</name>
+		<slug>deepholm</slug>
+	</row>
+
+	<row>
+		<id>67</id>
+		<name>Defias Brotherhood</name>
+		<slug>defias-brotherhood</slug>
+	</row>
+
+	<row>
+		<id>68</id>
+		<name>Dentarg</name>
+		<slug>dentarg</slug>
+	</row>
+
+	<row>
+		<id>69</id>
+		<name>Der Mithrilorden</name>
+		<slug>der-mithrilorden</slug>
+	</row>
+
+	<row>
+		<id>70</id>
+		<name>Der Rat von Dalaran</name>
+		<slug>der-rat-von-dalaran</slug>
+	</row>
+
+	<row>
+		<id>71</id>
+		<name>Der abyssische Rat</name>
+		<slug>der-abyssische-rat</slug>
+	</row>
+
+	<row>
+		<id>72</id>
+		<name>Destromath</name>
+		<slug>destromath</slug>
+	</row>
+
+	<row>
+		<id>73</id>
+		<name>Dethecus</name>
+		<slug>dethecus</slug>
+	</row>
+
+	<row>
+		<id>74</id>
+		<name>Die Aldor</name>
+		<slug>die-aldor</slug>
+	</row>
+
+	<row>
+		<id>75</id>
+		<name>Die Arguswacht</name>
+		<slug>die-arguswacht</slug>
+	</row>
+
+	<row>
+		<id>76</id>
+		<name>Die Nachtwache</name>
+		<slug>die-nachtwache</slug>
+	</row>
+
+	<row>
+		<id>77</id>
+		<name>Die Silberne Hand</name>
+		<slug>die-silberne-hand</slug>
+	</row>
+
+	<row>
+		<id>78</id>
+		<name>Die Todeskrallen</name>
+		<slug>die-todeskrallen</slug>
+	</row>
+
+	<row>
+		<id>79</id>
+		<name>Die ewige Wacht</name>
+		<slug>die-ewige-wacht</slug>
+	</row>
+
+	<row>
+		<id>80</id>
+		<name>Doomhammer</name>
+		<slug>doomhammer</slug>
+	</row>
+
+	<row>
+		<id>81</id>
+		<name>Draenor</name>
+		<slug>draenor</slug>
+	</row>
+
+	<row>
+		<id>82</id>
+		<name>Dragonblight</name>
+		<slug>dragonblight</slug>
+	</row>
+
+	<row>
+		<id>83</id>
+		<name>Dragonmaw</name>
+		<slug>dragonmaw</slug>
+	</row>
+
+	<row>
+		<id>84</id>
+		<name>Dun Modr</name>
+		<slug>dun-modr</slug>
+	</row>
+
+	<row>
+		<id>85</id>
+		<name>Dun Morogh</name>
+		<slug>dun-morogh</slug>
+	</row>
+
+	<row>
+		<id>86</id>
+		<name>Dunemaul</name>
+		<slug>dunemaul</slug>
+	</row>
+
+	<row>
+		<id>87</id>
+		<name>Durotan</name>
+		<slug>durotan</slug>
+	</row>
+
+	<row>
+		<id>88</id>
+		<name>Earthen Ring</name>
+		<slug>earthen-ring</slug>
+	</row>
+
+	<row>
+		<id>89</id>
+		<name>Echsenkessel</name>
+		<slug>echsenkessel</slug>
+	</row>
+
+	<row>
+		<id>90</id>
+		<name>Eitrigg</name>
+		<slug>eitrigg</slug>
+	</row>
+
+	<row>
+		<id>91</id>
+		<name>Elune</name>
+		<slug>elune</slug>
+	</row>
+
+	<row>
+		<id>92</id>
+		<name>Emerald Dream</name>
+		<slug>emerald-dream</slug>
+	</row>
+
+	<row>
+		<id>93</id>
+		<name>Emeriss</name>
+		<slug>emeriss</slug>
+	</row>
+
+	<row>
+		<id>94</id>
+		<name>Eonar</name>
+		<slug>eonar</slug>
+	</row>
+
+	<row>
+		<id>95</id>
+		<name>Eredar</name>
+		<slug>eredar</slug>
+	</row>
+
+	<row>
+		<id>96</id>
+		<name>Eversong</name>
+		<slug>eversong</slug>
+	</row>
+
+	<row>
+		<id>97</id>
+		<name>Executus</name>
+		<slug>executus</slug>
+	</row>
+
+	<row>
+		<id>98</id>
+		<name>Exodar</name>
+		<slug>exodar</slug>
+	</row>
+
+	<row>
+		<id>99</id>
+		<name>Festung der StÃ¼rme</name>
+		<slug>festung-der-sturme</slug>
+	</row>
+
+	<row>
+		<id>100</id>
+		<name>Fordragon</name>
+		<slug>fordragon</slug>
+	</row>
+
+	<row>
+		<id>101</id>
+		<name>Forscherliga</name>
+		<slug>forscherliga</slug>
+	</row>
+
+	<row>
+		<id>102</id>
+		<name>Frostmane</name>
+		<slug>frostmane</slug>
+	</row>
+
+	<row>
+		<id>103</id>
+		<name>Frostmourne</name>
+		<slug>frostmourne</slug>
+	</row>
+
+	<row>
+		<id>104</id>
+		<name>Frostwhisper</name>
+		<slug>frostwhisper</slug>
+	</row>
+
+	<row>
+		<id>105</id>
+		<name>Frostwolf</name>
+		<slug>frostwolf</slug>
+	</row>
+
+	<row>
+		<id>106</id>
+		<name>Galakrond</name>
+		<slug>galakrond</slug>
+	</row>
+
+	<row>
+		<id>107</id>
+		<name>Garona</name>
+		<slug>garona</slug>
+	</row>
+
+	<row>
+		<id>108</id>
+		<name>Garrosh</name>
+		<slug>garrosh</slug>
+	</row>
+
+	<row>
+		<id>109</id>
+		<name>Genjuros</name>
+		<slug>genjuros</slug>
+	</row>
+
+	<row>
+		<id>110</id>
+		<name>Ghostlands</name>
+		<slug>ghostlands</slug>
+	</row>
+
+	<row>
+		<id>111</id>
+		<name>Gilneas</name>
+		<slug>gilneas</slug>
+	</row>
+
+	<row>
+		<id>112</id>
+		<name>Goldrinn</name>
+		<slug>goldrinn</slug>
+	</row>
+
+	<row>
+		<id>113</id>
+		<name>Gordunni</name>
+		<slug>gordunni</slug>
+	</row>
+
+	<row>
+		<id>114</id>
+		<name>Gorgonnash</name>
+		<slug>gorgonnash</slug>
+	</row>
+
+	<row>
+		<id>115</id>
+		<name>Greymane</name>
+		<slug>greymane</slug>
+	</row>
+
+	<row>
+		<id>116</id>
+		<name>Grim Batol</name>
+		<slug>grim-batol</slug>
+	</row>
+
+	<row>
+		<id>117</id>
+		<name>Grom</name>
+		<slug>grom</slug>
+	</row>
+
+	<row>
+		<id>118</id>
+		<name>Hakkar</name>
+		<slug>hakkar</slug>
+	</row>
+
+	<row>
+		<id>119</id>
+		<name>Haomarush</name>
+		<slug>haomarush</slug>
+	</row>
+
+	<row>
+		<id>120</id>
+		<name>Hellfire</name>
+		<slug>hellfire</slug>
+	</row>
+
+	<row>
+		<id>121</id>
+		<name>Hellscream</name>
+		<slug>hellscream</slug>
+	</row>
+
+	<row>
+		<id>122</id>
+		<name>Howling Fjord</name>
+		<slug>howling-fjord</slug>
+	</row>
+
+	<row>
+		<id>123</id>
+		<name>Hyjal</name>
+		<slug>hyjal</slug>
+	</row>
+
+	<row>
+		<id>124</id>
+		<name>Illidan</name>
+		<slug>illidan</slug>
+	</row>
+
+	<row>
+		<id>125</id>
+		<name>Jaedenar</name>
+		<slug>jaedenar</slug>
+	</row>
+
+	<row>
+		<id>126</id>
+		<name>Karazhan</name>
+		<slug>karazhan</slug>
+	</row>
+
+	<row>
+		<id>127</id>
+		<name>Kargath</name>
+		<slug>kargath</slug>
+	</row>
+
+	<row>
+		<id>128</id>
+		<name>Kazzak</name>
+		<slug>kazzak</slug>
+	</row>
+
+	<row>
+		<id>129</id>
+		<name>Khadgar</name>
+		<slug>khadgar</slug>
+	</row>
+
+	<row>
+		<id>130</id>
+		<name>Khaz Modan</name>
+		<slug>khaz-modan</slug>
+	</row>
+
+	<row>
+		<id>131</id>
+		<name>Kilrogg</name>
+		<slug>kilrogg</slug>
+	</row>
+
+	<row>
+		<id>132</id>
+		<name>Kirin Tor</name>
+		<slug>kirin-tor</slug>
+	</row>
+
+	<row>
+		<id>133</id>
+		<name>Krasus</name>
+		<slug>krasus</slug>
+	</row>
+
+	<row>
+		<id>134</id>
+		<name>Kul Tiras</name>
+		<slug>kul-tiras</slug>
+	</row>
+
+	<row>
+		<id>135</id>
+		<name>Kult der Verdammten</name>
+		<slug>kult-der-verdammten</slug>
+	</row>
+
+	<row>
+		<id>136</id>
+		<name>La Croisade Ã©carlate</name>
+		<slug>la-croisade-ecarlate</slug>
+	</row>
+
+	<row>
+		<id>137</id>
+		<name>Laughing Skull</name>
+		<slug>laughing-skull</slug>
+	</row>
+
+	<row>
+		<id>138</id>
+		<name>Les Clairvoyants</name>
+		<slug>les-clairvoyants</slug>
+	</row>
+
+	<row>
+		<id>139</id>
+		<name>Les Sentinelles</name>
+		<slug>les-sentinelles</slug>
+	</row>
+
+	<row>
+		<id>140</id>
+		<name>Lich King</name>
+		<slug>lich-king</slug>
+	</row>
+
+	<row>
+		<id>141</id>
+		<name>Lightbringer</name>
+		<slug>lightbringer</slug>
+	</row>
+
+	<row>
+		<id>142</id>
+		<name>Lordaeron</name>
+		<slug>lordaeron</slug>
+	</row>
+
+	<row>
+		<id>143</id>
+		<name>Los Errantes</name>
+		<slug>los-errantes</slug>
+	</row>
+
+	<row>
+		<id>144</id>
+		<name>Lothar</name>
+		<slug>lothar</slug>
+	</row>
+
+	<row>
+		<id>145</id>
+		<name>Madmortem</name>
+		<slug>madmortem</slug>
+	</row>
+
+	<row>
+		<id>146</id>
+		<name>Magtheridon</name>
+		<slug>magtheridon</slug>
+	</row>
+
+	<row>
+		<id>147</id>
+		<name>Malfurion</name>
+		<slug>malfurion</slug>
+	</row>
+
+	<row>
+		<id>148</id>
+		<name>Malorne</name>
+		<slug>malorne</slug>
+	</row>
+
+	<row>
+		<id>149</id>
+		<name>Malygos</name>
+		<slug>malygos</slug>
+	</row>
+
+	<row>
+		<id>150</id>
+		<name>Mannoroth</name>
+		<slug>mannoroth</slug>
+	</row>
+
+	<row>
+		<id>151</id>
+		<name>MarÃ©cage de Zangar</name>
+		<slug>marecage-de-zangar</slug>
+	</row>
+
+	<row>
+		<id>152</id>
+		<name>Mazrigos</name>
+		<slug>mazrigos</slug>
+	</row>
+
+	<row>
+		<id>153</id>
+		<name>Medivh</name>
+		<slug>medivh</slug>
+	</row>
+
+	<row>
+		<id>154</id>
+		<name>Minahonda</name>
+		<slug>minahonda</slug>
+	</row>
+
+	<row>
+		<id>155</id>
+		<name>Moonglade</name>
+		<slug>moonglade</slug>
+	</row>
+
+	<row>
+		<id>156</id>
+		<name>Nagrand</name>
+		<slug>nagrand</slug>
+	</row>
+
+	<row>
+		<id>157</id>
+		<name>Nathrezim</name>
+		<slug>nathrezim</slug>
+	</row>
+
+	<row>
+		<id>158</id>
+		<name>Naxxramas</name>
+		<slug>naxxramas</slug>
+	</row>
+
+	<row>
+		<id>159</id>
+		<name>Nazjatar</name>
+		<slug>nazjatar</slug>
+	</row>
+
+	<row>
+		<id>160</id>
+		<name>Nefarian</name>
+		<slug>nefarian</slug>
+	</row>
+
+	<row>
+		<id>161</id>
+		<name>Neptulon</name>
+		<slug>neptulon</slug>
+	</row>
+
+	<row>
+		<id>162</id>
+		<name>Nethersturm</name>
+		<slug>nethersturm</slug>
+	</row>
+
+	<row>
+		<id>163</id>
+		<name>Nordrassil</name>
+		<slug>nordrassil</slug>
+	</row>
+
+	<row>
+		<id>164</id>
+		<name>Norgannon</name>
+		<slug>norgannon</slug>
+	</row>
+
+	<row>
+		<id>165</id>
+		<name>Nozdormu</name>
+		<slug>nozdormu</slug>
+	</row>
+
+	<row>
+		<id>166</id>
+		<name>Onyxia</name>
+		<slug>onyxia</slug>
+	</row>
+
+	<row>
+		<id>167</id>
+		<name>Outland</name>
+		<slug>outland</slug>
+	</row>
+
+	<row>
+		<id>168</id>
+		<name>Perenolde</name>
+		<slug>perenolde</slug>
+	</row>
+
+	<row>
+		<id>169</id>
+		<name>Proudmoore</name>
+		<slug>proudmoore</slug>
+	</row>
+
+	<row>
+		<id>170</id>
+		<name>Ragnaros</name>
+		<slug>ragnaros</slug>
+	</row>
+
+	<row>
+		<id>171</id>
+		<name>Rajaxx</name>
+		<slug>rajaxx</slug>
+	</row>
+
+	<row>
+		<id>172</id>
+		<name>Rashgarroth</name>
+		<slug>rashgarroth</slug>
+	</row>
+
+	<row>
+		<id>173</id>
+		<name>Ravencrest</name>
+		<slug>ravencrest</slug>
+	</row>
+
+	<row>
+		<id>174</id>
+		<name>Ravenholdt</name>
+		<slug>ravenholdt</slug>
+	</row>
+
+	<row>
+		<id>175</id>
+		<name>Razuvious</name>
+		<slug>razuvious</slug>
+	</row>
+
+	<row>
+		<id>176</id>
+		<name>Rexxar</name>
+		<slug>rexxar</slug>
+	</row>
+
+	<row>
+		<id>177</id>
+		<name>Runetotem</name>
+		<slug>runetotem</slug>
+	</row>
+
+	<row>
+		<id>178</id>
+		<name>Sanguino</name>
+		<slug>sanguino</slug>
+	</row>
+
+	<row>
+		<id>179</id>
+		<name>Sargeras</name>
+		<slug>sargeras</slug>
+	</row>
+
+	<row>
+		<id>180</id>
+		<name>Saurfang</name>
+		<slug>saurfang</slug>
+	</row>
+
+	<row>
+		<id>181</id>
+		<name>Scarshield Legion</name>
+		<slug>scarshield-legion</slug>
+	</row>
+
+	<row>
+		<id>182</id>
+		<name>Shadowsong</name>
+		<slug>shadowsong</slug>
+	</row>
+
+	<row>
+		<id>183</id>
+		<name>Shattered Halls</name>
+		<slug>shattered-halls</slug>
+	</row>
+
+	<row>
+		<id>184</id>
+		<name>Shattered Hand</name>
+		<slug>shattered-hand</slug>
+	</row>
+
+	<row>
+		<id>185</id>
+		<name>Shattrath</name>
+		<slug>shattrath</slug>
+	</row>
+
+	<row>
+		<id>186</id>
+		<name>Silvermoon</name>
+		<slug>silvermoon</slug>
+	</row>
+
+	<row>
+		<id>187</id>
+		<name>Sinstralis</name>
+		<slug>sinstralis</slug>
+	</row>
+
+	<row>
+		<id>188</id>
+		<name>Skullcrusher</name>
+		<slug>skullcrusher</slug>
+	</row>
+
+	<row>
+		<id>189</id>
+		<name>Soulflayer</name>
+		<slug>soulflayer</slug>
+	</row>
+
+	<row>
+		<id>190</id>
+		<name>Spinebreaker</name>
+		<slug>spinebreaker</slug>
+	</row>
+
+	<row>
+		<id>191</id>
+		<name>Sporeggar</name>
+		<slug>sporeggar</slug>
+	</row>
+
+	<row>
+		<id>192</id>
+		<name>Steamwheedle Cartel</name>
+		<slug>steamwheedle-cartel</slug>
+	</row>
+
+	<row>
+		<id>193</id>
+		<name>Stormrage</name>
+		<slug>stormrage</slug>
+	</row>
+
+	<row>
+		<id>194</id>
+		<name>Stormreaver</name>
+		<slug>stormreaver</slug>
+	</row>
+
+	<row>
+		<id>195</id>
+		<name>Stormscale</name>
+		<slug>stormscale</slug>
+	</row>
+
+	<row>
+		<id>196</id>
+		<name>Sunstrider</name>
+		<slug>sunstrider</slug>
+	</row>
+
+	<row>
+		<id>197</id>
+		<name>Suramar</name>
+		<slug>suramar</slug>
+	</row>
+
+	<row>
+		<id>198</id>
+		<name>Sylvanas</name>
+		<slug>sylvanas</slug>
+	</row>
+
+	<row>
+		<id>199</id>
+		<name>Taerar</name>
+		<slug>taerar</slug>
+	</row>
+
+	<row>
+		<id>200</id>
+		<name>Talnivarr</name>
+		<slug>talnivarr</slug>
+	</row>
+
+	<row>
+		<id>201</id>
+		<name>Tarren Mill</name>
+		<slug>tarren-mill</slug>
+	</row>
+
+	<row>
+		<id>202</id>
+		<name>Teldrassil</name>
+		<slug>teldrassil</slug>
+	</row>
+
+	<row>
+		<id>203</id>
+		<name>Temple noir</name>
+		<slug>temple-noir</slug>
+	</row>
+
+	<row>
+		<id>204</id>
+		<name>Terenas</name>
+		<slug>terenas</slug>
+	</row>
+
+	<row>
+		<id>205</id>
+		<name>Terokkar</name>
+		<slug>terokkar</slug>
+	</row>
+
+	<row>
+		<id>206</id>
+		<name>Terrordar</name>
+		<slug>terrordar</slug>
+	</row>
+
+	<row>
+		<id>207</id>
+		<name>The Maelstrom</name>
+		<slug>the-maelstrom</slug>
+	</row>
+
+	<row>
+		<id>208</id>
+		<name>The Venture Co</name>
+		<slug>the-venture-co</slug>
+	</row>
+
+	<row>
+		<id>209</id>
+		<name>Theradras</name>
+		<slug>theradras</slug>
+	</row>
+
+	<row>
+		<id>210</id>
+		<name>Thermaplugg</name>
+		<slug>thermaplugg</slug>
+	</row>
+
+	<row>
+		<id>211</id>
+		<name>Thrall</name>
+		<slug>thrall</slug>
+	</row>
+
+	<row>
+		<id>212</id>
+		<name>Thunderhorn</name>
+		<slug>thunderhorn</slug>
+	</row>
+
+	<row>
+		<id>213</id>
+		<name>Tichondrius</name>
+		<slug>tichondrius</slug>
+	</row>
+
+	<row>
+		<id>214</id>
+		<name>Tirion</name>
+		<slug>tirion</slug>
+	</row>
+
+	<row>
+		<id>215</id>
+		<name>Todeswache</name>
+		<slug>todeswache</slug>
+	</row>
+
+	<row>
+		<id>216</id>
+		<name>Trollbane</name>
+		<slug>trollbane</slug>
+	</row>
+
+	<row>
+		<id>217</id>
+		<name>Turalyon</name>
+		<slug>turalyon</slug>
+	</row>
+
+	<row>
+		<id>218</id>
+		<name>Twisting Nether</name>
+		<slug>twisting-nether</slug>
+	</row>
+
+	<row>
+		<id>219</id>
+		<name>Tyrande</name>
+		<slug>tyrande</slug>
+	</row>
+
+	<row>
+		<id>220</id>
+		<name>Uldaman</name>
+		<slug>uldaman</slug>
+	</row>
+
+	<row>
+		<id>221</id>
+		<name>Ulduar</name>
+		<slug>ulduar</slug>
+	</row>
+
+	<row>
+		<id>222</id>
+		<name>Uldum</name>
+		<slug>uldum</slug>
+	</row>
+
+	<row>
+		<id>223</id>
+		<name>Varimathras</name>
+		<slug>varimathras</slug>
+	</row>
+
+	<row>
+		<id>224</id>
+		<name>Vashj</name>
+		<slug>vashj</slug>
+	</row>
+
+	<row>
+		<id>225</id>
+		<name>Wildhammer</name>
+		<slug>wildhammer</slug>
+	</row>
+
+	<row>
+		<id>226</id>
+		<name>Wrathbringer</name>
+		<slug>wrathbringer</slug>
+	</row>
+
+	<row>
+		<id>227</id>
+		<name>Xavius</name>
+		<slug>xavius</slug>
+	</row>
+
+	<row>
+		<id>228</id>
+		<name>Ysera</name>
+		<slug>ysera</slug>
+	</row>
+
+	<row>
+		<id>229</id>
+		<name>Ysondre</name>
+		<slug>ysondre</slug>
+	</row>
+
+	<row>
+		<id>230</id>
+		<name>Zenedar</name>
+		<slug>zenedar</slug>
+	</row>
+
+	<row>
+		<id>231</id>
+		<name>Zirkel des Cenarius</name>
+		<slug>zirkel-des-cenarius</slug>
+	</row>
+
+	<row>
+		<id>232</id>
+		<name>Zuluhed</name>
+		<slug>zuluhed</slug>
+	</row>
+
+</realms>

@@ -1,0 +1,107 @@
+<?xml version="1.0"?>
+
+<!--
+-
+- Sequel Pro XML dump
+- Version 3408
+-
+- http://www.sequelpro.com/
+- http://code.google.com/p/sequel-pro/
+-
+- Host: ashkandari.com (MySQL 5.1.63-0ubuntu0.10.04.1)
+- Database: ashkandari
+- Generation Time Time: 2012-10-03 16:52:55 +0000
+-
+-->
+
+<classes>
+
+	<row>
+		<id>1</id>
+		<name>Warrior</name>
+		<slug>warrior</slug>
+		<colour>C69B6D</colour>
+		<icon_url>/media/images/icons/class_warrior.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>2</id>
+		<name>Paladin</name>
+		<slug>paladin</slug>
+		<colour>F48CBA</colour>
+		<icon_url>/media/images/icons/class_paladin.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>3</id>
+		<name>Hunter</name>
+		<slug>hunter</slug>
+		<colour>AAD372</colour>
+		<icon_url>/media/images/icons/class_hunter.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>4</id>
+		<name>Rogue</name>
+		<slug>rogue</slug>
+		<colour>FFF468</colour>
+		<icon_url>/media/images/icons/class_rogue.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>5</id>
+		<name>Priest</name>
+		<slug>priest</slug>
+		<colour>F0EBE0</colour>
+		<icon_url>/media/images/icons/class_priest.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>6</id>
+		<name>Death Knight</name>
+		<slug>dk</slug>
+		<colour>C41E3B</colour>
+		<icon_url>/media/images/icons/class_death-knight.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>7</id>
+		<name>Shaman</name>
+		<slug>shaman</slug>
+		<colour>2359FF</colour>
+		<icon_url>/media/images/icons/class_shaman.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>8</id>
+		<name>Mage</name>
+		<slug>mage</slug>
+		<colour>68CCEF</colour>
+		<icon_url>/media/images/icons/class_mage.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>9</id>
+		<name>Warlock</name>
+		<slug>warlock</slug>
+		<colour>9382C9</colour>
+		<icon_url>/media/images/icons/class_warlock.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>10</id>
+		<name>Monk</name>
+		<slug>monk</slug>
+		<colour>00FFBA</colour>
+		<icon_url>/media/images/icons/class_monk.jpg</icon_url>
+	</row>
+
+	<row>
+		<id>11</id>
+		<name>Druid</name>
+		<slug>druid</slug>
+		<colour>FF7C0A</colour>
+		<icon_url>/media/images/icons/class_druid.jpg</icon_url>
+	</row>
+
+</classes>

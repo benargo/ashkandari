@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+
+<!--
+-
+- Sequel Pro XML dump
+- Version 3408
+-
+- http://www.sequelpro.com/
+- http://code.google.com/p/sequel-pro/
+-
+- Host: ashkandari.com (MySQL 5.1.63-0ubuntu0.10.04.1)
+- Database: ashkandari
+- Generation Time Time: 2012-10-03 16:56:25 +0000
+-
+-->
+
+<races>
+
+	<row>
+		<id>1</id>
+		<faction>alliance</faction>
+		<name>Human</name>
+		<slug>human</slug>
+		<male_icon>/media/images/icons/race_human_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_human_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>2</id>
+		<faction>horde</faction>
+		<name>Orc</name>
+		<slug>orc</slug>
+		<male_icon>/media/images/icons/race_orc_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_orc_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>3</id>
+		<faction>alliance</faction>
+		<name>Dwarf</name>
+		<slug>dwarf</slug>
+		<male_icon>/media/images/icons/race_dwarf_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_dwarf_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>4</id>
+		<faction>alliance</faction>
+		<name>Night Elf</name>
+		<slug>night-elf</slug>
+		<male_icon>/media/images/icons/race_night-elf_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_night-elf_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>5</id>
+		<faction>horde</faction>
+		<name>Forsaken</name>
+		<slug>forsaken</slug>
+		<male_icon>/media/images/icons/race_forsaken_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_forsaken_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>6</id>
+		<faction>horde</faction>
+		<name>Tauren</name>
+		<slug>tauren</slug>
+		<male_icon>/media/images/icons/race_tauren_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_tauren_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>7</id>
+		<faction>alliance</faction>
+		<name>Gnome</name>
+		<slug>gnome</slug>
+		<male_icon>/media/images/icons/race_gnome_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_gnome_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>8</id>
+		<faction>horde</faction>
+		<name>Troll</name>
+		<slug>troll</slug>
+		<male_icon>/media/images/icons/race_troll_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_troll_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>9</id>
+		<faction>horde</faction>
+		<name>Goblin</name>
+		<slug>goblin</slug>
+		<male_icon>/media/images/icons/race_goblin_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_goblin_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>10</id>
+		<faction>horde</faction>
+		<name>Blood Elf</name>
+		<slug>blood-elf</slug>
+		<male_icon>/media/images/icons/race_blood-elf_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_blood-elf_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>11</id>
+		<faction>alliance</faction>
+		<name>Draenei</name>
+		<slug>draenei</slug>
+		<male_icon>/media/images/icons/race_draenei_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_draenei_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>22</id>
+		<faction>alliance</faction>
+		<name>Worgen</name>
+		<slug>worgen</slug>
+		<male_icon>/media/images/icons/race_worgen_male.jpg</male_icon>
+		<female_icon>/media/images/icons/race_worgen_female.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>25</id>
+		<faction>alliance</faction>
+		<name>Pandaren</name>
+		<slug>pandaren</slug>
+		<male_icon>/media/images/icons/race_pandaren_male_alliance.jpg</male_icon>
+		<female_icon>/media/images/icons/race_pandaren_female_alliance.jpg</female_icon>
+	</row>
+
+	<row>
+		<id>26</id>
+		<faction>horde</faction>
+		<name>Pandaren</name>
+		<slug>pandaren</slug>
+		<male_icon>/media/images/icons/race_pandaren_male_horde.jpg</male_icon>
+		<female_icon>/media/images/icons/race_pandaren_female_horde.jpg</female_icon>
+	</row>
+
+</races>
