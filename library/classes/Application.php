@@ -28,7 +28,6 @@ class Application {
 	private $decision;
 	private $decision_date;
 	private $officer;
-	private $forum_thread;
 
 	/**
 	 * Construction function
@@ -521,32 +520,6 @@ class Application {
 	public function getOfficer() {
 
 		return new Account($this->officer);
-	}
-
-	/**
-	 * Set the forum thread
-	 * @param $id (int) => Forum thread ID
-	 */
-	public function setThread($id) {
-
-		$this->forum_thread = $id;
-
-		// Update the database
-		DBQuery::runQuery("
-			UPDATE
-				`applications`
-			SET
-				`forum_thread` = $id
-			WHERE
-				`id` = ".$this->id);
-	}
-
-	/**
-	 * Get the forum thread
-	 */
-	public function getThread() {
-
-		return new ForumThread($this->forum_thread);
 	}
 
 }

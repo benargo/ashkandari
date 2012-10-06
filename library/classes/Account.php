@@ -137,17 +137,17 @@ class Account {
 	 * Process an email address change request
 	 * @param $email (varchar) => new email address
 	 */
-	public function changeEmail($email) {
+	public function changeEmail($to) {
 
 		// Prepare the activation email
 		$email = new Email(
-			$email,
+			$to,
 			'Please confirm your email address',
 			'<p>Dear '.$this->getPrimaryCharacter()->name.',</p>
 			<p>Someone (hopefully you) changed the email address on your Ashkandari.com account just now.
 			In order to finalise the change, we need you to confirm your new email address by clicking on the following link:</p>
-			<p><a href="'.BASE_URL.'/account/email/confirm/'.$this->id.'/'.encrypt($email).'">'.
-				BASE_URL.'/account/email/confirm/'.$this->id.'/'.encrypt($email).'</a></p>
+			<p><a href="'.BASE_URL.'/account/email/confirm/'.$this->id.'/'.encrypt($to).'">'.
+				BASE_URL.'/account/email/confirm/'.$this->id.'/'.encrypt($to).'</a></p>
 			<p>If you can\'t click on the link, copy and paste it into your web browser.</p>');
 
 		// Send the email
@@ -343,11 +343,11 @@ class Account {
 
 			// Update the database
 			DBQuery::runQuery("
-				UPDATE 
+				UPDATE
 					`accounts`
-				SET 
+				SET
 					`primary_character` = $id
-				WHERE 
+				WHERE
 					`id` = ".$this->id);
 
 			return true;
@@ -402,12 +402,12 @@ class Account {
 		$this->digest = $digest;
 
 		DBQuery::runQuery("
-			UPDATE 
+			UPDATE
 				`accounts`
-			SET 
+			SET
 				`news` = $news,
 				`digest` = $digest
-			WHERE 
+			WHERE
 				`id` = ".$this->id);
 	}
 

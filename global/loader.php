@@ -6,7 +6,7 @@
  * - Configuration
  * - Classes
  * - Functions
-	 */
+ */
 
 // Config files
 require_once('config/app.cfg.php');

@@ -86,7 +86,7 @@ class DBQuery {
 
 			$rows = array();
 
-			foreach($this->result->fetch_all() as $row) {
+			while($row = $this->result->fetch_assoc()) {
 
 				array_push($rows, $row);
 			}
@@ -112,6 +112,21 @@ class DBQuery {
 			}
 
 			return $columns;
+		}
+
+		return false;
+	}
+
+	/**
+	 * Get a single value back
+	 * Useful if the query returns a single row and a single column
+	 */
+	public function value() {
+
+		if($this->result()) {
+
+			$row = $this->result->fetch_array();
+			return $row[0];
 		}
 
 		return false;
