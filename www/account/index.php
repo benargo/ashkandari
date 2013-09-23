@@ -6,11 +6,6 @@
  * the posted login information to us.
  * Which one we use is determined by the presence of $_POST variables.
  */
- 
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
-}
 
 // Require the framework files
 require_once('../../framework/config.php');

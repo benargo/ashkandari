@@ -3,11 +3,6 @@
 /* 
  * This page accepts the account ID and activation code and activates it against the database.
  */
- 
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
-}
 
 // Require the head of the page
 require_once('../../framework/config.php');

@@ -3,11 +3,6 @@
 /* 
  * This page allows us to recover somebodys account based on 3 given variables.
  */
- 
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
-}
 
 // Require the framework files
 require_once('../../framework/config.php');

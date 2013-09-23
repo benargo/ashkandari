@@ -104,6 +104,17 @@ class char_cooking extends character {
 		
 	}
 	
+	/* Has recipes */
+	public function hasRecipes() {
+		
+		if(count($this->recipes) > 0) {
+		
+			return true;
+		}
+		
+		return false;		
+	}
+	
 	/* Get the recipes */
 	public function getRecipes() {
 		

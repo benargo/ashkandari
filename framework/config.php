@@ -28,12 +28,13 @@ session_start();
 if( empty($_SERVER["HTTPS"]) ) {
 	$protocol = "http";
 } else {
-	$protocol = "https";
+	$protocol = "http";
 }
 
 /* 2. Constants */
-define("PATH", "/home/ashkandari/"); // Base path for this server
-define("BASE_URL", $protocol."://www.ashkandari.com"); // The URL this web application runs off
+define("PATH", "/home/ben/public/prototype.uguilds.net/"); // Base path for this server
+//define("PATH", "/Users/ben/Dropbox/Documents/WoW/Guilds/Ashkandari/");
+define("BASE_URL", $protocol."://".$_SERVER['HTTP_HOST']); // The URL this web application runs off
 
 /* Salt integration - This is in a seperate file for security reasons */
 require_once(PATH."framework/salt.php");
@@ -45,7 +46,7 @@ require_once(PATH."db/mysqli_connection.php");
 
 // Database function
 function db() {
-	
+
 	/* Create a new instance of our database
 	 * NB: This function returns an OBJECT */
 
@@ -57,7 +58,7 @@ function db() {
 
 	// And return it for our use.
 	return $db;
-		
+
 }
 
 /* 4. Configuration functions */

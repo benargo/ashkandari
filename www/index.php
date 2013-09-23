@@ -24,6 +24,7 @@ if( $json = file_get_contents("http://eu.battle.net/api/wow/guild/Tarren-Mill/As
 }
 
 ?><h1>Welcome to Ashkandari</h1>
+
 <p>Ashkandari is a<?php if( isset($guild) ) { echo ' level '. $guild->level; } ?> social and casual raiding guild based on Tarren Mill. We have two raiding teams with very mature and fun people. We always have fun together and look out for each other. Ashkandari started out in life on the realm of Spinebreaker in 2010 as a guild called Insert Coin. In 2012 we moved to Tarren Mill and are still going strong.</p>
 <h2>News</h2><?php
 

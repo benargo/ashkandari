@@ -34,9 +34,16 @@ if( $character->verify($_POST['slot1'], $_POST['slot2']) ) {
 
 	/* Change the value in the characters table to reflect this new claim of ownership */
 	$db->query("UPDATE `characters` SET `account_id` = ". $account->id ." WHERE `id` = ". $character->id);
+
+	if(!$account->getPrimaryCharacter()) {
+		$account->setPrimaryCharacter($character->id);
+	}
 	
 	/* Can close the database connection */
 	$db->close();
+
+	// Set a cookie variable containing their account ID
+	setcookie('account', encrypt($account->id), time()+60*60*24, '/');
 	
 	?><h1>Character Verified</h1>
 	

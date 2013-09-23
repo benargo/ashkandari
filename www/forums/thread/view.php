@@ -121,7 +121,7 @@ while($p = $posts->fetch_object()) {
 	
 	?><section class="reply" id="<?php echo $post->id; ?>"><hr />
 		<div class="character">
-			<p class="thumb<?php if($author->isModerator()) { echo " moderator"; } if($author->isOfficer()) { echo " officer"; } } ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
+			<p class="thumb<?php if($author->isModerator()) echo " moderator"; if($author->isOfficer()) echo " officer"; ?>"><a href="/roster/character/<?php echo $character->name; ?>" class="noborder"><img src="<?php echo $character->getThumbnail(); ?>" alt="Character Thumbnail" /></a></p>
 			
 			<p style="font-size: 1.2em !important;"><a href="/roster/character/<?php echo $character->name; ?>" class="<?php echo $class->slug; ?>"><?php echo $character->name; ?></a></p>
 			
@@ -151,7 +151,7 @@ while($p = $posts->fetch_object()) {
 					
 			} 
 			
-			?><div class="body_content<?php if($character->isModerator()) { echo " moderator"; } if($character->isOfficer()) { echo " officer"; } ?>"><?php echo $post->body; ?></div><?php
+			?><div class="body_content<?php if($character->isModerator()) echo " moderator"; if($character->isOfficer()) echo " officer"; ?>"><?php echo $post->body; ?></div><?php
 			
 			/* Check if this post has been edited */
 			if(isset($post->edit_time)) {
@@ -166,18 +166,12 @@ while($p = $posts->fetch_object()) {
 				?><p class="italics<?php
 				
 				/* Check if the editor is a moderator */
-				if($editor->isModerator()) {
-					
-					echo " moderator";
-					
-				}
+				if($editor->isModerator()) echo " moderator";	
 				
 				/* Check if the editor is an officer */
-				if($editor->isOfficer()) {
-					
-					echo " officer";
-					
-				} ?>">Edited on <?php echo $post->getEditTime(); ?> by <?php echo $editor_character->name; ?>.</p><?php
+				if($editor->isOfficer()) echo " officer";
+				
+				?>">Edited on <?php echo $post->getEditTime(); ?> by <?php echo $editor_character->name; ?>.</p><?php
 				
 			}
 			

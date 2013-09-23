@@ -4,9 +4,9 @@
  * This is the password reset page. Here users can request a reset on their password.
  */
  
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
+
+
+	
 }
 
 // Require the framework files

@@ -4,11 +4,6 @@
  * This is the page where we post variables that allow us to claim a new character
  */
 
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
-}
-
 // Require the framework files
 require_once('../../../framework/config.php');
 

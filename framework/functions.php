@@ -1,4 +1,4 @@
-<?php
+	<?php
 function getAllRealms() {
 
 	/* Get all the realms from the database
@@ -164,16 +164,19 @@ function getRace($race_id) {
 	$result = $db->query("SELECT * FROM `races` WHERE `id` = $race_id LIMIT 0, 1");
 			
 	// Fetch an object of the above query
-	$race = $result->fetch_object();
+	if($race = $result->fetch_object()) {
+		// Free result set
+		$result->close();
 			
-	// Free result set
-	$result->close();
-		
-	// Close database connection
-	$db->close();
-		
-	// And return the object
-	return $race;
+		// Close database connection
+		$db->close();
+			
+		// And return the object
+		return $race;
+	}
+
+	return false;
+	
 		
 }
 	

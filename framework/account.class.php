@@ -19,6 +19,7 @@ class account {
 	public $activiation_code;
 	private $active;
 	private $suspended;
+	private $application;
 	public $forum_signature;
 	private $forum_moderator;
 	private $officer;
@@ -44,7 +45,7 @@ class account {
 
 		// Query the database to see if we can find this particular user
 		$result = $db->query("SELECT * FROM `accounts` WHERE `id` = $account_id LIMIT 0, 1");
-			
+
 		// Fetch an object based on the result
 		$account = $result->fetch_object();
 			
@@ -56,40 +57,12 @@ class account {
 		$this->email = $account->email;
 		$this->password = $account->password;
 		$this->activation_code = $account->activation_code;
-		$this->active = $account->active;
+		$this->active = (bool) $account->active;
+		$this->suspended = (bool) $account->suspended;
+		(isset($account->application) ? $this->application = new application($account->application) : $this->application = NULL);
 		$this->forum_signature = $account->forum_signature;
-
-		// Check if they are a forum moderator
-		switch($account->forum_moderator) {
-			
-			// No they are not
-			case 0:
-				$this->forum_moderator = false;
-				break;
-				
-			// Yes they are
-			case 1:
-				$this->forum_moderator = true;
-				break;
-			
-		}
-		
-		// Check if they are a website officer
-		switch($account->officer) {
-			
-			// No they are not
-			case 0:
-				$this->officer = false;
-				break;
-				
-			// Yes they are
-			case 1:
-				$this->officer = true;
-				break;
-			
-		}
-
-		// Continue setting variables
+		$this->forum_moderator = (bool) $account->forum_moderator;
+		$this->officer = (bool) $account->officer;
 		$this->primary_character = $account->primary_character;
 		$this->news = $account->news;
 		$this->digest = $account->digest;
@@ -169,55 +142,61 @@ class account {
 	}
 	
 	/* Authentication */
-	public static function authenticate($email, $raw_password) {
+	public function authenticate($raw_password) {
 		
-		/* This STATIC function will authenticate users against the database and return one of three strings
+		/* This function will authenticate users against the database and return one of three strings
 	 	 * which can be switched through to determine the following action */
 		
-		// First, set up a new instance of the database
-		$db = db();
-		
-		// Next, lookup the account ID from the email address given
-		$id = self::getAccountIdFromEmail($email);
-		
 		// Set up the password by encrypting it
-		$password = md5($raw_password);
 		
-		// Query the database to find a user with the specified email address and password
-		$result = $db->query("SELECT `id`, `active`, `suspended` FROM `accounts` WHERE `id` = $id AND `password` = '$password' LIMIT 0, 1");
 			
 		// If it's dropped into here it means that we can find an account with the correct credentials
 		// However, we now need to check if it's been properly activated and it's not suspended
 		
 		// First though, set the result to an instance of an OBJECT
-		if($account = @$result->fetch_object()) {
-			
-			// Free result set
-			$result->close();
-			
-			// Close the database connection
-			$db->close();
-			
-			// Perform the suspended & active check
-			if( $account->suspended == 0 && $account->active == 1 ) {	
-			
-    			// If we've got into here then it means that the account is properly active and not suspsended
-    			// so we can go ahead and properly authenticate by returning the account ID
-    			
-    			return $account->id;
-				
-			} elseif( $account->suspended == 1 ) {
+		if($this->password == md5($raw_password)) {
+
+    		if( $this->suspended == true ) {
     			
     			// Oh dear, the account has been suspended.
     			return 'suspended';
     			
-			} elseif( $account->active == 0 ) {
+			} elseif( $this->active == false ) {
     			
     			// Well, this must mean the account is inactive
     			return 'inactive';
     			
 			}
 			
+			// Now check if they have a primary character
+			if(empty($this->primary_character)) {
+				
+				if(!empty($this->application)) {	
+				
+					$db = db();
+	    			
+	    			if($result = $db->query("SELECT `id`, `name` FROM `characters` WHERE `name` = '". $application->name ."' LIMIT 0, 1")) {
+		    			
+		    			$this->setPrimaryCharacter($result->fetch_object()->id);
+		    			return $this->id;
+		    			
+	    			}
+	    		}
+
+	    		if($characters = $this->getAllCharacters()) {
+
+	    			$this->setPrimaryCharacter($characters->fetch_object()->id);
+	    			return $this->id;
+
+	    		}
+	    		
+	    		return 'no_primary_character';
+			}
+	    	
+	    	// If we've got into here then it means that the account is properly active and not suspsended
+    		// so we can go ahead and properly authenticate by returning the account ID
+    			
+    		return $this->id;
 		} 
 		
 		// Oh dear, seems that we cannot find the account with the credentials given to us.
@@ -338,9 +317,11 @@ class account {
 	 public function getPrimaryCharacter() {
 		 
 		 /* Create a new character object from this account */
-		 $character = new character($this->primary_character);
-		 return $character;
-		 
+		 if($this->primary_character) {
+		 	$character = new character($this->primary_character);
+		 	return $character;
+		 }
+		 return false;
 	 }
 	 
 	 

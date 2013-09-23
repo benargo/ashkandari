@@ -82,6 +82,10 @@ if( isset($_COOKIE['account']) ) {
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-progress-bar.css" />';
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/roster.css" />';
 					break;
+
+				case '/account/login.php':
+					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
+					break;
 					
 				case '/account/register/index.php':
 					echo '<link type="text/css" rel="stylesheet" href="/media/css/ui-lightness/jquery-ui-1.8.22.custom.css" />';
@@ -152,6 +156,11 @@ if( isset($_COOKIE['account']) ) {
 					
 				case '/roster/character.php':
 					echo '<script type="text/javascript" src="/media/scripts/jquery.autosize.js"></script>';
+					break;
+
+				case '/account/login.php':
+					echo '<script type="text/javascript" src="/media/scripts/jquery-ui-1.8.22.custom.min.js"></script>';
+					echo '<script type="text/javascript" src="/media/scripts/chars-combobox.js"></script>';
 					break;
 					
 				case '/account/register/index.php':

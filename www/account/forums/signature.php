@@ -4,9 +4,9 @@
  * This is the page where people can edit their forum signature.
  */
  
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
-	header('Location: https://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
+
+
+	
 }
 
 // Require the framework files

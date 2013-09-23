@@ -75,7 +75,25 @@ class application {
 		$db = db();
 		
 		/* Get the application from the database */
-		$result = $db->query("SELECT * FROM `applications` WHERE `id` = $id LIMIT 0, 1");
+		$result = $db->query("SELECT `id`, 
+			`character`, 
+			`realm`, 
+			`email`, 
+			`social`, 
+			`english`, 
+			`teamspeak`, 
+			`microphone`, 
+			`played_since`, 
+			`q1`, 
+			`q2`, 
+			`q3`, 
+			`q4`, 
+			`primary_spec`,
+			`received_date`,
+			`decision`,
+			`decision_date`,
+			`officer_account_id`,
+			`forum_thread_id` FROM `applications` WHERE `id` = $id LIMIT 0, 1");
 		
 		/* Fetch an object from the result set */
 		$application = $result->fetch_object();
@@ -139,7 +157,7 @@ class application {
 			if($bnet_json = file_get_contents("http://eu.battle.net/api/wow/character/". $realm->slug ."/". $this->name ."?fields=items,talents,progression,professions,titles")) {
 				
 				/* Cache it into the database */
-				$db->query("UPDATE `applications` SET `bnet` = '". $bnet_json ."' WHERE `id` = ". $this->id);
+				$db->query("UPDATE `applications` SET `bnet` = '". $db->escape_string($bnet_json) ."' WHERE `id` = ". $this->id);
 				
 			} else {
 				
@@ -169,7 +187,7 @@ class application {
 		return $bnet_decoded;
 		
 	}
-	
+		
 	/* Check if they're a social application */
 	public function isSocial() {
 		
@@ -657,7 +675,7 @@ class application {
 		$officer_rank = $officer_char->getRank();
 		
 		/* Update the database to set accepted to true */
-		$db->query("UPDATE `applications` SET `decision` = 2, `decision_date` = ". time() .", `officer_account_id` = ". $officer->id ." WHERE `id` = ". $this->id) or die($db->error);
+		$db->query("UPDATE `applications` SET `decision` = 1, `decision_date` = ". time() .", `officer_account_id` = ". $officer->id ." WHERE `id` = ". $this->id) or die($db->error);
 		
 		/* Prepare the email subject */
 		$subject = "Your Application was Unsuccessful";

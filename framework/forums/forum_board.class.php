@@ -162,21 +162,11 @@ class forum_board {
 	}
 	
 	/* Check if this user is authorised to view this board */
-	public function isAuthorised($account_id) {
+	public function isAuthorised() {
 		
-		/* Generate the account */
-		if(isset($account_id)) {
-			
-			$account = new account($account_id);
-			
-			/* Get this account's officer status */
-			$officer_status = $account->isOfficer();
-			
-		} else {
+		global $account;
 		
-			$officer_status = false;
-		
-		}
+		(isset($account) ? $officer_status = (bool) $account->isOfficer() : false);
 			
 		/* Check if this board is for officers only */
 		if($this->isOfficerOnly() && $officer_status == true) {

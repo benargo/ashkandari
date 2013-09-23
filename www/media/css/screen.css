@@ -487,7 +487,8 @@ input[type=button].text:hover, input[type=submit].text:hover {
 .info, .success, .warning, .error, .validation {
 border: 1px solid;
 margin: 10px 0px;
-padding:15px 10px 15px 50px;
+padding-right: 10px;
+padding-left: 50px;
 background-repeat: no-repeat;
 background-position: 10px center;
 -webkit-border-radius: 3px;
@@ -497,6 +498,15 @@ border-radius: 3px;
 color: #00529B;
 background-color: #BDE5F8;
 background-image: url('../images/theme/info.png');
+}
+.info a, .success a, .warning a, .error a {
+	color: #00007f;
+	border-bottom: none;
+	font-weight: bold;
+}
+.info a:hover, .success a:hover, .warning a:hover, .error a:hover {
+	border-bottom: none;
+	text-decoration: underline;
 }
 .success {
 color: #4F8A10;

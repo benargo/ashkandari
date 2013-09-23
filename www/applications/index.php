@@ -1,10 +1,10 @@
 <?php // /applications/index.php
 
-/* 
+/*
  * This is the page for Ashkandari's website where players can review outstanding applications.
  * It also includes links for officers to review previously accepted or declined applications.
  */
- 
+
 // Switch HTTPS off
 if( isset($_SERVER['HTTPS']) ) {
 	header('Location: http://www.ashkandari.com'. $_SERVER['REQUEST_URI']);
@@ -15,16 +15,16 @@ require_once('../../framework/config.php');
 
 // Check if we're already logged in
 if(empty($_SESSION['account'])) {
-	
+
 	header("Location: /account/login?ref=". $_SERVER['REQUEST_URI']);
-	
+
 }
 
 // Set the page title
 $page_title = "Guild Applications";
 
 // Require the head of the document
-require(PATH.'framework/head.php'); 
+require(PATH.'framework/head.php');
 
 ?><h1>Guild Applications</h1>
 
@@ -56,34 +56,34 @@ require(PATH.'framework/head.php');
 		</tr>
 	</thead>
 	<tbody>
-		<?php 
-		
+		<?php
+
 		/* Work out what application we're getting */
-		if(isset($_GET['decision'])) {	
-		
+		if(isset($_GET['decision'])) {
+
 			/* Get the applications */
 			$applications = getApplications($_GET['decision']);
-		
-		} else {			
-				
+
+		} else {
+
 			/* Get the outstanding applications */
 			$applications = getApplications();
-						
+
 		}
-		
+
 		/* Loop through each of the applications */
 		while($application = $applications->fetch_object()) {
-		
+
 			$app = new application($application->id);
-			
+
 			/* Get the class */
 			$race = $app->getRace();
 			$class = $app->getClass();
-			
+
 			$spec = $app->getPrimarySpec();
 			$off_spec = $app->getOffSpec();
-		
-			/* Print out the table */	
+
+			/* Print out the table */
 			?><tr>
 				<td><a href="/applications/<?php echo $app->id; ?>" title="View this application"><?php echo $app->name; ?></a></td>
 				<td><?php echo $app->getLevel(); ?></td>
@@ -95,7 +95,7 @@ require(PATH.'framework/head.php');
 				<td><?php echo $app->getDecision(); ?></td>
 			</tr>
 			<?php
-			
+
 		} ?>
 	</tbody>
 </table>

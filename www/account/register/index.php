@@ -5,8 +5,8 @@ w<?php /* account/register/index.php */
  * on our guild website.
  */
  
-// Switch HTTPS on
-if( empty($_SERVER['HTTPS']) ) {
+
+
 	header('Location: https://ashkandari.com'. $_SERVER['REQUEST_URI']);
 }
 
